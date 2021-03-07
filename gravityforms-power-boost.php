@@ -89,6 +89,7 @@ class Gravity_Forms_Power_Boost
 				$form_id = intval( str_replace( 'gform-form-', '', $node->id ) );
 				if( in_array( $form_id, $this->rendered_form_ids ) )
 				{
+					//Add a CSS class
 					if( ! is_array( $node->meta ) )
 					{
 						$node->meta = array();
@@ -97,9 +98,13 @@ class Gravity_Forms_Power_Boost
 					{
 						$node->meta['class'] = '';
 					}
-
-					$node->meta['class'] .= ' gfpb-recent';
+					$class = apply_filters( 'gfpb_rendered_form_css_classes', 'gfpb-recent' );
+					$node->meta['class'] .= ' ' . $class;
 					$node->meta['class'] = trim( $node->meta['class'] );
+
+					//Add an emoji, too, in case the user can't see the color contrast
+					$emoji = apply_filters( 'gfpb_rendered_form_emoji', '📌' );
+					$node->title = '<span title="Rendered on this page">' . $node->title . ' ' .  $emoji . '</span>';
 				}
 				$wp_admin_bar->remove_node( $node->id );
 				$wp_admin_bar->add_node( $node );
