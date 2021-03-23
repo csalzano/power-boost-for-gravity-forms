@@ -83,6 +83,12 @@ class Gravity_Forms_Power_Boost
 
 	public function enhance_admin_bar()
 	{
+		//If there are no rendered forms on this page, abort
+		if( empty( $this->rendered_form_ids ) )
+		{
+			return;
+		}
+
 		global $wp_admin_bar;
 
 		//Settings for adding a link to main GF settings
