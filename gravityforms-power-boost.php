@@ -28,7 +28,7 @@ class Gravity_Forms_Power_Boost
 		add_action( 'gform_form_list_column_last_entry', array( $this, 'populate_columns_we_added' ), 10, 1 );
 
 		//Keep track of all Gravity Forms form IDs that are rendered during this request
-		add_action( 'gform_pre_render', array( $this, 'save_rendered_form_ids' ), 10, 3 );
+		add_filter( 'gform_pre_render', array( $this, 'save_rendered_form_ids' ), 10, 3 );
 		
 		//Change the Forms menu of the admin bar
 		add_action( 'wp_before_admin_bar_render', array( $this, 'enhance_admin_bar' ), 99 );
@@ -62,7 +62,7 @@ class Gravity_Forms_Power_Boost
 	{
 		if( empty( $form['id'] ) )
 		{
-			return;
+			return $form;
 		}
 
 		if( ! is_array( $this->rendered_form_ids ) )
@@ -70,6 +70,7 @@ class Gravity_Forms_Power_Boost
 			$this->rendered_form_ids = array();
 		}
 		$this->rendered_form_ids[] = $form['id'];
+		return $form;
 	}
 
 	public function enhance_admin_bar()
