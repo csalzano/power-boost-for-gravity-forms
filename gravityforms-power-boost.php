@@ -121,6 +121,7 @@ class Gravity_Forms_Power_Boost
 					$emoji = apply_filters( 'gfpb_rendered_form_emoji', '📌' );
 					$node->title = '<span title="Rendered on this page">' . $node->title . ' ' .  $emoji . '</span>';
 				}
+				//Outside the condition so the whole list is tossed
 				$wp_admin_bar->remove_node( $node->id );
 				$wp_admin_bar->add_node( $node );
 			}
