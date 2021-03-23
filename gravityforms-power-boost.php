@@ -42,7 +42,7 @@ class Gravity_Forms_Power_Boost
 		add_action( 'wp_enqueue_scripts', array( $this, 'include_admin_bar_css' ) );
 
 		//When viewing entries, put field IDs near labels
-		//add_filter( 'gform_field_content', array( $this, 'add_field_ids_when_viewing_entries' ), 10, 5 );
+		add_filter( 'gform_field_content', array( $this, 'add_field_ids_when_viewing_entries' ), 10, 5 );
 	}
 
 	public function include_admin_bar_css()
@@ -83,6 +83,12 @@ class Gravity_Forms_Power_Boost
 
 	public function enhance_admin_bar()
 	{
+		//If there are no rendered forms on this page, abort
+		if( empty( $this->rendered_form_ids ) )
+		{
+			return;
+		}
+
 		global $wp_admin_bar;
 
 		//Settings for adding a link to main GF settings
