@@ -3,9 +3,9 @@ defined( 'ABSPATH' ) or exit;
 
 /**
  * Plugin Name: Gravity Forms Power Boost
- * Description: Enhances the dashboard for Gravity Forms power users. Adds "Last Entry" to the forms list.
+ * Description: Enhances the dashboard for Gravity Forms power users.
  * Author: Corey Salzano
- * Version: 1.0.0
+ * Version: 1.1.0
  * License: GPLv2 or later
  */
 
