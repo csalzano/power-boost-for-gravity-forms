@@ -91,11 +91,99 @@ class Gravity_Forms_Power_Boost
 
 		global $wp_admin_bar;
 
-		//Settings for adding a link to main GF settings
-		//https://docs.gravityforms.com/role-management-guide/#gravity-forms-capabilities
-		//gravityforms_view_settings 	View Plugin Settings
-		//gravityforms_edit_settings 	Edit Plugin Settings
+		//Keep track of the forms we find in the list
+		$form_ids_found_in_recent_list = array();
 
+		foreach( $wp_admin_bar->get_nodes() as &$node )
+		{
+			//Is this node a form in the Recent forms menu?
+			if( ! empty( $node->parent ) && 'gform-form-recent-forms' == $node->parent )
+			{
+				$form_id = intval( str_replace( 'gform-form-', '', $node->id ) );
+				if( in_array( $form_id, $this->rendered_form_ids ) )
+				{
+					$form_ids_found_in_recent_list[] = $form_id;
+				}
+			}
+		}
+
+		//Add forms that appear on the page but aren't on the Recent Forms list
+		//Are there rendered forms that do not appear in the recent list?
+		$form_ids_to_add = array_diff( $this->rendered_form_ids, $form_ids_found_in_recent_list );
+		if( ! empty( $form_ids_to_add ) )
+		{
+			/**
+			 * Add rendered forms to the recent forms list so all forms on the page
+			 * are in the admin bar Forms list.
+			 */
+			foreach( $form_ids_to_add as $form_id )
+			{
+				$form = GFAPI::get_form( $form_id );
+
+				$wp_admin_bar->add_node(
+					array(
+						'id'     => 'gform-form-' . $form_id,
+						'parent' => 'gform-form-recent-forms',
+						'title'  => esc_html( $form['title'] ),
+						'href'   => GFCommon::current_user_can_any( 'gravityforms_edit_forms' ) ? admin_url( 'admin.php?page=gf_edit_forms&id=' . $form_id ) : '',
+					)
+				);
+
+				if ( GFCommon::current_user_can_any( 'gravityforms_edit_forms' ) ) {
+					$wp_admin_bar->add_node(
+						array(
+							'id'     => 'gform-form-' . $form_id . '-edit',
+							'parent' => 'gform-form-' . $form_id,
+							'title'  => esc_html__( 'Edit', 'gravityforms' ),
+							'href'   => admin_url( 'admin.php?page=gf_edit_forms&id=' . $form_id ),
+						)
+					);
+				}
+
+				if ( GFCommon::current_user_can_any( 'gravityforms_view_entries' ) ) {
+					$wp_admin_bar->add_node(
+						array(
+							'id'     => 'gform-form-' . $form_id . '-entries',
+							'parent' => 'gform-form-' . $form_id,
+							'title'  => esc_html__( 'Entries', 'gravityforms' ),
+							'href'   => admin_url( 'admin.php?page=gf_entries&id=' . $form_id ),
+						)
+					);
+				}
+
+				if ( GFCommon::current_user_can_any( 'gravityforms_edit_forms' ) ) {
+					$wp_admin_bar->add_node(
+						array(
+							'id'     => 'gform-form-' . $form_id . '-settings',
+							'parent' => 'gform-form-' . $form_id,
+							'title'  => esc_html__( 'Settings', 'gravityforms' ),
+							'href'   => admin_url( 'admin.php?page=gf_edit_forms&view=settings&subview=settings&id=' . $form_id ),
+						)
+					);
+				}
+
+				if ( GFCommon::current_user_can_any( array(
+					'gravityforms_edit_forms',
+					'gravityforms_create_form',
+					'gravityforms_preview_forms'
+				) )
+				) {
+					$wp_admin_bar->add_node(
+						array(
+							'id'     => 'gform-form-' . $form_id . '-preview',
+							'parent' => 'gform-form-' . $form_id,
+							'title'  => esc_html__( 'Preview', 'gravityforms' ),
+							'href'   => trailingslashit( site_url() ) . '?gf_page=preview&id=' . $form_id,
+						)
+					);
+				}
+			}
+		}
+
+		/**
+		 * Loop over the admin bar nodes again to change the appearance of forms
+		 * that appear on this page.
+		 */
 		foreach( $wp_admin_bar->get_nodes() as &$node )
 		{
 			//Is this node a form in the Recent forms menu?
