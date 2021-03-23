@@ -180,10 +180,13 @@ class Gravity_Forms_Power_Boost
 			}
 		}
 
+		//Hold onto the nodes that we want to end up at the bottom of the list 
+		$non_embedded_recent_forms_nodes = array();
+
 		/**
 		 * Loop over the admin bar nodes again to change the appearance of forms
 		 * that appear on this page.
-		 */
+		 */	
 		foreach( $wp_admin_bar->get_nodes() as &$node )
 		{
 			//Is this node a form in the Recent forms menu?
@@ -211,8 +214,21 @@ class Gravity_Forms_Power_Boost
 				}
 				//Outside the condition so the whole list is tossed
 				$wp_admin_bar->remove_node( $node->id );
-				$wp_admin_bar->add_node( $node );
+				
+				if( in_array( $form_id, $this->rendered_form_ids ) )
+				{
+					$wp_admin_bar->add_node( $node );
+				}
+				else
+				{
+					$non_embedded_recent_forms_nodes[] = $node;
+				}
 			}
+		}
+		//Put all the Recent Forms that aren't embedded at the bottom
+		foreach( $non_embedded_recent_forms_nodes as $node )
+		{
+			$wp_admin_bar->add_node( $node );
 		}
 	}
 
