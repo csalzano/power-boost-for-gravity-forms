@@ -19,6 +19,11 @@ class Gravity_Forms_Power_Boost
 		return $columns;
 	}
 
+	public function add_field_ids_when_viewing_entries( $content, $field, $value, $entry_id, $form_id )
+	{
+		return preg_replace( '/(class="entry\-view\-field\-name">)([^<]+)(<\/td>)/', '$1 ' . $field['id'] . '. $2$3', $content );
+	}
+
 	public function add_hooks()
 	{
 		//Add columns to the table that lists Forms on edit.php
@@ -35,6 +40,9 @@ class Gravity_Forms_Power_Boost
 
 		//Include a style sheet to customize the admin bar
 		add_action( 'wp_enqueue_scripts', array( $this, 'include_admin_bar_css' ) );
+
+		//When viewing entries, put field IDs near labels
+		//add_filter( 'gform_field_content', array( $this, 'add_field_ids_when_viewing_entries' ), 10, 5 );
 	}
 
 	public function include_admin_bar_css()
