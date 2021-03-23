@@ -35,17 +35,45 @@ class Gravity_Forms_Power_Boost
 		//Keep track of all Gravity Forms form IDs that are rendered during this request
 		add_filter( 'gform_pre_render', array( $this, 'save_rendered_form_ids' ), 10, 3 );
 		
-		//Change the Forms menu of the admin bar
-		add_action( 'wp_before_admin_bar_render', array( $this, 'enhance_admin_bar' ), 99 );
-
-		//Include a style sheet to customize the admin bar
-		add_action( 'wp_enqueue_scripts', array( $this, 'include_admin_bar_css' ) );
+		/**
+		 * Change the Forms menu of the admin bar
+		 */
+		/** Make sure forms embedded on the current page are in the Recent Forms
+		 * list, highlighted, and grouped at the top.
+		 */
+		add_action( 'wp_before_admin_bar_render', array( $this, 'admin_bar_add_and_highlight_forms' ), 99 );
+		/**
+		 * Add a link to the global Gravity Forms Settings page
+		 */
+		add_action( 'wp_before_admin_bar_render', array( $this, 'admin_bar_add_settings_link' ), 100 );
+		/** 
+		 * Include a style sheet to customize the admin bar
+		 */
+		add_action( 'wp_enqueue_scripts', array( $this, 'admin_bar_include_css' ) );
 
 		//When viewing entries, put field IDs near labels
 		add_filter( 'gform_field_content', array( $this, 'add_field_ids_when_viewing_entries' ), 10, 5 );
 	}
 
-	public function include_admin_bar_css()
+	public function admin_bar_add_settings_link()
+	{
+		if( ! GFCommon::current_user_can_any( 'gravityforms_view_settings' ) )
+		{
+			return;
+		}
+
+		global $wp_admin_bar;
+		$wp_admin_bar->add_node(
+			array(
+				'id'     => 'gform-forms-view-settings',
+				'parent' => 'gform-forms',
+				'title'  => esc_html__( 'Settings', 'gravityforms' ),
+				'href'   => admin_url( 'admin.php?page=gf_settings' ),
+			)
+		);
+	}
+
+	public function admin_bar_include_css()
 	{
 		if( ! is_admin_bar_showing() )
 		{
@@ -81,7 +109,7 @@ class Gravity_Forms_Power_Boost
 		return $form;
 	}
 
-	public function enhance_admin_bar()
+	public function admin_bar_add_and_highlight_forms()
 	{
 		//If there are no rendered forms on this page, abort
 		if( empty( $this->rendered_form_ids ) )
