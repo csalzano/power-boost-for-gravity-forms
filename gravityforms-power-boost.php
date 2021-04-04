@@ -5,7 +5,8 @@ defined( 'ABSPATH' ) or exit;
  * Plugin Name: Gravity Forms Power Boost
  * Description: Enhances the dashboard for Gravity Forms power users.
  * Author: Corey Salzano
- * Version: 1.1.0
+ * Version: 1.2.0
+ * Text Domain: gravityforms-power-boost
  * License: GPLv2 or later
  */
 
