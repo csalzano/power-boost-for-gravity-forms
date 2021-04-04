@@ -54,6 +54,156 @@ class Gravity_Forms_Power_Boost
 
 		//When viewing entries, put field IDs near labels
 		add_filter( 'gform_field_content', array( $this, 'add_field_ids_when_viewing_entries' ), 10, 5 );
+
+		/**
+		 * Add a "Resend Feeds" button near the "Resend Notifications" button
+		 * when viewing a single entry.
+		 */
+		add_filter( 'gform_entry_detail_meta_boxes', array( $this, 'add_feeds_metabox' ), 10, 3 );
+		add_action( 'wp_ajax_resend_feeds', array( $this, 'ajax_callback_resend_feeds' ) );
+	}
+
+	public function add_feeds_metabox( $meta_boxes, $entry, $form )
+	{
+		if ( ! GFCommon::current_user_can_any( 'gravityforms_edit_entry_notes' ) )
+		{
+			return $meta_boxes;
+		}
+
+		$meta_boxes['feeds'] = array(
+			'title'    => esc_html__( 'Feeds', 'gravityforms-power-boost' ),
+			'callback' => array( __CLASS__, 'meta_box_feeds' ),
+			'context'  => 'side',
+		);
+		return $meta_boxes;
+	}
+
+	public function ajax_callback_resend_feeds()
+	{
+		check_admin_referer( 'gf_resend_feeds', 'gf_resend_feeds' );
+
+		$form_id = absint( rgpost( 'form_id' ) );
+		$entry_id = absint( rgpost( 'entry_id' ) );
+		$feed_ids = json_decode( rgpost( 'feed_ids' ) );
+
+		//Get instances of all add-ons, we don't know which one we need yet
+		$addon_instances = array();
+		$addons = GFAddOn::get_registered_addons();
+		foreach ( $addons as $addon ) {
+			$a = call_user_func( array( $addon, 'get_instance' ) );
+			$addon_instances[] = $a;
+		}
+
+		$feeds = GFAPI::get_feeds( null, $form_id, null ); //defaults to active feeds only
+		foreach( $feeds as $feed )
+		{
+			if( ! in_array( $feed['id'], $feed_ids ) )
+			{
+				continue;
+			}
+
+			//find the right add-on
+			foreach( $addon_instances as $instance )
+			{
+				if( $instance->get_slug() != $feed['addon_slug'] )
+				{
+					continue;
+				}
+				$instance->maybe_process_feed( GFAPI::get_entry( $entry_id ), GFAPI::get_form( $form_id ) );
+				break; //we found it, no need to keep looking at add-on instances
+			}
+		}
+		wp_send_json_success();
+	}
+
+	public static function meta_box_feeds( $args, $metabox )
+	{
+		$form    = $args['form'];
+		$form_id = $form['id'];
+
+		if ( ! GFCommon::current_user_can_any( 'gravityforms_edit_entry_notes' ) )
+		{
+			return;
+		}
+		?><div class="message" style="display:none;padding:10px;"></div>
+		<div>
+			<?php
+
+			$feeds = GFAPI::get_feeds( null, $form_id, null ); //defaults to active feeds only
+
+			if( empty( $feeds ) )
+			{
+				?>
+				<p class="description"><?php esc_html_e( 'You cannot resend feeds for this entry because this form does not currently have any feeds configured.', 'gravityforms-power-boost' ); ?></p>
+				<?php
+			}
+			else
+			{
+				foreach( $feeds as $feed )
+				{
+					?>
+					<input type="checkbox" class="gform_feeds" value="<?php echo esc_attr( $feed['id'] ); ?>" id="feed_<?php echo esc_attr( $feed['id'] ); ?>" />
+					<label for="feed_<?php echo esc_attr( $feed['id'] ); ?>"><?php echo esc_html( $feed['meta']['feed_name'] ); ?></label>
+					<br /><br />
+					<?php
+				}
+				?>
+				<input type="button" name="feeds_resend" value="<?php esc_attr_e( 'Resend Feeds', 'gravityforms-power-boost' ) ?>" class="button" style="" onclick="gfpb_resend_feeds();" />
+				<span id="please_wait_container_feeds" style="display:none; margin-left: 5px;">
+					<i class='gficon-gravityforms-spinner-icon gficon-spin'></i> <?php esc_html_e( 'Resending...', 'gravityforms-power-boost' ); ?>
+				</span>
+				<script type="text/javascript">
+				<!--
+					function gfpb_resend_feeds()
+					{
+						var entry_id = <?php echo $args['entry']['id']; ?>;
+						var form_id = <?php echo $form_id; ?>;
+
+						var checked_feeds = new Array();
+						jQuery(".gform_feeds:checked").each(function () {
+							checked_feeds.push(jQuery(this).val());
+						});
+
+						if (checked_feeds.length <= 0) {
+							displayMessage(<?php echo json_encode( __( 'You must select at least one feed to resend.', 'gravityforms-power-boost' ) ); ?>, 'error', '#feeds');
+							return;
+						}
+
+						jQuery('#please_wait_container_feeds').fadeIn();
+
+						jQuery.post(ajaxurl, {
+								action         : 'resend_feeds',
+								gf_resend_feeds: '<?php echo wp_create_nonce( 'gf_resend_feeds' ); ?>',
+								feed_ids       : jQuery.toJSON(checked_feeds),
+								entry_id       : '<?php echo absint( $args['entry']['id'] ); ?>',
+								form_id        : '<?php echo absint( $form_id ); ?>'
+							},
+							function (response) {
+								if( ! response.success )
+								{
+									displayMessage( response, "error", "#feeds");
+								}
+								else
+								{
+									displayMessage(<?php echo json_encode( esc_html__( 'Feeds were resent successfully.', 'gravityforms-power-boost' ) ); ?>, "updated", "#feeds" );
+
+									// reset UI
+									jQuery(".gform_feeds").attr( 'checked', false );
+								}
+
+								jQuery('#please_wait_container_feeds').hide();
+								setTimeout(function () {
+									jQuery('#feeds_container').find('.message').slideUp();
+								}, 5000);
+							}
+						);
+					}
+				-->
+				</script>
+				<?php
+			}
+			?>
+		</div><?php
 	}
 
 	public function admin_bar_add_settings_link()
