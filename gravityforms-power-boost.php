@@ -16,7 +16,7 @@ class Gravity_Forms_Power_Boost
 
 	public function add_columns_to_list_table( $columns )
 	{
-		$columns['last_entry'] = esc_html__( 'Last Entry', 'gravityforms' );
+		$columns['last_entry'] = esc_html__( 'Last Entry', 'gravityforms-power-boost' );
 		return $columns;
 	}
 
@@ -218,7 +218,7 @@ class Gravity_Forms_Power_Boost
 			array(
 				'id'     => 'gform-forms-view-settings',
 				'parent' => 'gform-forms',
-				'title'  => esc_html__( 'Settings', 'gravityforms' ),
+				'title'  => esc_html__( 'Settings', 'gravityforms-power-boost' ),
 				'href'   => admin_url( 'admin.php?page=gf_settings' ),
 			)
 		);
@@ -313,7 +313,7 @@ class Gravity_Forms_Power_Boost
 						array(
 							'id'     => 'gform-form-' . $form_id . '-edit',
 							'parent' => 'gform-form-' . $form_id,
-							'title'  => esc_html__( 'Edit', 'gravityforms' ),
+							'title'  => esc_html__( 'Edit', 'gravityforms-power-boost' ),
 							'href'   => admin_url( 'admin.php?page=gf_edit_forms&id=' . $form_id ),
 						)
 					);
@@ -324,7 +324,7 @@ class Gravity_Forms_Power_Boost
 						array(
 							'id'     => 'gform-form-' . $form_id . '-entries',
 							'parent' => 'gform-form-' . $form_id,
-							'title'  => esc_html__( 'Entries', 'gravityforms' ),
+							'title'  => esc_html__( 'Entries', 'gravityforms-power-boost' ),
 							'href'   => admin_url( 'admin.php?page=gf_entries&id=' . $form_id ),
 						)
 					);
@@ -335,7 +335,7 @@ class Gravity_Forms_Power_Boost
 						array(
 							'id'     => 'gform-form-' . $form_id . '-settings',
 							'parent' => 'gform-form-' . $form_id,
-							'title'  => esc_html__( 'Settings', 'gravityforms' ),
+							'title'  => esc_html__( 'Settings', 'gravityforms-power-boost' ),
 							'href'   => admin_url( 'admin.php?page=gf_edit_forms&view=settings&subview=settings&id=' . $form_id ),
 						)
 					);
@@ -351,7 +351,7 @@ class Gravity_Forms_Power_Boost
 						array(
 							'id'     => 'gform-form-' . $form_id . '-preview',
 							'parent' => 'gform-form-' . $form_id,
-							'title'  => esc_html__( 'Preview', 'gravityforms' ),
+							'title'  => esc_html__( 'Preview', 'gravityforms-power-boost' ),
 							'href'   => trailingslashit( site_url() ) . '?gf_page=preview&id=' . $form_id,
 						)
 					);
