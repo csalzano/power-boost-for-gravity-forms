@@ -1,5 +1,6 @@
 # gravityforms-power-boost
-Enhances the dashboard for Gravity Forms power users. Adds "Last Entry" to the forms list.
+
+A WordPress plugin. An add-on for Gravity Forms. Enhances the dashboard for Gravity Forms power users. 
 
 ## Features
 
