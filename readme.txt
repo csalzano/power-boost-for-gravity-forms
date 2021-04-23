@@ -1,4 +1,4 @@
-=== Gravity Forms Power Boost ===
+=== Power Boost for Gravity Forms ===
 Contributors: salzano
 Tags: gravityforms, gravity forms
 Requires at least: 4.0
