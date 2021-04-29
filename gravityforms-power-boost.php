@@ -133,10 +133,10 @@ class Gravity_Forms_Power_Boost
 
 			$feeds = GFAPI::get_feeds( null, $form_id, null ); //defaults to active feeds only
 
-			if( empty( $feeds ) )
+			if( empty( $feeds ) || is_wp_error( $feeds ) )
 			{
 				?>
-				<p class="description"><?php esc_html_e( 'You cannot resend feeds for this entry because this form does not currently have any feeds configured.', 'gravityforms-power-boost' ); ?></p>
+				<p class="description"><?php esc_html_e( 'This form has no active feeds.', 'gravityforms-power-boost' ); ?></p>
 				<?php
 			}
 			else
