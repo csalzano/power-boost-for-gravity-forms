@@ -13,13 +13,14 @@ An add-on for Gravity Forms. Enhances the dashboard for Gravity Forms power user
 
 == Description ==
  
-Gravity Forms Power Boost is a free WordPress plugin for Gravity Forms power users like me. I run this plugin on local copies of sites to make my job easier.
+Power Boost for Gravity Forms is a free WordPress plugin for Gravity Forms power users like me. I run this plugin on local copies of sites to make my job easier.
 
 Features:
 
 *   Adds 'Last Entry' column to forms list to indicate which forms are actually used
 *   Highlights forms rendered on the current page in the Forms menu of the Admin Bar. Adds forms that are embedded on the page to the list if they were not already present. Groups embedded forms at the top of the list.
 *   Adds field IDs to the left of labels when viewing an entry
+*   Adds a Resend Feeds button near the Resend Notifications button when viewing an entry
 
 Web page: 
 
