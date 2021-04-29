@@ -4,7 +4,7 @@ Tags: gravityforms, gravity forms
 Requires at least: 4.0
 Tested up to: 5.7.1
 Requires PHP: 5.6
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -50,7 +50,10 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 
 == Changelog ==
- 
+
+= 1.2.1 =
+* [Fixed] Fixes a bug for forms with no active feeds. Changes the message telling users the form has no active feeds to use less words.
+
 = 1.2.0 =
 * [Added] First version with this readme.txt
 
