@@ -54,6 +54,13 @@ class Gravity_Forms_Power_Boost
 		 */
 		add_action( 'wp_enqueue_scripts', array( $this, 'admin_bar_include_css' ) );
 
+
+		/**
+		 * Include a stylesheet to better display long form names in the 2.5
+		 * dashboard form switcher dropdown.
+		 */
+		add_action( 'admin_enqueue_scripts', array( $this, 'include_css' ) );
+
 		//When viewing entries, put field IDs near labels
 		add_filter( 'gform_field_content', array( $this, 'add_field_ids_when_viewing_entries' ), 10, 5 );
 
@@ -475,7 +482,19 @@ class Gravity_Forms_Power_Boost
 			$value
 		);
 	}
-
+	
+	/**
+	 * include_css
+	 * 
+	 * Callback method for admin_enqueue_scripts. Enqueues a stylesheet to 
+	 * change the way the dashboard appears.
+	 *
+	 * @return void
+	 */
+	public function include_css()
+	{
+		wp_enqueue_style( 'gfpb-dashboard', plugins_url( 'dashboard.min.css', __FILE__ ) );
+	}
 }
 $power_boost_9000 = new Gravity_Forms_Power_Boost();
 $power_boost_9000->add_hooks();
