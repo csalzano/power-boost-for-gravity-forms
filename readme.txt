@@ -17,11 +17,11 @@ Power Boost for Gravity Forms is a free WordPress plugin for Gravity Forms power
 
 Features:
 
-*   Adds 'Last Entry' column to forms list to indicate which forms are actually used
+*   Adds 'Last Entry' column to forms list to indicate which forms are actually used.
 *   Highlights forms rendered on the current page in the Forms menu of the Admin Bar. Adds forms that are embedded on the page to the list if they were not already present. Groups embedded forms at the top of the list.
-*   Adds field IDs to the left of labels when viewing an entry
-*   Adds a Resend Feeds button near the Resend Notifications button when viewing an entry
-*	Reveals long form names that Gravity Forms 2.5 cuts off in the form switcher dropdown
+*   Adds field IDs to the left of labels when viewing an entry.
+*   Adds a Resend Feeds button near the Resend Notifications button when viewing an entry.
+*	Reveals long form names that Gravity Forms 2.5 cuts off in the form switcher dropdown.
 
 Web page: 
 
