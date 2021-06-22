@@ -24,7 +24,7 @@ Features:
 
 Web page: 
 
-https://entriestogooglesheet.com/gravity-forms-power-boost
+[https://entriestogooglesheet.com/gravity-forms-power-boost](https://entriestogooglesheet.com/gravity-forms-power-boost)
 
 Have an idea for a new feature? Please visit the web page, and leave a comment.
 
