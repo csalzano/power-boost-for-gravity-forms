@@ -70,6 +70,11 @@ class Gravity_Forms_Power_Boost
 		 */
 		add_filter( 'gform_entry_detail_meta_boxes', array( $this, 'add_feeds_metabox' ), 10, 3 );
 		add_action( 'wp_ajax_resend_feeds', array( $this, 'ajax_callback_resend_feeds' ) );
+
+		//Load the class file and initialize the Form Replacer
+		require_once( __DIR__ . '/includes/form-replacer.php' );
+		$replacer = new Gravity_Forms_Power_Boost_Form_Replacer();
+		$replacer->add_hooks();
 	}
 
 	public function add_feeds_metabox( $meta_boxes, $entry, $form )
