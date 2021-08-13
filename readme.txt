@@ -4,7 +4,7 @@ Tags: gravityforms, gravity forms
 Requires at least: 4.0
 Tested up to: 5.8.0
 Requires PHP: 5.6
-Stable tag: 1.3.0
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -22,6 +22,7 @@ Features:
 *   Adds field IDs to the left of labels when viewing an entry.
 *   Adds a Resend Feeds button near the Resend Notifications button when viewing an entry.
 *	Reveals long form names that Gravity Forms 2.5 cuts off in the form switcher dropdown.
+*	Adds a tab 'Replace Forms' to the Import/Export page that updates existing forms instead of creating duplicates.
 
 Web page: 
 
@@ -53,6 +54,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 6. Screenshot of the Import/Export page. Shows an additional tab, titled "Replace Forms."
 
 == Changelog ==
+
+= 1.4.0 =
+* [Added] Adds a feature that allows the export .json files to update existing forms. A new tab is added to the Import/Export page titled, "Replace Forms." When form export files are uploaded to this page, existing forms are updated. This differs from the built-in "Import Forms" feature that always inserts forms and creates duplicates.
 
 = 1.3.0 =
 * [Added] Adds a few CSS rules to better display long form names in the form switcher dropdown. Gravity Forms 2.5 changes the dashboard to conceal form names after the first 21 characters in the dropdown used to choose a form.
