@@ -14,6 +14,8 @@ A WordPress plugin. An add-on for Gravity Forms. Enhances the dashboard for Grav
    ![screenshot-4](assets/screenshot-4.png)
 1. Reveals long form names that Gravity Forms 2.5 cuts off in the form switcher dropdown.
    ![screenshot-5](assets/screenshot-5.png)
+1. Adds a tab 'Replace Forms' to the Import/Export page that updates existing forms instead of creating duplicates
+   ![screenshot-6](assets/screenshot-6.png)
 
 ## Filter Hooks
 

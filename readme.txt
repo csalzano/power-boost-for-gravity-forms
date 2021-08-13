@@ -50,6 +50,7 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 3. Screenshot of a single Gravity Forms entry. An arrow points to a field ID number that appears to the left of a field name.
 4. Screenshot of a single Gravity Forms entry. An arrow points to a F Resend Feeds button near the Resend Notifications button.
 5. Screenshot of the form selector drop down. It has been widened to display long form names rather than cut them off.
+6. Screenshot of the Import/Export page. Shows an additional tab, titled "Replace Forms."
 
 == Changelog ==
 
