@@ -37,6 +37,10 @@ class Gravity_Forms_Power_Boost
 
 		foreach( $form['fields'] as &$field )
 		{
+			if( ! empty( $field['adminLabel'] ) )
+			{
+				$field['adminLabel'] = $field['id'] . '. ' . $field['adminLabel'];
+			}
 			$field['label'] = $field['id'] . '. ' . $field['label'];
 		}
 		return $form;
