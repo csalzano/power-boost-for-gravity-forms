@@ -27,6 +27,21 @@ class Gravity_Forms_Power_Boost
 		return preg_replace( '/(class="entry\-view\-field\-name">)([^<]+)(<\/td>)/', '$1 ' . $field['id'] . '. $2$3', $content );
 	}
 
+	public function add_field_ids_when_editing_entries( $form )
+	{
+		//make sure we're on the edit entry page
+		if( empty( $_POST['screen_mode'] ) || 'edit' !== $_POST['screen_mode'] )
+		{
+			return $form;
+		}
+
+		foreach( $form['fields'] as &$field )
+		{
+			$field['label'] = $field['id'] . '. ' . $field['label'];
+		}
+		return $form;
+	}
+
 	public function add_hooks()
 	{
 		//Add columns to the table that lists Forms on edit.php
@@ -63,6 +78,8 @@ class Gravity_Forms_Power_Boost
 
 		//When viewing entries, put field IDs near labels
 		add_filter( 'gform_field_content', array( $this, 'add_field_ids_when_viewing_entries' ), 10, 5 );
+		//When editing entries, put field IDs near labels
+		add_filter( 'gform_admin_pre_render', array( $this, 'add_field_ids_when_editing_entries' ) );
 
 		/**
 		 * Add a "Resend Feeds" button near the "Resend Notifications" button
