@@ -19,7 +19,7 @@ Features:
 
 *   Adds 'Last Entry' column to forms list to indicate which forms are actually used.
 *   Highlights forms rendered on the current page in the Forms menu of the Admin Bar. Adds forms that are embedded on the page to the list if they were not already present. Groups embedded forms at the top of the list.
-*   Adds field IDs to the left of labels when viewing an entry.
+*	Adds field IDs to the left of labels when viewing or editing an entry in the dashboard.
 *   Adds a Resend Feeds button near the Resend Notifications button when viewing an entry.
 *	Reveals long form names that Gravity Forms 2.5 cuts off in the form switcher dropdown.
 *	Adds a tab 'Replace Forms' to the Import/Export page that updates existing forms instead of creating duplicates.

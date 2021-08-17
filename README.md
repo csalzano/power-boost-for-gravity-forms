@@ -8,7 +8,7 @@ A WordPress plugin. An add-on for Gravity Forms. Enhances the dashboard for Grav
    ![screenshot-1](assets/screenshot-1.png)
 1. Highlights forms rendered on the current page in the Forms menu of the Admin Bar. Adds forms that are embedded on the page to the list if they were not already present. Groups embedded forms at the top of the list.
    ![screenshot-2](assets/screenshot-2.png)
-1. Adds field IDs to the left of labels when viewing an entry.
+1. Adds field IDs to the left of labels when viewing or editing an entry in the dashboard.
    ![screenshot-3](assets/screenshot-3.png)
 1. Adds a Resend Feeds button near the Resend Notifications button when viewing an entry.
    ![screenshot-4](assets/screenshot-4.png)
