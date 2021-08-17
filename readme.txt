@@ -57,6 +57,7 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 = 1.5.0 =
 * [Added] Adds a feature that puts field IDs near labels when editing entries in the dashboard. This behavior matches an existing feature that puts field IDs near labels when viewing entires in the dashboard.
+* [Fixed] Bug fix, prevents forms that do not exist from being updated when using the Replace Forms feature on the Import/Export page. Only forms that already exist will be affected by Replace Forms regardless of how many forms are in the .json file that was uploaded.
 
 = 1.4.0 =
 * [Added] Adds a feature that allows the export .json files to update existing forms. A new tab is added to the Import/Export page titled, "Replace Forms." When form export files are uploaded to this page, existing forms are updated. This differs from the built-in "Import Forms" feature that always inserts forms and creates duplicates.
