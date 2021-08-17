@@ -163,6 +163,14 @@ class Gravity_Forms_Power_Boost_Form_Replacer
 			{
 				continue;
 			}
+
+			//does the form exist?
+			if( false === GFAPI::get_form( $form['id'] ) )
+			{
+				//no, skip this one
+				continue;
+			}
+
 			GFAPI::update_form( $form, $form['id'] );
 			$updated_count++;
 		}
