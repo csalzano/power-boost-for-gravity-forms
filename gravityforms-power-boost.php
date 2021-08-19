@@ -7,7 +7,7 @@ defined( 'ABSPATH' ) or exit;
  * Description: Enhances the dashboard for Gravity Forms power users.
  * Author: Breakfast Co.
  * Author URI: https://breakfastco.xyz
- * Version: 1.5.0
+ * Version: 2.0.0
  * Text Domain: gravityforms-power-boost
  * License: GPLv2 or later
  */

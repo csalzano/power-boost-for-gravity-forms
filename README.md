@@ -6,7 +6,7 @@ A WordPress plugin. An add-on for Gravity Forms. Enhances the dashboard for Grav
 
 1. Adds 'Last Entry' column to forms list to indicate which forms are actually used.
    ![screenshot-1](assets/screenshot-1.png)
-1. Highlights forms rendered on the current page in the Forms menu of the Admin Bar. Adds forms that are embedded on the page to the list if they were not already present. Groups embedded forms at the top of the list.
+1. Adds a feature called Local JSON that maintains .json file exports of each form when forms are edited and allows forms to be updated by loading their .json files. Local JSON works similarly to ACF and enables forms to be put into version control with themes or plugins.
    ![screenshot-2](assets/screenshot-2.png)
 1. Adds field IDs to the left of labels when viewing or editing an entry in the dashboard.
    ![screenshot-3](assets/screenshot-3.png)
@@ -19,12 +19,10 @@ A WordPress plugin. An add-on for Gravity Forms. Enhances the dashboard for Grav
 
 ## Filter Hooks
 
-- gfpb_rendered_form_css_classes
+`gravityforms_local_json_save_path`
 
-  Filters the CSS classes added to list items in the Recent Forms section of the
-  Forms admin bar menu.
+The absolute file path to a directory where the form export .json files are saved. Defaults to `wp-content/uploads/gf-json/`
 
-- gfpb_rendered_form_emoji
+`gravityforms_local_json_save_form`
 
-  Filters the emoji added next to form titles in the Recent Forms section of the
-  Forms admin bar menu.
+Allows a forms array containing a single form to be edited just before it is written to the .json file

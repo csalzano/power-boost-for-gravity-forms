@@ -4,7 +4,7 @@ Tags: gravityforms, gravity forms
 Requires at least: 4.0
 Tested up to: 5.8.0
 Requires PHP: 5.6
-Stable tag: 1.5.0
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -18,7 +18,7 @@ Power Boost for Gravity Forms is a free WordPress plugin for Gravity Forms power
 Features:
 
 *   Adds 'Last Entry' column to forms list to indicate which forms are actually used.
-*   Highlights forms rendered on the current page in the Forms menu of the Admin Bar. Adds forms that are embedded on the page to the list if they were not already present. Groups embedded forms at the top of the list.
+*	Adds a feature called Local JSON that maintains .json file exports of each form when forms are edited and allows forms to be updated by loading their .json files. Local JSON works similarly to ACF and enables forms to be put into version control with themes or plugins.
 *	Adds field IDs to the left of labels when viewing or editing an entry in the dashboard.
 *   Adds a Resend Feeds button near the Resend Notifications button when viewing an entry.
 *	Reveals long form names that Gravity Forms 2.5 cuts off in the form switcher dropdown.
@@ -47,13 +47,17 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 == Screenshots ==
  
 1. Screenshot of the Gravity Forms list of forms. An additional column labeled "Last Entry" contains timestamps.
-2. Screenshot of an expanded Forms menu in the WordPress admin bar. The first two forms are highlighted with a different link color and a push pin emoji.
+2. Screenshot of the Local JSON tab of a form's settings page. A load button is visible and allows the user to update the form to match its companion .json file. The file path where the .json files are stored is also shown.
 3. Screenshot of a single Gravity Forms entry. An arrow points to a field ID number that appears to the left of a field name.
 4. Screenshot of a single Gravity Forms entry. An arrow points to a Resend Feeds button near the Resend Notifications button.
 5. Screenshot of the form selector drop down. It has been widened to display long form names rather than cut them off.
 6. Screenshot of the Import/Export page. Shows an additional tab, titled "Replace Forms."
 
 == Changelog ==
+
+= 2.0.0 =
+* [Added] Adds a feature called Local JSON that maintains .json file exports of each form when forms are edited and allows forms to be updated by loading their .json files. Local JSON works similarly to ACF and enables forms to be put into version control with themes or plugins.
+* [Removed] Removes a feature that highlights forms in the admin bar if they are rendered on the current page. This feature was broken by WordPress 5.4's introduction of the `wp_body_open` hook. Details [here](https://github.com/csalzano/power-boost-for-gravity-forms/issues/3).
 
 = 1.5.0 =
 * [Added] Adds a feature that puts field IDs near labels when editing entries in the dashboard. This behavior matches an existing feature that puts field IDs near labels when viewing entires in the dashboard.
