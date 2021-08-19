@@ -13,9 +13,11 @@ An add-on for Gravity Forms. Enhances the dashboard for Gravity Forms power user
 
 == Description ==
  
-Power Boost for Gravity Forms is a free WordPress plugin for Gravity Forms power users like me. I run this plugin on local copies of sites to make my job easier.
+Power Boost for Gravity Forms is a free WordPress plugin for Gravity Forms power users like me. I mostly run this plugin on local copies of sites to make my job easier, but the Local JSON and Replace Forms features help me deploy changes to Gravity Forms in production.
 
-Features:
+= Features =
+
+All features captured in screenshots below
 
 *   Adds 'Last Entry' column to forms list to indicate which forms are actually used.
 *	Adds a feature called Local JSON that maintains .json file exports of each form when forms are edited and allows forms to be updated by loading their .json files. Local JSON works similarly to ACF and enables forms to be put into version control with themes or plugins.
@@ -24,7 +26,7 @@ Features:
 *	Reveals long form names that Gravity Forms 2.5 cuts off in the form switcher dropdown.
 *	Adds a tab 'Replace Forms' to the Import/Export page that updates existing forms instead of creating duplicates.
 
-Web page: 
+= Web page =
 
 [https://entriestogooglesheet.com/gravity-forms-power-boost](https://entriestogooglesheet.com/gravity-forms-power-boost)
 
