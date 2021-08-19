@@ -86,6 +86,11 @@ class Gravity_Forms_Power_Boost
 		require_once( __DIR__ . '/includes/form-replacer.php' );
 		$replacer = new Gravity_Forms_Power_Boost_Form_Replacer();
 		$replacer->add_hooks();
+
+		//Load the class file and initialize the Local JSON
+		require_once( __DIR__ . '/includes/local-json.php' );
+		$local_json = new Gravity_Forms_Local_JSON();
+		$local_json->add_hooks();
 	}
 
 	public function add_feeds_metabox( $meta_boxes, $entry, $form )
