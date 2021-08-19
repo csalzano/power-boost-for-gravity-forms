@@ -54,24 +54,14 @@ class Gravity_Forms_Power_Boost
 		//Populate the columns we added to the list table
 		add_action( 'gform_form_list_column_last_entry', array( $this, 'populate_columns_we_added' ), 10, 1 );
 
-		//Keep track of all Gravity Forms form IDs that are rendered during this request
-		add_filter( 'gform_pre_render', array( $this, 'save_rendered_form_ids' ), 10, 3 );
-		
 		/**
 		 * Change the Forms menu of the admin bar
 		 */
-		/** Make sure forms embedded on the current page are in the Recent Forms
-		 * list, highlighted, and grouped at the top.
-		 */
-		add_action( 'wp_before_admin_bar_render', array( $this, 'admin_bar_add_and_highlight_forms' ), 99 );
 		/**
 		 * Add a link to the global Gravity Forms Settings page
 		 */
 		add_action( 'wp_before_admin_bar_render', array( $this, 'admin_bar_add_settings_link' ), 100 );
-		/** 
-		 * Include a style sheet to customize the admin bar
-		 */
-		add_action( 'wp_enqueue_scripts', array( $this, 'admin_bar_include_css' ) );
+
 
 
 		/**
@@ -257,193 +247,6 @@ class Gravity_Forms_Power_Boost
 				'href'   => admin_url( 'admin.php?page=gf_settings' ),
 			)
 		);
-	}
-
-	public function admin_bar_include_css()
-	{
-		if( ! is_admin_bar_showing() )
-		{
-			return;
-		}
-		wp_enqueue_style( 'gfpb-admin-bar', plugins_url( 'admin-bar.min.css', __FILE__ ) );
-	}
-	
-	/**
-	 * save_rendered_form_ids
-	 * 
-	 * Hook callback on gform_pre_render. Just before a Gravity Form is 
-	 * rendered, save its form ID in a member variable in this class so we know
-	 * which forms are on the page.
-	 *
-	 * @param  mixed $form
-	 * @param  mixed $is_ajax
-	 * @param  mixed $field_values
-	 * @return void
-	 */
-	public function save_rendered_form_ids( $form, $is_ajax, $field_values )
-	{
-		if( empty( $form['id'] ) )
-		{
-			return $form;
-		}
-
-		if( ! is_array( $this->rendered_form_ids ) )
-		{
-			$this->rendered_form_ids = array();
-		}
-		$this->rendered_form_ids[] = $form['id'];
-		return $form;
-	}
-
-	public function admin_bar_add_and_highlight_forms()
-	{
-		//If there are no rendered forms on this page, abort
-		if( empty( $this->rendered_form_ids ) )
-		{
-			return;
-		}
-
-		global $wp_admin_bar;
-
-		//Keep track of the forms we find in the list
-		$form_ids_found_in_recent_list = array();
-
-		foreach( $wp_admin_bar->get_nodes() as &$node )
-		{
-			//Is this node a form in the Recent forms menu?
-			if( ! empty( $node->parent ) && 'gform-form-recent-forms' == $node->parent )
-			{
-				$form_id = intval( str_replace( 'gform-form-', '', $node->id ) );
-				if( in_array( $form_id, $this->rendered_form_ids ) )
-				{
-					$form_ids_found_in_recent_list[] = $form_id;
-				}
-			}
-		}
-
-		//Add forms that appear on the page but aren't on the Recent Forms list
-		//Are there rendered forms that do not appear in the recent list?
-		$form_ids_to_add = array_diff( $this->rendered_form_ids, $form_ids_found_in_recent_list );
-		if( ! empty( $form_ids_to_add ) )
-		{
-			/**
-			 * Add rendered forms to the recent forms list so all forms on the page
-			 * are in the admin bar Forms list.
-			 */
-			foreach( $form_ids_to_add as $form_id )
-			{
-				$form = GFAPI::get_form( $form_id );
-
-				$wp_admin_bar->add_node(
-					array(
-						'id'     => 'gform-form-' . $form_id,
-						'parent' => 'gform-form-recent-forms',
-						'title'  => esc_html( $form['title'] ),
-						'href'   => GFCommon::current_user_can_any( 'gravityforms_edit_forms' ) ? admin_url( 'admin.php?page=gf_edit_forms&id=' . $form_id ) : '',
-					)
-				);
-
-				if ( GFCommon::current_user_can_any( 'gravityforms_edit_forms' ) ) {
-					$wp_admin_bar->add_node(
-						array(
-							'id'     => 'gform-form-' . $form_id . '-edit',
-							'parent' => 'gform-form-' . $form_id,
-							'title'  => esc_html__( 'Edit', 'gravityforms-power-boost' ),
-							'href'   => admin_url( 'admin.php?page=gf_edit_forms&id=' . $form_id ),
-						)
-					);
-				}
-
-				if ( GFCommon::current_user_can_any( 'gravityforms_view_entries' ) ) {
-					$wp_admin_bar->add_node(
-						array(
-							'id'     => 'gform-form-' . $form_id . '-entries',
-							'parent' => 'gform-form-' . $form_id,
-							'title'  => esc_html__( 'Entries', 'gravityforms-power-boost' ),
-							'href'   => admin_url( 'admin.php?page=gf_entries&id=' . $form_id ),
-						)
-					);
-				}
-
-				if ( GFCommon::current_user_can_any( 'gravityforms_edit_forms' ) ) {
-					$wp_admin_bar->add_node(
-						array(
-							'id'     => 'gform-form-' . $form_id . '-settings',
-							'parent' => 'gform-form-' . $form_id,
-							'title'  => esc_html__( 'Settings', 'gravityforms-power-boost' ),
-							'href'   => admin_url( 'admin.php?page=gf_edit_forms&view=settings&subview=settings&id=' . $form_id ),
-						)
-					);
-				}
-
-				if ( GFCommon::current_user_can_any( array(
-					'gravityforms_edit_forms',
-					'gravityforms_create_form',
-					'gravityforms_preview_forms'
-				) )
-				) {
-					$wp_admin_bar->add_node(
-						array(
-							'id'     => 'gform-form-' . $form_id . '-preview',
-							'parent' => 'gform-form-' . $form_id,
-							'title'  => esc_html__( 'Preview', 'gravityforms-power-boost' ),
-							'href'   => trailingslashit( site_url() ) . '?gf_page=preview&id=' . $form_id,
-						)
-					);
-				}
-			}
-		}
-
-		//Hold onto the nodes that we want to end up at the bottom of the list 
-		$non_embedded_recent_forms_nodes = array();
-
-		/**
-		 * Loop over the admin bar nodes again to change the appearance of forms
-		 * that appear on this page.
-		 */	
-		foreach( $wp_admin_bar->get_nodes() as &$node )
-		{
-			//Is this node a form in the Recent forms menu?
-			if( ! empty( $node->parent ) && 'gform-form-recent-forms' == $node->parent )
-			{
-				$form_id = intval( str_replace( 'gform-form-', '', $node->id ) );
-				if( in_array( $form_id, $this->rendered_form_ids ) )
-				{
-					//Add a CSS class
-					if( ! is_array( $node->meta ) )
-					{
-						$node->meta = array();
-					}
-					if( ! isset( $node->meta['class'] ) )
-					{
-						$node->meta['class'] = '';
-					}
-					$class = apply_filters( 'gfpb_rendered_form_css_classes', 'gfpb-recent' );
-					$node->meta['class'] .= ' ' . $class;
-					$node->meta['class'] = trim( $node->meta['class'] );
-
-					//Add an emoji, too, in case the user can't see the color contrast
-					$emoji = apply_filters( 'gfpb_rendered_form_emoji', '📌' );
-					$node->title = '<span title="Rendered on this page">' . $node->title . ' ' .  $emoji . '</span>';
-				}
-				//Outside the condition so the whole list is tossed
-				$wp_admin_bar->remove_node( $node->id );
-				
-				if( in_array( $form_id, $this->rendered_form_ids ) )
-				{
-					$wp_admin_bar->add_node( $node );
-				}
-				else
-				{
-					$non_embedded_recent_forms_nodes[] = $node;
-				}
-			}
-		}
-		//Put all the Recent Forms that aren't embedded at the bottom
-		foreach( $non_embedded_recent_forms_nodes as $node )
-		{
-			$wp_admin_bar->add_node( $node );
-		}
 	}
 
 	/**
