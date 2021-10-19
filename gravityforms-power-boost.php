@@ -238,7 +238,8 @@ class Gravity_Forms_Power_Boost
 
 	public function admin_bar_add_settings_link()
 	{
-		if( ! GFCommon::current_user_can_any( 'gravityforms_view_settings' ) )
+		if( ! class_exists( 'GFCommon' ) 
+			|| ! GFCommon::current_user_can_any( 'gravityforms_view_settings' ) )
 		{
 			return;
 		}
@@ -327,6 +328,10 @@ class Gravity_Forms_Power_Boost
 	 */
 	public function include_css()
 	{
+		if( ! class_exists( 'GFCommon' ) )
+		{
+			return;
+		}
 		wp_enqueue_style( 'gfpb-dashboard', plugins_url( 'dashboard.min.css', __FILE__ ) );
 	}
 }
