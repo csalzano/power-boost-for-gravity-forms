@@ -2,9 +2,9 @@
 Contributors: salzano
 Tags: gravityforms, gravity forms
 Requires at least: 4.0
-Tested up to: 5.8.0
+Tested up to: 5.8.1
 Requires PHP: 5.6
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -56,6 +56,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 6. Screenshot of the Import/Export page. Shows an additional tab, titled "Replace Forms."
 
 == Changelog ==
+
+= 2.0.1 =
+* [Fixed] Fixes a bug, do nothing if Gravity Forms is not running by always checking if it is active.
 
 = 2.0.0 =
 * [Added] Adds a feature called Local JSON that maintains .json file exports of each form when forms are edited and allows forms to be updated by loading their .json files. Local JSON works similarly to ACF and enables forms to be put into version control with themes or plugins.
