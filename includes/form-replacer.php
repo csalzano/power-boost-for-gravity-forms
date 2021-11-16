@@ -21,19 +21,19 @@ class Gravity_Forms_Power_Boost_Form_Replacer
 	public function add_hooks()
 	{
 		//Adds an item to the Import/Export menu tabs
-		add_filter( 'gform_export_menu', array( $this, 'add_import_tab' ) );
+		add_filter( 'gform_export_menu', array( $this, 'add_replace_forms_tab' ) );
 
 		//Populate the tab with content
 		add_action( 'gform_export_page_' . self::EXPORT_TAB_SLUG, array( $this, 'populate_import_tab' ) );
 	}
 	
 	/**
-	 * add_import_tab
+	 * add_replace_forms_tab
 	 *
 	 * @param  array $setting_tabs
 	 * @return array
 	 */
-	public function add_import_tab( $setting_tabs )
+	public function add_replace_forms_tab( $setting_tabs )
 	{
 		if( ! class_exists( 'GFCommon') || ! GFCommon::current_user_can_any( 'gravityforms_edit_forms' ) )
 		{
