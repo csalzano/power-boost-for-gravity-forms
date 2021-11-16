@@ -6,3 +6,15 @@
 .gform-admin .gform-form-toolbar .gform-dropdown__trigger{
 	min-width: 268px;
 }
+.gw-inline-field-id {
+	background-color: #ecedf8;
+	border: 1px solid #d5d7e9;
+	border-radius: 40px;
+	font-size: 0.6875rem;
+	font-weight: 600;
+	padding: 0.1125rem 0.4625rem;
+	margin-bottom: 0.5rem;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 19px;
+}

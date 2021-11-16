@@ -14,6 +14,8 @@ defined( 'ABSPATH' ) or exit;
 
 class Gravity_Forms_Power_Boost
 {
+	const VERSION = '2.0.1';
+
 	var $rendered_form_ids;
 
 	public function add_columns_to_list_table( $columns )
@@ -46,6 +48,16 @@ class Gravity_Forms_Power_Boost
 		return $form;
 	}
 
+	public function add_field_ids_when_editing_forms( $content, $field )
+	{
+		if ( ! GFCommon::is_form_editor() )
+		{
+			return $content;
+		}
+		$replace = sprintf( '\0 <span class="gw-inline-field-id">ID: %d</span>', $field->id );
+		return preg_replace( "/<\/label>|<\/legend>/", $replace, $content, 1 );
+	}
+
 	public function add_hooks()
 	{
 		//Add columns to the table that lists Forms on edit.php
@@ -72,6 +84,8 @@ class Gravity_Forms_Power_Boost
 
 		//When viewing entries, put field IDs near labels
 		add_filter( 'gform_field_content', array( $this, 'add_field_ids_when_viewing_entries' ), 10, 5 );
+		//When editing forms, put field IDs near labels
+		add_filter( 'gform_field_content', array( $this, 'add_field_ids_when_editing_forms' ), 10, 2 );
 		//When editing entries, put field IDs near labels
 		add_filter( 'gform_admin_pre_render', array( $this, 'add_field_ids_when_editing_entries' ) );
 
@@ -332,7 +346,12 @@ class Gravity_Forms_Power_Boost
 		{
 			return;
 		}
-		wp_enqueue_style( 'gfpb-dashboard', plugins_url( 'dashboard.min.css', __FILE__ ) );
+		wp_enqueue_style( 
+			'gfpb-dashboard',
+			plugins_url( 'dashboard.min.css', __FILE__ ),
+			[],
+			self::VERSION
+		);
 	}
 }
 $power_boost_9000 = new Gravity_Forms_Power_Boost();
