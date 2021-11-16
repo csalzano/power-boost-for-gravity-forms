@@ -54,8 +54,13 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 4. Screenshot of a single Gravity Forms entry. An arrow points to a Resend Feeds button near the Resend Notifications button.
 5. Screenshot of the form selector drop down. It has been widened to display long form names rather than cut them off.
 6. Screenshot of the Import/Export page. Shows an additional tab, titled "Replace Forms."
+7. Screenshot of the form editor. Arrows point to field ID numbers near field labels.
 
 == Changelog ==
+
+= 2.1.0 =
+* [Added] Adds a feature that puts form IDs near field labels while editing forms.
+* [Changed] Changes the plugin icon and banner so this plugin looks better on WordPress.org. The icon had an odd seam between two colors, and the banner was ugly.
 
 = 2.0.1 =
 * [Fixed] Fixes a bug, do nothing if Gravity Forms is not running by always checking if it is active.
