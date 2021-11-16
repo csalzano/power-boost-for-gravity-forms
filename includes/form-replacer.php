@@ -24,7 +24,7 @@ class Gravity_Forms_Power_Boost_Form_Replacer
 		add_filter( 'gform_export_menu', array( $this, 'add_replace_forms_tab' ) );
 
 		//Populate the tab with content
-		add_action( 'gform_export_page_' . self::EXPORT_TAB_SLUG, array( $this, 'populate_import_tab' ) );
+		add_action( 'gform_export_page_' . self::EXPORT_TAB_SLUG, array( $this, 'populate_replace_forms_tab' ) );
 	}
 	
 	/**
@@ -48,11 +48,11 @@ class Gravity_Forms_Power_Boost_Form_Replacer
 	}
 	
 	/**
-	 * populate_import_tab
+	 * populate_replace_forms_tab
 	 *
 	 * @return void
 	 */
-	public function populate_import_tab()
+	public function populate_replace_forms_tab()
 	{
 		if( ! class_exists( 'GFCommon') || ! GFCommon::current_user_can_any( 'gravityforms_edit_forms' ) )
 		{
