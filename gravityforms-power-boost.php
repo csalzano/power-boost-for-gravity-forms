@@ -48,6 +48,20 @@ class Gravity_Forms_Power_Boost
 		return $form;
 	}
 
+	/**
+	 * add_field_ids_when_editing_forms
+	 *
+	 * Adds form IDs near field labels while editing forms.
+	 *
+	 * Thanks to Dario at Gravity Wiz for suggesting I include this snippet. It
+	 * pairs well with the other features that add field IDs to the dashboard.
+	 *
+	 * @see https://github.com/gravitywiz/snippet-library/blob/master/experimental/gw-field-ids-in-editor-labels.php
+	 *
+	 * @param  string $content
+	 * @param  GF_Field $field
+	 * @return string
+	 */
 	public function add_field_ids_when_editing_forms( $content, $field )
 	{
 		if ( ! GFCommon::is_form_editor() )
