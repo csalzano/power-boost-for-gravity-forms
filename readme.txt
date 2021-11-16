@@ -22,6 +22,7 @@ All features captured in screenshots below
 *   Adds 'Last Entry' column to forms list to indicate which forms are actually used.
 *	Adds a feature called Local JSON that maintains .json file exports of each form when forms are edited and allows forms to be updated by loading their .json files. Local JSON works similarly to ACF and enables forms to be put into version control with themes or plugins.
 *	Adds field IDs to the left of labels when viewing or editing an entry in the dashboard.
+*	Adds field IDs to the right of labels when editing forms
 *   Adds a Resend Feeds button near the Resend Notifications button when viewing an entry.
 *	Reveals long form names that Gravity Forms 2.5 cuts off in the form switcher dropdown.
 *	Adds a tab 'Replace Forms' to the Import/Export page that updates existing forms instead of creating duplicates.
