@@ -52,6 +52,7 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 2. Screenshot of the Local JSON tab of a form's settings page. A load button is visible and allows the user to update the form to match its companion .json file. The file path where the .json files are stored is also shown.
 3. Screenshot of a single Gravity Forms entry. An arrow points to a field ID number that appears to the left of a field name.
 4. Screenshot of a single Gravity Forms entry. An arrow points to a Resend Feeds button near the Resend Notifications button.
+5. Screenshot of the Gravity Forms list of forms. An arrow points to an additional row action link below a form name labeled "Copy Shortcode."
 6. Screenshot of the Import/Export page. Shows an additional tab, titled "Replace Forms."
 7. Screenshot of the form editor. Arrows point to field ID numbers near field labels.
 

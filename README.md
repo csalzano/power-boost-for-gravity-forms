@@ -54,6 +54,11 @@ Thanks be to Dario Nem for suggesting this snippet from the Gravity Wiz toolbox.
 
 
 
+### Adds a "Copy Shortcode" row action link to the forms list
+
+![screenshot-5](assets/screenshot-5.png)
+
+
 
 ## Filter Hooks
 
