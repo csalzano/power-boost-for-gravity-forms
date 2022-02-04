@@ -24,7 +24,6 @@ All features captured in screenshots below
 *	Adds field IDs to the left of labels when viewing or editing an entry in the dashboard.
 *	Adds field IDs to the right of labels when editing forms
 *   Adds a Resend Feeds button near the Resend Notifications button when viewing an entry.
-*	Reveals long form names that Gravity Forms 2.5 cuts off in the form switcher dropdown.
 *	Adds a tab 'Replace Forms' to the Import/Export page that updates existing forms instead of creating duplicates.
 
 = Web page =

@@ -110,8 +110,8 @@ class Gravity_Forms_Power_Boost
 
 
 		/**
-		 * Include a stylesheet to better display long form names in the 2.5
-		 * dashboard form switcher dropdown.
+		 * Include a stylesheet to help display form IDs in the form editor and
+		 * JavaScript for the Copy Shortcode row action in the forms list.
 		 */
 		add_action( 'admin_enqueue_scripts', array( $this, 'dashboard_includes' ) );
 

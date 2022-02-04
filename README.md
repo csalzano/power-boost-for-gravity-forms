@@ -54,11 +54,6 @@ Thanks be to Dario Nem for suggesting this snippet from the Gravity Wiz toolbox.
 
 
 
-### Reveals long form names that get cut off in the form switcher dropdown
-
-![screenshot-5](assets/screenshot-5.png)
-
-
 
 ## Filter Hooks
 
