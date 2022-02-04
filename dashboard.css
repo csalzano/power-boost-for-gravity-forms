@@ -1,11 +1,3 @@
-/* Display more of long form names in the form switcher dashboard dropdown. */
-.gform-form-toolbar .gform-form-toolbar__form-title,
-.gform-admin .gform-form-toolbar .gform-dropdown__trigger{
-	width: auto;
-}
-.gform-admin .gform-form-toolbar .gform-dropdown__trigger{
-	min-width: 268px;
-}
 .gw-inline-field-id {
 	background-color: #ecedf8;
 	border: 1px solid #d5d7e9;
