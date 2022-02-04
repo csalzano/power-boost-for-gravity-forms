@@ -4,7 +4,7 @@ Tags: gravityforms, gravity forms
 Requires at least: 4.0
 Tested up to: 5.8.3
 Requires PHP: 5.6
-Stable tag: 2.1.0
+Stable tag: 2.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -91,6 +91,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 
 == Upgrade Notice ==
- 
+
+= 2.2.0 =
+Adds a "Copy Shortcode" row action link to the forms list that copies a form's [gravityform] shortcode to the clipboard. Removes CSS that helps show long form names in the form switcher dropdown. Core Gravity Forms has caught up and fixed this bug.
+
 = 1.2.0 =
 This is the first version that was published on Github and shipped to the WordPress.org Plugin Repository.
