@@ -24,6 +24,22 @@ class Gravity_Forms_Power_Boost
 		return $columns;
 	}
 
+	public function add_copy_shortcode_row_action( $form_actions, $form_id )
+	{
+		$form_actions['shortcode'] = array(
+			'label'      => __( 'Copy Shortcode', 'gravityforms-power-boost' ),
+			'aria-label' => __( 'Copy this form\'s shortcode to the clipboard', 'gravityforms-power-boost' ),
+			'url'        => '#',
+			'menu_class' => 'gf_form_toolbar_settings',
+			'link_class' => '',
+			'onclick'    => sprintf( 
+				'powerBoostClipboardCopy( \'[gravityform id="%s" title="false" description="false" ajax="true"]\' );', 
+				$form_id
+			),
+		);
+		return $form_actions;
+	}
+
 	public function add_field_ids_when_viewing_entries( $content, $field, $value, $entry_id, $form_id )
 	{
 		return preg_replace( '/(class="entry\-view\-field\-name">)([^<]+)(<\/td>)/', '$1 ' . $field['id'] . '. $2$3', $content );
@@ -80,6 +96,9 @@ class Gravity_Forms_Power_Boost
 		//Populate the columns we added to the list table
 		add_action( 'gform_form_list_column_last_entry', array( $this, 'populate_columns_we_added' ), 10, 1 );
 
+		//Add a "Copy Shortcode" row action to the forms list
+		add_filter( 'gform_form_actions', array( $this, 'add_copy_shortcode_row_action' ), 10, 2 );
+
 		/**
 		 * Change the Forms menu of the admin bar
 		 */
@@ -94,7 +113,7 @@ class Gravity_Forms_Power_Boost
 		 * Include a stylesheet to better display long form names in the 2.5
 		 * dashboard form switcher dropdown.
 		 */
-		add_action( 'admin_enqueue_scripts', array( $this, 'include_css' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'dashboard_includes' ) );
 
 		//When viewing entries, put field IDs near labels
 		add_filter( 'gform_field_content', array( $this, 'add_field_ids_when_viewing_entries' ), 10, 5 );
@@ -347,14 +366,14 @@ class Gravity_Forms_Power_Boost
 	}
 	
 	/**
-	 * include_css
+	 * dashboard_includes
 	 * 
 	 * Callback method for admin_enqueue_scripts. Enqueues a stylesheet to 
 	 * change the way the dashboard appears.
 	 *
 	 * @return void
 	 */
-	public function include_css()
+	public function dashboard_includes()
 	{
 		if( ! class_exists( 'GFCommon' ) )
 		{
@@ -363,6 +382,12 @@ class Gravity_Forms_Power_Boost
 		wp_enqueue_style( 
 			'gfpb-dashboard',
 			plugins_url( 'dashboard.min.css', __FILE__ ),
+			[],
+			self::VERSION
+		);
+		wp_enqueue_script( 
+			'gfpb-dashboard',
+			plugins_url( 'dashboard.min.js', __FILE__ ),
 			[],
 			self::VERSION
 		);
