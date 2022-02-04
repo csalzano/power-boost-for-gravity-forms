@@ -52,11 +52,15 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 2. Screenshot of the Local JSON tab of a form's settings page. A load button is visible and allows the user to update the form to match its companion .json file. The file path where the .json files are stored is also shown.
 3. Screenshot of a single Gravity Forms entry. An arrow points to a field ID number that appears to the left of a field name.
 4. Screenshot of a single Gravity Forms entry. An arrow points to a Resend Feeds button near the Resend Notifications button.
-5. Screenshot of the form selector drop down. It has been widened to display long form names rather than cut them off.
 6. Screenshot of the Import/Export page. Shows an additional tab, titled "Replace Forms."
 7. Screenshot of the form editor. Arrows point to field ID numbers near field labels.
 
 == Changelog ==
+
+= 2.2.0 =
+* [Added] Adds a "Copy Shortcode" row action link to the forms list that copies a form's [gravityform] shortcode to the clipboard.
+* [Changed] Changes the tested up to version number to 5.8.3.
+* [Removed] Removes CSS that helps show long form names in the form switcher dropdown. Core Gravity Forms has caught up and fixed this bug.
 
 = 2.1.0 =
 * [Added] Adds a feature that puts form IDs near field labels while editing forms.
