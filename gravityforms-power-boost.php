@@ -171,6 +171,9 @@ class Gravity_Forms_Power_Boost
 			$addon_instances[] = $a;
 		}
 
+		//Keep track of sent feeds to report how many ran
+		$sent_feeds = 0;
+
 		$feeds = GFAPI::get_feeds( null, $form_id, null ); //defaults to active feeds only
 		foreach( $feeds as $feed )
 		{
@@ -187,9 +190,23 @@ class Gravity_Forms_Power_Boost
 					continue;
 				}
 				$instance->maybe_process_feed( GFAPI::get_entry( $entry_id ), GFAPI::get_form( $form_id ) );
+				$sent_feeds++;
 				break; //we found it, no need to keep looking at add-on instances
 			}
 		}
+
+		//Did all the feeds run?
+		if( $sent_feeds != sizeof( $feed_ids ) )
+		{
+			//No
+			wp_send_json_error( sprintf(
+				'%s/%s %s',
+				$sent_feeds,
+				sizeof( $feed_ids ),
+				__( 'of feeds were sent', 'gravityforms-power-boost' )
+			) );
+		}
+
 		wp_send_json_success();
 	}
 
@@ -202,7 +219,7 @@ class Gravity_Forms_Power_Boost
 		{
 			return;
 		}
-		?><div class="message" style="display:none;padding:10px;"></div>
+		?><div class="message" style="display:none;"></div>
 		<div>
 			<?php
 
@@ -258,7 +275,7 @@ class Gravity_Forms_Power_Boost
 							function (response) {
 								if( ! response.success )
 								{
-									displayMessage( response, "error", "#feeds");
+									displayMessage( response.data, "error", "#feeds");
 								}
 								else
 								{
