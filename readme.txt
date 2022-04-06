@@ -2,9 +2,9 @@
 Contributors: salzano
 Tags: gravityforms, gravity forms
 Requires at least: 4.0
-Tested up to: 5.8.3
+Tested up to: 5.9.2
 Requires PHP: 5.6
-Stable tag: 2.2.0
+Stable tag: 2.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -58,6 +58,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 7. Screenshot of the form editor. Arrows point to field ID numbers near field labels.
 
 == Changelog ==
+
+= 2.2.1 =
+* [Fixed] Now reports failures while resending feeds. Previously, no indication was provided if any of the feeds failed to resend.
 
 = 2.2.0 =
 * [Added] Adds a "Copy Shortcode" row action link to the forms list that copies a form's [gravityform] shortcode to the clipboard.
