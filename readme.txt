@@ -2,9 +2,9 @@
 Contributors: salzano
 Tags: gravityforms, gravity forms
 Requires at least: 4.0
-Tested up to: 5.9.2
+Tested up to: 5.9.3
 Requires PHP: 5.6
-Stable tag: 2.2.1
+Stable tag: 2.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -59,6 +59,12 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 == Changelog ==
 
+= 2.3.0 =
+* [Added] Now creates .json file exports of each form during plugin activation.
+* [Added] Form replacer now detects redirect-type confirmations and reminds users that these URLs might need to be updated after replacing forms.
+* [Fixed] Fixes a bug in the Form replacer when providing an Edit Form link to users who just imported a single form.
+* [Changed] Bumps tested up to version to 5.9.3
+
 = 2.2.1 =
 * [Fixed] Now reports failures while resending feeds. Previously, no indication was provided if any of the feeds failed to resend.
 
@@ -96,6 +102,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 
 == Upgrade Notice ==
+
+= 2.3.0 =
+Now creates .json file exports of each form during plugin activation. Form replacer now detects redirect-type confirmations and reminds users that these URLs might need to be updated after replacing forms. Fixes a bug in the Form replacer when providing an Edit Form link to users who just imported a single form. Bumps tested up to version to 5.9.3.
 
 = 2.2.0 =
 Adds a "Copy Shortcode" row action link to the forms list that copies a form's [gravityform] shortcode to the clipboard. Removes CSS that helps show long form names in the form switcher dropdown. Core Gravity Forms has caught up and fixed this bug.
