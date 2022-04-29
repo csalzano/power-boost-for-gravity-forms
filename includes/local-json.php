@@ -9,11 +9,17 @@ class Gravity_Forms_Local_JSON
 	public function add_hooks()
 	{
 		//Write a .json file when a form is created or updated
-		add_action( 'gform_after_save_form', array( $this, 'save_form_export' ), 10, 2 );
+		add_action( 'gform_after_save_form', array( __CLASS__, 'save_form_export' ), 10, 2 );
 
 		//Write a .json file when a form is activated or deactivated
 		add_action( 'gform_post_form_activated', array( $this, 'save_form_export_after_status_change' ), 10, 1 );
 		add_action( 'gform_post_form_deactivated', array( $this, 'save_form_export_after_status_change' ), 10, 1 );
+
+		//Write .json files for all forms when this plugin is activated
+		if( defined( 'GF_POWER_BOOST_PLUGIN_ROOT' ) )
+		{
+			register_activation_hook( GF_POWER_BOOST_PLUGIN_ROOT, array( __CLASS__, 'save_form_export_activate' ) );
+		}
 
 		//Add a toolbar button to load the .json file
 		add_filter( 'gform_toolbar_menu', array( $this, 'add_toolbar_button' ), 10, 2 );
@@ -93,7 +99,7 @@ class Gravity_Forms_Local_JSON
 	 * @param  bool $is_new True if this is a new form being created. False if this is an existing form being updated.
 	 * @return void
 	 */
-	public function save_form_export( $form, $is_new = false )
+	public static function save_form_export( $form, $is_new = false )
 	{
 		//create an export of this form
 		$forms = GFExport::prepare_forms_for_export( array( $form ) );
@@ -108,6 +114,29 @@ class Gravity_Forms_Local_JSON
 		//write the file
 		file_put_contents( $save_path, json_encode( $forms ) );
 	}
+	
+	/**
+	 * save_form_export_activate
+	 * 
+	 * Save form export .json files for all forms. Callback method the a plugin
+	 * activation hook.
+	 *
+	 * @return void
+	 */
+	public static function save_form_export_activate()
+	{
+		//Get all forms
+		$forms = GFAPI::get_forms( null );
+		if( empty( $forms ) )
+		{
+			return;
+		}
+
+		foreach( $forms as $form )
+		{
+			self::save_form_export( $form );
+		}
+	}
 
 	public function save_form_export_after_status_change( $form_id )
 	{
@@ -115,6 +144,6 @@ class Gravity_Forms_Local_JSON
 		{
 			return;
 		}
-		$this->save_form_export( GFAPI::get_form( $form_id ) );
+		self::save_form_export( GFAPI::get_form( $form_id ) );
 	}
 }

@@ -12,6 +12,11 @@ defined( 'ABSPATH' ) or exit;
  * License: GPLv2 or later
  */
 
+if( ! defined( 'GF_POWER_BOOST_PLUGIN_ROOT' ) )
+{
+	define( 'GF_POWER_BOOST_PLUGIN_ROOT', __FILE__ );
+}
+
 class Gravity_Forms_Power_Boost
 {
 	const VERSION = '2.2.1';
