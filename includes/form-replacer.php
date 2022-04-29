@@ -67,10 +67,68 @@ class Gravity_Forms_Power_Boost_Form_Replacer
 
 				// Set initial count to 0.
 				$count = 0;
+				$forms_array = [];
 
 				// Loop through each uploaded file.
-				foreach ( $_FILES['gf_import_file']['tmp_name'] as $import_file ) {
-					$count += self::update_forms( $import_file );
+				foreach ( $_FILES['gf_import_file']['tmp_name'] as $import_file_path )
+				{
+					//Turn the file into an array of forms
+					$json = file_get_contents( $import_file_path );
+					if( false === $json )
+					{
+						continue;
+					}
+
+					//Deserialize into an array of forms
+					$forms_array = json_decode( $json, true );
+
+					//Are any of the form confirmations redirects?
+					foreach( $forms_array as $form )
+					{
+						if( empty( $form['id'] ) )
+						{
+							continue;
+						}
+
+						foreach( $form['confirmations'] as $key => $confirmation )
+						{
+							if( 'version' == $key )
+							{
+								continue;
+							}
+
+							if( 'redirect' != $confirmation['type'] )
+							{
+								continue;
+							}
+
+							$confirmation_config_url = admin_url( sprintf( 
+								'admin.php?page=gf_edit_forms&view=settings&subview=confirmation&id=%s&cid=%s',
+								$form['id'],
+								$key
+							) );
+
+							/**
+							 * Ask the user if $confirmation['url'] is a URL 
+							 * that needs to be updated.
+							 */
+							GFCommon::add_message( sprintf( 
+								'%s \'%s\', %s %s, %s %s. <a href="%s">%s</a> %s.',
+								__( 'A confirmation in form', 'gravityforms-power-boost' ),
+								$form['title'],
+								__( 'ID', 'gravityforms-power-boost' ),
+								$form['id'],
+								__( 'is set to redirect users to', 'gravityforms-power-boost' ),
+								$confirmation['url'],
+								$confirmation_config_url,
+								__( 'Click here', 'gravityforms-power-boost' ),
+								__( 'if this URL needs to be updated', 'gravityforms-power-boost' )
+							) );
+						}
+					}
+
+					//Update the forms saved in this site
+					$count += self::update_forms( $forms_array );
 				}
 
 				if ( $count == 0 ) {
@@ -84,7 +142,7 @@ class Gravity_Forms_Power_Boost_Form_Replacer
 					GFCommon::add_error_message( esc_html__( 'Forms could not be imported. Your export file is not compatible with your current version of Gravity Forms.', 'gravityforms' ) );
 				} else {
 					$form_text = $count > 1 ? esc_html__( 'forms', 'gravityforms' ) : esc_html__( 'form', 'gravityforms' );
-					$edit_link = $count == 1 ? "<a href='admin.php?page=gf_edit_forms&id={$forms[0]['id']}'>" . esc_html__( 'Edit Form', 'gravityforms' ) . '</a>' : '';
+					$edit_link = $count == 1 ? "<a href='admin.php?page=gf_edit_forms&id={$forms_array[0]['id']}'>" . esc_html__( 'Edit Form', 'gravityforms' ) . '</a>' : '';
 					GFCommon::add_message( sprintf( esc_html__( 'Gravity Forms imported %d %s successfully', 'gravityforms' ), $count, $form_text ) . ". $edit_link" );
 				}
 			}
@@ -139,21 +197,12 @@ class Gravity_Forms_Power_Boost_Form_Replacer
 	 * @param  string $import_file_path
 	 * @return int The number of forms that were updated
 	 */
-	public static function update_forms( $import_file_path )
+	public static function update_forms( $forms_array )
 	{
 		if( ! class_exists( 'GFAPI' ) )
 		{
 			return 0;	
 		}
-
-		$json = file_get_contents( $import_file_path );
-		if( false === $json )
-		{
-			return 0;
-		}
-
-		//Deserialize into an array of forms
-		$forms_array = json_decode( $json, true );
 
 		//Update the forms
 		$updated_count = 0;
