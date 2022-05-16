@@ -101,6 +101,11 @@ class Gravity_Forms_Local_JSON
 	 */
 	public static function save_form_export( $form, $is_new = false )
 	{
+		if( ! class_exists( 'GFExport' ) )
+		{
+			return;
+		}
+
 		//create an export of this form
 		$forms = GFExport::prepare_forms_for_export( array( $form ) );
 		$forms['version'] = GFForms::$version;
