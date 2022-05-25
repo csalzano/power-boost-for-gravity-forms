@@ -196,13 +196,11 @@ class Gravity_Forms_Power_Boost
 				}
 
 				/* Disabling the background processing for the feed. */
-				$curFeed = $feed;
-				add_filter('gform_is_feed_asynchronous', function ($is_asynchronous, $feed, $form, $entry) use ($curFeed) {
+				$cur_feed = $feed;
+				add_filter('gform_is_feed_asynchronous', function ($is_asynchronous, $feed, $form, $entry) use ($cur_feed) {
 					GFCommon::log_debug('Gravity_Forms_Power_Boost::ajax_callback_resend_feeds() - gform_is_feed_asynchronous: running.');
-					$feed_name  = rgars($feed, 'meta/feedName');
-					// Run only for this feed name.
-					if ($feed_name === rgars($curFeed, 'meta/feedName')) {
-						GFCommon::log_debug('Gravity_Forms_Power_Boost::ajax_callback_resend_feeds() - gform_is_feed_asynchronous: Disabling background processing for feed: ' . $feed_name);
+					if ($feed['id'] === $cur_feed['id']) {
+						GFCommon::log_debug('Gravity_Forms_Power_Boost::ajax_callback_resend_feeds() - gform_is_feed_asynchronous: Disabling background processing for feed: ' . $feed['id']);
 						$is_asynchronous = false;
 					}
 					return $is_asynchronous;
