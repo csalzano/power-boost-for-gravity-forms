@@ -240,9 +240,18 @@ class Gravity_Forms_Power_Boost
 			{
 				foreach( $feeds as $feed )
 				{
+					$feedName = "";
+					if (isset($feed['meta']['feed_name']))
+					{
+						$feedName = $feed['meta']['feed_name'];
+					} elseif (isset($feed['meta']['feedName'])) {
+						$feedName = $feed['meta']['feedName'];
+					} else {
+						$feedName = "Unnamed: ".$feed['addon_slug'];
+					}
 					?>
 					<input type="checkbox" class="gform_feeds" value="<?php echo esc_attr( $feed['id'] ); ?>" id="feed_<?php echo esc_attr( $feed['id'] ); ?>" />
-					<label for="feed_<?php echo esc_attr( $feed['id'] ); ?>"><?php echo esc_html( $feed['meta']['feed_name'] ); ?></label>
+					<label for="feed_<?php echo esc_attr( $feed['id'] ); ?>"><?php echo esc_html( $feedName ); ?></label>
 					<br /><br />
 					<?php
 				}
