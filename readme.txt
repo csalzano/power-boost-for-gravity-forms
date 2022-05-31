@@ -2,7 +2,7 @@
 Contributors: salzano
 Tags: gravityforms, gravity forms
 Requires at least: 4.0
-Tested up to: 5.9.3
+Tested up to: 6.0.0
 Requires PHP: 5.6
 Stable tag: 2.3.2
 License: GPLv2 or later
