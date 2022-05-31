@@ -194,6 +194,18 @@ class Gravity_Forms_Power_Boost
 				{
 					continue;
 				}
+
+				/* Disabling the background processing for the feed. */
+				$cur_feed = $feed;
+				add_filter('gform_is_feed_asynchronous', function ($is_asynchronous, $feed, $form, $entry) use ($cur_feed) {
+					GFCommon::log_debug('Gravity_Forms_Power_Boost::ajax_callback_resend_feeds() - gform_is_feed_asynchronous: running.');
+					if ($feed['id'] === $cur_feed['id']) {
+						GFCommon::log_debug('Gravity_Forms_Power_Boost::ajax_callback_resend_feeds() - gform_is_feed_asynchronous: Disabling background processing for feed: ' . $feed['id']);
+						$is_asynchronous = false;
+					}
+					return $is_asynchronous;
+				}, 10, 4);
+
 				$instance->maybe_process_feed( GFAPI::get_entry( $entry_id ), GFAPI::get_form( $form_id ) );
 				$sent_feeds++;
 				break; //we found it, no need to keep looking at add-on instances
