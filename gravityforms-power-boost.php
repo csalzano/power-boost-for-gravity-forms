@@ -307,7 +307,7 @@ class Gravity_Forms_Power_Boost
 								}
 								else
 								{
-									displayMessage(<?php echo json_encode( esc_html__( 'Feeds were resent successfully.', 'gravityforms-power-boost' ) ); ?>, "updated", "#feeds" );
+									displayMessage(<?php echo json_encode( esc_html__( 'Feeds were resent successfully.', 'gravityforms-power-boost' ) ); ?>, "success", "#feeds" );
 
 									// reset UI
 									jQuery(".gform_feeds").attr( 'checked', false );
