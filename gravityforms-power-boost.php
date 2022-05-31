@@ -197,10 +197,12 @@ class Gravity_Forms_Power_Boost
 
 				/* Disabling the background processing for the feed. */
 				$cur_feed = $feed;
-				add_filter('gform_is_feed_asynchronous', function ($is_asynchronous, $feed, $form, $entry) use ($cur_feed) {
-					GFCommon::log_debug('Gravity_Forms_Power_Boost::ajax_callback_resend_feeds() - gform_is_feed_asynchronous: running.');
+				$method = __METHOD__ . '()';
+				add_filter('gform_is_feed_asynchronous', function ($is_asynchronous, $feed, $form, $entry) use ($cur_feed, $method) {
+					$log_preamble = $method . ' - ' . current_filter() . ': ';
+					GFCommon::log_debug( $log_preamble . __( 'running', 'gravityforms-power-boost' ) );
 					if ($feed['id'] === $cur_feed['id']) {
-						GFCommon::log_debug('Gravity_Forms_Power_Boost::ajax_callback_resend_feeds() - gform_is_feed_asynchronous: Disabling background processing for feed: ' . $feed['id']);
+						GFCommon::log_debug( $log_preamble . __( 'Disabling background processing for feed: ', 'gravityforms-power-boost' ) . $feed['id']);
 						$is_asynchronous = false;
 					}
 					return $is_asynchronous;
