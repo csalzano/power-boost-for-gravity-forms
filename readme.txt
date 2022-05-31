@@ -4,7 +4,7 @@ Tags: gravityforms, gravity forms
 Requires at least: 4.0
 Tested up to: 5.9.3
 Requires PHP: 5.6
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -58,6 +58,10 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 7. Screenshot of the form editor. Arrows point to field ID numbers near field labels.
 
 == Changelog ==
+
+= 2.3.2 = 
+* [Fixed] Resend Feeds now handles feeds that store feed names in a feedName property rather than feed_name or provide no feed name at all. Also, a nice name is provided for the Partial Entries add-on which does not use feed names. 
+* [Fixed] Fixes a green checkmark not showing near "Feeds were resent successfully"
 
 = 2.3.1 =
 * [Fixed] Fixes a bug when creating form .json files during plugin activation. We need to check if Gravity Forms is running before trying to create the files since this feature operates without relying on Gravity Forms hooks that degrade nicely.

@@ -7,7 +7,7 @@ defined( 'ABSPATH' ) or exit;
  * Description: Enhances the dashboard for Gravity Forms power users.
  * Author: Breakfast Co.
  * Author URI: https://breakfastco.xyz
- * Version: 2.3.1
+ * Version: 2.3.2
  * Text Domain: gravityforms-power-boost
  * License: GPLv2 or later
  */
@@ -19,7 +19,7 @@ if( ! defined( 'GF_POWER_BOOST_PLUGIN_ROOT' ) )
 
 class Gravity_Forms_Power_Boost
 {
-	const VERSION = '2.3.1';
+	const VERSION = '2.3.2';
 
 	var $rendered_form_ids;
 
