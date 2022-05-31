@@ -258,7 +258,7 @@ class Gravity_Forms_Power_Boost
 					} elseif ( ! empty( rgars( $feed, 'meta/feedName' ) ) ) {
 						$feedName = rgars( $feed, 'meta/feedName' );
 					} elseif ( 'gravityformspartialentries' == rgar( $feed, 'addon_slug' ) ) {
-						//Partial Entries add-on does not feed names
+						//Partial Entries add-on does not use feed names
 						$feedName = __( 'Partial Entries', 'gravityforms-power-boost' );
 					} else {
 						$feedName = __( 'Unnamed: ', 'gravityforms-power-boost' ) . rgar( $feed, 'addon_slug' );
