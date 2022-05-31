@@ -61,6 +61,7 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 = 2.3.2 = 
 * [Fixed] Resend Feeds now handles feeds that store feed names in a feedName property rather than feed_name or provide no feed name at all. Also, a nice name is provided for the Partial Entries add-on which does not use feed names. 
+* [Fixed] Resend Feeds now disables asynchronous feed processing so feeds are resent immediately after pressing the Resend button.
 * [Fixed] Fixes a green checkmark not showing near "Feeds were resent successfully"
 
 = 2.3.1 =
@@ -109,6 +110,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 
 == Upgrade Notice ==
+
+= 2.3.2 = 
+Resend Feeds now handles feeds that store feed names in a feedName property rather than feed_name or provide no feed name at all. Also, a nice name is provided for the Partial Entries add-on which does not use feed names. Resend Feeds now disables asynchronous feed processing so feeds are resent immediately after pressing the Resend button. Fixes a green checkmark not showing near "Feeds were resent successfully."
 
 = 2.3.0 =
 Now creates .json file exports of each form during plugin activation. Form replacer now detects redirect-type confirmations and reminds users that these URLs might need to be updated after replacing forms. Fixes a bug in the Form replacer when providing an Edit Form link to users who just imported a single form. Bumps tested up to version to 5.9.3.
