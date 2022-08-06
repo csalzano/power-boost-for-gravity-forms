@@ -3,10 +3,10 @@ defined( 'ABSPATH' ) or exit;
 
 /**
  * Plugin Name: Power Boost for Gravity Forms
- * Plugin URI: https://entriestogooglesheet.com/gravity-forms-power-boost
+ * Plugin URI: https://breakfastco.xyz/power-boost-for-gravity-forms/
  * Description: Enhances the dashboard for Gravity Forms power users.
  * Author: Breakfast Co.
- * Author URI: https://breakfastco.xyz
+ * Author URI: https://github.com/csalzano
  * Version: 2.3.2
  * Text Domain: gravityforms-power-boost
  * License: GPLv2 or later

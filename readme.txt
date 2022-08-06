@@ -20,7 +20,7 @@ Power Boost for Gravity Forms is a free WordPress plugin for Gravity Forms power
 All features captured in screenshots below
 
 *   Adds 'Last Entry' column to forms list to indicate which forms are actually used.
-*	Adds a feature called Local JSON that maintains .json file exports of each form when forms are edited and allows forms to be updated by loading their .json files. Local JSON works similarly to ACF and enables forms to be put into version control with themes or plugins.
+*	Maintains .json file exports of each form when forms are edited and allows forms to be updated by loading their .json files. Local JSON works similarly to ACF and enables forms to be put into version control with themes or plugins.
 *	Adds field IDs to the left of labels when viewing or editing an entry in the dashboard.
 *	Adds field IDs to the right of labels when editing forms
 *   Adds a Resend Feeds button near the Resend Notifications button when viewing an entry.
@@ -29,7 +29,7 @@ All features captured in screenshots below
 
 = Web page =
 
-[https://entriestogooglesheet.com/gravity-forms-power-boost](https://entriestogooglesheet.com/gravity-forms-power-boost)
+[https://breakfastco.xyz/power-boost-for-gravity-forms/](https://breakfastco.xyz/power-boost-for-gravity-forms/)
 
 Have an idea for a new feature? Please visit the web page, and leave a comment.
 
@@ -44,7 +44,7 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
  
 = How can I suggest a new feature for this plugin? =
  
-[Visit this web page](https://entriestogooglesheet.com/gravity-forms-power-boost), and leave a comment.
+[Visit this web page](https://breakfastco.xyz/power-boost-for-gravity-forms/), and leave a comment.
 
 
 == Screenshots ==

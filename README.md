@@ -8,7 +8,7 @@ WordPress plugin. An add-on for Gravity Forms. Enhances the dashboard for Gravit
 
 Visit this plugin on wordpress.org: [wordpress.org/plugins/power-boost-for-gravity-forms](https://wordpress.org/plugins/power-boost-for-gravity-forms/)
 
-Visit this plugin's home page: [entriestogooglesheet.com/gravity-forms-power-boost](https://entriestogooglesheet.com/gravity-forms-power-boost/)
+Visit this plugin's home page: [breakfastco.xyz/power-boost-for-gravity-forms](https://breakfastco.xyz/power-boost-for-gravity-forms/)
 
 ## FEATURES
 
