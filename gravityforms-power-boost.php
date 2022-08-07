@@ -6,7 +6,7 @@ defined( 'ABSPATH' ) or exit;
  * Plugin URI: https://breakfastco.xyz/power-boost-for-gravity-forms/
  * Description: Enhances the dashboard for Gravity Forms power users.
  * Author: Breakfast Co.
- * Author URI: https://github.com/csalzano
+ * Author URI: https://breakfastco.xyz/power-boost-for-gravity-forms/
  * Version: 2.3.2
  * Text Domain: gravityforms-power-boost
  * License: GPLv2 or later
