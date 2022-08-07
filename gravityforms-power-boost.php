@@ -143,6 +143,11 @@ class Gravity_Forms_Power_Boost
 		require_once( __DIR__ . '/includes/local-json.php' );
 		$local_json = new Gravity_Forms_Local_JSON();
 		$local_json->add_hooks();
+
+		//Allow merge tags in HTML fields
+		require_once( __DIR__ . '/includes/html-field-merge-tags.php' );
+		$merge_tags = new Gravity_Forms_Power_Boost_HTML_Field_Merge_Tags();
+		$merge_tags->add_hooks();
 	}
 
 	public function add_feeds_metabox( $meta_boxes, $entry, $form )
