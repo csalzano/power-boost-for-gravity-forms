@@ -62,6 +62,10 @@ Thanks be to Dario Nem for suggesting this snippet from the Gravity Wiz toolbox.
 
 
 
+### Enables merge tags in HTML fields
+
+
+
 ## Filter Hooks
 
 `gravityforms_local_json_save_path`

@@ -2,9 +2,9 @@
 Contributors: salzano
 Tags: gravityforms, gravity forms
 Requires at least: 4.0
-Tested up to: 6.0.0
+Tested up to: 6.0.1
 Requires PHP: 5.6
-Stable tag: 2.3.2
+Stable tag: 2.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -19,12 +19,13 @@ Power Boost for Gravity Forms is a free WordPress plugin for Gravity Forms power
 
 All features captured in screenshots below
 
-*   Adds 'Last Entry' column to forms list to indicate which forms are actually used.
-*	Maintains .json file exports of each form when forms are edited and allows forms to be updated by loading their .json files. Local JSON works similarly to ACF and enables forms to be put into version control with themes or plugins.
-*	Adds field IDs to the left of labels when viewing or editing an entry in the dashboard.
+*   Adds 'Last Entry' column to forms list to indicate which forms are actually used
+*   Enables merge tags in HTML fields
+*	Maintains .json file exports of each form when forms are edited and allows forms to be updated by loading the files. Local JSON works similarly to ACF and enables forms to be put into version control with themes or plugins.
+*   Adds a Resend Feeds button near the Resend Notifications button when viewing an entry
+*	Adds a tab 'Replace Forms' to the Import/Export page that updates existing forms instead of creating duplicates
+*	Adds field IDs to the left of labels when viewing or editing an entry in the dashboard
 *	Adds field IDs to the right of labels when editing forms
-*   Adds a Resend Feeds button near the Resend Notifications button when viewing an entry.
-*	Adds a tab 'Replace Forms' to the Import/Export page that updates existing forms instead of creating duplicates.
 *   Adds a "Copy Shortcode" row action link to the forms list
 
 = Web page =
@@ -58,6 +59,10 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 7. Screenshot of the form editor. Arrows point to field ID numbers near field labels.
 
 == Changelog ==
+
+= 2.4.0 =
+* [Added] Enables merge tags in HTML fields
+* [Changed] Changes tested up to version number to 6.0.1
 
 = 2.3.2 = 
 * [Fixed] Resend Feeds now handles feeds that store feed names in a feedName property rather than feed_name or provide no feed name at all. Also, a nice name is provided for the Partial Entries add-on which does not use feed names. 
@@ -110,6 +115,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 
 == Upgrade Notice ==
+
+= 2.4.0 = 
+Enables merge tags in HTML fields
 
 = 2.3.2 = 
 Resend Feeds now handles feeds that store feed names in a feedName property rather than feed_name or provide no feed name at all. Also, a nice name is provided for the Partial Entries add-on which does not use feed names. Resend Feeds now disables asynchronous feed processing so feeds are resent immediately after pressing the Resend button. Fixes a green checkmark not showing near "Feeds were resent successfully."
