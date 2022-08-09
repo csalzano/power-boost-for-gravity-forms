@@ -4,7 +4,7 @@ Tags: gravityforms, gravity forms
 Requires at least: 4.0
 Tested up to: 6.0.1
 Requires PHP: 5.6
-Stable tag: 2.4.0
+Stable tag: 2.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -59,6 +59,11 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 7. Screenshot of the form editor. Arrows point to field ID numbers near field labels.
 
 == Changelog ==
+
+= 2.4.1 =
+* [Fixed] Fixes a bug when trying to replace merge tags for fields with multiple inputs
+* [Changed] Adds an early exit if the form editor is detected before attempting to replace merge tags in HTML fields
+* [Changed] Replaces merges tags in HTML fields at a later priority after Populate Anything Live Merge Tags runs
 
 = 2.4.0 =
 * [Added] Enables merge tags in HTML fields
@@ -115,6 +120,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 
 == Upgrade Notice ==
+
+= 2.4.1 =
+Bug fixes in the newest feature that enables merge tags in HTML fields. Now plays nice with Populate Anything Live Merge Tags.
 
 = 2.4.0 = 
 Enables merge tags in HTML fields
