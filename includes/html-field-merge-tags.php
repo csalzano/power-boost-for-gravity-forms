@@ -18,8 +18,9 @@ class Gravity_Forms_Power_Boost_HTML_Field_Merge_Tags
 		 * from previous pages. This makes it easy to create a final page with a
 		 * "Please Review Your Entry" HTML field that shows the user critical
 		 * values they entered on previous pages.
+		 * Gravity Perks Populate Anything Live Merge Tags run at priority 99.
 		 */
-		add_filter( 'gform_field_content', array( $this, 'enable_merge_tags_in_html_fields' ), 10, 5 );
+		add_filter( 'gform_field_content', array( $this, 'enable_merge_tags_in_html_fields' ), 200, 5 );
 	}
 
 	/**
