@@ -42,6 +42,11 @@ class Gravity_Forms_Power_Boost_HTML_Field_Merge_Tags
 			return $field_content;
 		}
 
+		if( GFCommon::is_form_editor() )
+		{
+			return $field_content;
+		}
+
 		$form = GFAPI::get_form( $form_id );
 
 		/**
