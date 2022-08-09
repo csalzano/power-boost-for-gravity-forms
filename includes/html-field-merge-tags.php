@@ -114,7 +114,7 @@ class Gravity_Forms_Power_Boost_HTML_Field_Merge_Tags
 			$inputs = $field->get_entry_inputs();
 			if ( is_array( $inputs ) ) {
 				foreach ( $inputs as $input ) {
-					$partial_entry[str_replace( '_', '.', $input['id'])] = rgpost( 'input_' . $input['id'] );
+					$partial_entry[$input['id']] = rgpost( 'input_' . str_replace( '.', '_', $input['id'] ) );
 				}
 			} else {
 				$partial_entry[str_replace( '_', '.', $field->id )] = rgpost( 'input_' . $field->id );
