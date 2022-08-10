@@ -55,11 +55,21 @@ class Gravity_Forms_Power_Boost_HTML_Field_Merge_Tags
 		 * entry or after a Save & Continue link was clicked
 		 */
 		$lead = $this->get_partial_entry( $form );
+
+		/**
+		 * Preserve Gravity Perks Populate Anything Live Merge Tags by 
+		 * disguising them while we let Gravity Forms core replace merge tags
+		 * in the field's content string.
+		 */
+		$live_merge_tags_disguised = preg_replace( '/@{([^}]+)}/', '@~$1~', $field_content );
 		/**
 		 * Send false as the last argument, $nl2br, false. Do not convert line
 		 * breaks to <br /> elements.
 		 */
-		return GFCommon::replace_variables( $field_content, $form, $lead, false, true, false );
+		$merge_tags_replaced = GFCommon::replace_variables( $live_merge_tags_disguised, $form, $lead, false, true, false );
+
+		//unmask the Live Merge Tags
+		return preg_replace( '/@~([^}]+)~/', '@{$1}', $merge_tags_replaced );
 	}
 
 	/**
