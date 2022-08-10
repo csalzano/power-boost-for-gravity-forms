@@ -4,7 +4,7 @@ Tags: gravityforms, gravity forms
 Requires at least: 4.0
 Tested up to: 6.0.1
 Requires PHP: 5.6
-Stable tag: 2.4.1
+Stable tag: 2.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -59,6 +59,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 7. Screenshot of the form editor. Arrows point to field ID numbers near field labels.
 
 == Changelog ==
+
+= 2.4.2 =
+* [Fixed] Fixes a bug that broke Populate Anything Live Merge Tags
 
 = 2.4.1 =
 * [Fixed] Fixes a bug when trying to replace merge tags for fields with multiple inputs
