@@ -60,7 +60,7 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 == Changelog ==
 
-= 2.4.2 =
+= 2.4.3 =
 * [Fixed] Fixes a bug that broke Populate Anything Live Merge Tags
 
 = 2.4.1 =
