@@ -4,7 +4,7 @@
 
 #  power-boost-for-gravity-forms
 
-WordPress plugin. An add-on for Gravity Forms. Enhances the dashboard for Gravity Forms power users.
+WordPress plugin. An add-on for Gravity Forms. Enhances Gravity Forms for power users.
 
 Visit this plugin on wordpress.org: [wordpress.org/plugins/power-boost-for-gravity-forms](https://wordpress.org/plugins/power-boost-for-gravity-forms/)
 

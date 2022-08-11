@@ -8,7 +8,7 @@ Stable tag: 2.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
-An add-on for Gravity Forms. Enhances the dashboard for Gravity Forms power users. 
+An add-on for Gravity Forms. Enhances Gravity Forms for power users. 
 
 
 == Description ==
@@ -124,7 +124,7 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 == Upgrade Notice ==
 
-= 2.4.1 =
+= 2.4.3 =
 Bug fixes in the newest feature that enables merge tags in HTML fields. Now plays nice with Populate Anything Live Merge Tags.
 
 = 2.4.0 = 
