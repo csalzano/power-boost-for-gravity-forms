@@ -69,7 +69,7 @@ class Gravity_Forms_Power_Boost_HTML_Field_Merge_Tags
 		$merge_tags_replaced = GFCommon::replace_variables( $live_merge_tags_disguised, $form, $lead, false, true, false );
 
 		//unmask the Live Merge Tags
-		return preg_replace( '/@~([^}]+)~/', '@{$1}', $merge_tags_replaced );
+		return preg_replace( '/@~([^~]+)~/', '@{$1}', $merge_tags_replaced );
 	}
 
 	/**
