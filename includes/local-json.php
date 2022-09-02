@@ -117,7 +117,7 @@ class Gravity_Forms_Local_JSON
 		$save_path = self::json_file_path( $form['id'] );
 
 		//write the file
-		file_put_contents( $save_path, json_encode( $forms ) );
+		file_put_contents( $save_path, json_encode( $forms, JSON_PRETTY_PRINT ) );
 	}
 	
 	/**
