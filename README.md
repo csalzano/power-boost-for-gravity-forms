@@ -64,15 +64,26 @@ Thanks be to Dario Nem for suggesting this snippet from the Gravity Wiz toolbox.
 
 ### Enables merge tags in HTML fields
 
+Requires page breaks. Merge tags display user input from previous pages in HTML fields.
+
+Enables merge tags in HTML fields. The merge tag must be on a page after the field. If your field, “What kind of pet do you have?” is on page one of the form, the HTML field containing the merge tag `{What kind of pet do you have?:1}` should be on page two or any page after one.
+
+![screenshot-8](assets/screenshot-8.png)
+
 
 
 ## Filter Hooks
 
 `gravityforms_local_json_save_path`
 
-   The absolute file path to a directory where the form export .json files are saved. Defaults to `wp-content/uploads/gf-json/`
+   The absolute file path to a directory where the form export .json files are saved. Defaults to `wp-content/uploads/gf-json`
 &nbsp;
 &nbsp;
 `gravityforms_local_json_save_form`
 
    Allows a forms array containing a single form to be edited just before it is written to the .json file
+&nbsp;
+&nbsp;
+`gravityforms_local_json_minimize`
+
+   Controls whether the form JSON is encoded with the `JSON_PRETTY_PRINT` flag. Defaults to `false`

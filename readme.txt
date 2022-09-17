@@ -13,14 +13,14 @@ An add-on for Gravity Forms. Enhances Gravity Forms for power users.
 
 == Description ==
  
-Power Boost for Gravity Forms is a free WordPress plugin for Gravity Forms power users like me. I mostly run this plugin on local copies of sites to make my job easier, but the Local JSON and Replace Forms features help me deploy changes to Gravity Forms in production.
+Power Boost for Gravity Forms is a free WordPress plugin for Gravity Forms power users. The Resend Feeds feature helps me develop and test add-ons, and the Local JSON and Replace Forms features help me deploy changes to Gravity Forms in production.
 
 = Features =
 
 All features captured in screenshots below
 
 *   Adds 'Last Entry' column to forms list to indicate which forms are actually used
-*   Enables merge tags in HTML fields
+*   Enables merge tags in HTML fields (form must have page breaks)
 *	Maintains .json file exports of each form when forms are edited and allows forms to be updated by loading the files. Local JSON works similarly to ACF and enables forms to be put into version control with themes or plugins.
 *   Adds a Resend Feeds button near the Resend Notifications button when viewing an entry
 *	Adds a tab 'Replace Forms' to the Import/Export page that updates existing forms instead of creating duplicates
@@ -59,6 +59,13 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 7. Screenshot of the form editor. Arrows point to field ID numbers near field labels.
 
 == Changelog ==
+
+= 3.0.0 =
+* [Changed] Stops minimizing form JSON files saved by the Local JSON feature
+* [Added] Adds a filter to enable minimized form JSON files to restore old behavior
+* [Fixed] Adds documentation for merge tags in HTML fields: form must have page breaks
+* [Fixed] Replace Forms feature now maintains form active status after replacing forms instead of leaving previously-active forms inactive
+* [Changed] Applies the WordPress coding standard, adds more translateable strings.
 
 = 2.4.3 =
 * [Fixed] Fixes a bug that broke Populate Anything Live Merge Tags
@@ -123,6 +130,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 
 == Upgrade Notice ==
+
+= 3.0.0 =
+Replace forms feature no longer changes active forms to drafts. The feature maintains the previous form status. Stops minimizing form .json files. Provides a filter to restore previous behavior. Major version bump because I've renamed files while applying the WordPress coding standard.
 
 = 2.4.3 =
 Bug fixes in the newest feature that enables merge tags in HTML fields. Now plays nice with Populate Anything Live Merge Tags.
