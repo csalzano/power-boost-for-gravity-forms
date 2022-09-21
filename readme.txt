@@ -4,7 +4,7 @@ Tags: gravityforms, gravity forms
 Requires at least: 4.0
 Tested up to: 6.0.1
 Requires PHP: 5.6
-Stable tag: 2.4.3
+Stable tag: 3.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -62,7 +62,7 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 = 3.0.0 =
 * [Changed] Stops minimizing form JSON files saved by the Local JSON feature
-* [Added] Adds a filter to enable minimized form JSON files to restore old behavior
+* [Added] Adds a filter `gravityforms_local_json_minimize` to enable minimized form JSON files to restore old behavior
 * [Fixed] Adds documentation for merge tags in HTML fields: form must have page breaks
 * [Fixed] Replace Forms feature now maintains form active status after replacing forms instead of leaving previously-active forms inactive
 * [Changed] Applies the WordPress coding standard, adds more translateable strings.
