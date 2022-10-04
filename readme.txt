@@ -57,6 +57,7 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 5. Screenshot of the Gravity Forms list of forms. An arrow points to an additional row action link below a form name labeled "Copy Shortcode."
 6. Screenshot of the Import/Export page. Shows an additional tab, titled "Replace Forms."
 7. Screenshot of the form editor. Arrows point to field ID numbers near field labels.
+8. Screenshot of the form editor. An arrow points to an HTML field's content containing merge tags of fields from previous pages.
 
 == Changelog ==
 
