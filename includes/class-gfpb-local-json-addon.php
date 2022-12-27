@@ -208,7 +208,7 @@ class GFPB_Local_JSON_Addon extends GFAddOn {
 			return;
 		}
 
-		$form_id = rgpost( 'form_id' );
+		$form_id = (int) rgpost( 'form_id' );
 
 		// does the form exist?
 		if ( false === GFAPI::get_form( $form_id ) ) {
@@ -223,6 +223,9 @@ class GFPB_Local_JSON_Addon extends GFAddOn {
 			return;
 		}
 		$forms_array = json_decode( $json, true );
+		if (isset($forms_array['version'])) {
+		    unset($forms_array['version']);
+		}
 		foreach ( $forms_array as $form ) {
 			if ( empty( $form['id'] ) || $form['id'] !== $form_id ) {
 				continue;
