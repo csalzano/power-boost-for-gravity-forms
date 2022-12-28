@@ -2,9 +2,9 @@
 Contributors: salzano
 Tags: gravityforms, gravity forms
 Requires at least: 4.0
-Tested up to: 6.0.1
+Tested up to: 6.1.1
 Requires PHP: 5.6
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -60,6 +60,10 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 8. Screenshot of the form editor. An arrow points to an HTML field's content containing merge tags of fields from previous pages.
 
 == Changelog ==
+
+= 3.0.1 =
+* [Fixed] Fixes a bug when loading a form JSON file on the Local JSON tab. Now explicity casts a form ID as an integer.
+* [Changed] Changes tested up to version number to 6.1.1
 
 = 3.0.0 =
 * [Changed] Stops minimizing form JSON files saved by the Local JSON feature
@@ -131,6 +135,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 
 == Upgrade Notice ==
+
+= 3.0.1 =
+Fixes a bug when loading a form JSON file on the Local JSON tab. Now explicity casts a form ID as an integer. Tested up to version 6.1.1.
 
 = 3.0.0 =
 Replace forms feature no longer changes active forms to drafts. The feature maintains the previous form status. Stops minimizing form .json files. Provides a filter to restore previous behavior. Major version bump because I've renamed files while applying the WordPress coding standard.
