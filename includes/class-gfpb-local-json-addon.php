@@ -223,9 +223,6 @@ class GFPB_Local_JSON_Addon extends GFAddOn {
 			return;
 		}
 		$forms_array = json_decode( $json, true );
-		if (isset($forms_array['version'])) {
-		    unset($forms_array['version']);
-		}
 		foreach ( $forms_array as $form ) {
 			if ( empty( $form['id'] ) || $form['id'] !== $form_id ) {
 				continue;
