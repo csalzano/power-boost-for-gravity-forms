@@ -101,7 +101,7 @@ class GFPB_Form_Replacer {
 								sprintf(
 									'admin.php?page=gf_edit_forms&view=settings&subview=confirmation&id=%s&cid=%s',
 									$form['id'],
-									$key
+									$confirmation['id']
 								)
 							);
 
