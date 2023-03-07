@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
  * Description: Enhances the dashboard for Gravity Forms power users.
  * Author: Breakfast Co.
  * Author URI: https://breakfastco.xyz/power-boost-for-gravity-forms/
- * Version: 3.0.1
+ * Version: 3.0.2
  * Text Domain: gravityforms-power-boost
  * License: GPLv2 or later
  */

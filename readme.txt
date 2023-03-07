@@ -4,7 +4,7 @@ Tags: gravityforms, gravity forms
 Requires at least: 4.0
 Tested up to: 6.1.1
 Requires PHP: 5.6
-Stable tag: 3.0.1
+Stable tag: 3.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -60,6 +60,11 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 8. Screenshot of the form editor. An arrow points to an HTML field's content containing merge tags of fields from previous pages.
 
 == Changelog ==
+
+= 3.0.2 =
+* [Fixed] Adds support for PHP 7.2 by fixing syntax errors around commas after final function parameters.
+* [Fixed] Bug fix when linking users to redirect-type confirmations after using the Replace Forms feature.
+* [Fixed] No longer writes a form .json file when the plugin is activated if a form's file already exists and does not need updating.
 
 = 3.0.1 =
 * [Fixed] Fixes a bug when loading a form JSON file on the Local JSON tab. Now explicity casts a form ID as an integer.
@@ -135,6 +140,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 
 == Upgrade Notice ==
+
+= 3.0.2 =
+Adds support for PHP 7.2 by fixing syntax errors around commas after final function parameters. Thanks be to EffakT on Github for this fix. Bug fix when linking users to redirect-type confirmations after using the Replace Forms feature. No longer writes a form .json file when the plugin is activated if a form's file already exists and does not need updating.
 
 = 3.0.1 =
 Fixes a bug when loading a form JSON file on the Local JSON tab. Now explicity casts a form ID as an integer. Tested up to version 6.1.1.
