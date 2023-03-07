@@ -139,6 +139,13 @@ class GFPB_Local_JSON {
 
 		$json = apply_filters( 'gravityforms_local_json_minimize', false ) ? wp_json_encode( $forms ) : wp_json_encode( $forms, JSON_PRETTY_PRINT );
 
+		// Would the file be different?
+		$saved_json = file_get_contents( $save_path );
+		if ( $json === $saved_json ) {
+			// No. Do not update it, preserve the file date.
+			return;
+		}
+
 		// write the file.
 		file_put_contents( $save_path, $json );
 	}
