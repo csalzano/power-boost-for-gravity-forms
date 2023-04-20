@@ -148,7 +148,7 @@ class GFPB_Form_Summary_Cacher {
 	public static function get_form_summary() {
 		global $wpdb;
 		$entry_table_name = version_compare( GFFormsModel::get_database_version(), '2.3-dev-1', '<' ) ? esc_sql( GFFormsModel::get_lead_table_name() ) : esc_sql( GFFormsModel::get_entry_table_name() );
-		$cache_duration   = 6 * HOUR_IN_SECONDS;
+		$cache_duration   = apply_filters( 'gravityforms_dashboard_cache_duration', 6 * HOUR_IN_SECONDS );
 
 		// Getting number of unread and total leads for all forms.
 		$key            = 'gf_dashboard_unread_results';
