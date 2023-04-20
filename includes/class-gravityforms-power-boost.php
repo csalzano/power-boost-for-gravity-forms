@@ -165,6 +165,12 @@ class GravityForms_Power_Boost {
 		require_once dirname( GF_POWER_BOOST_PLUGIN_ROOT ) . '/includes/class-gfpb-html-field-merge-tags.php';
 		$merge_tags = new GFPB_HTML_Field_Merge_Tags();
 		$merge_tags->add_hooks();
+
+		// Replace the dashboard widget with a version that uses caching.
+		require_once dirname( GF_POWER_BOOST_PLUGIN_ROOT ) . '/includes/class-gfpb-form-summary-cacher.php';
+		$replacer = new GFPB_Form_Summary_Cacher();
+		$replacer->add_hooks();
+
 	}
 
 	/**
