@@ -72,6 +72,12 @@ Enables merge tags in HTML fields. The merge tag must be on a page after the fie
 
 
 
+### Caches the Dashboard Widget
+
+Replaces the Gravity Forms dashboard widget with a copy that caches the results of the three database queries for six hours. These queries can take a handful of seconds to run on sites with hundreds of forms and tens of thousands of entries.
+
+
+
 ## Filter Hooks
 
 `gravityforms_local_json_save_path`
@@ -91,4 +97,4 @@ Enables merge tags in HTML fields. The merge tag must be on a page after the fie
 &nbsp;
 `gravityforms_dashboard_cache_duration`
 
-	The number of seconds to cache the Gravity Forms dashboard widget database queries. Defaults to 6 * HOURS_IN_SECONDS
+   The number of seconds to cache the Gravity Forms dashboard widget database queries. Defaults to 6 * HOURS_IN_SECONDS
