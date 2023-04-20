@@ -87,3 +87,8 @@ Enables merge tags in HTML fields. The merge tag must be on a page after the fie
 `gravityforms_local_json_minimize`
 
    Controls whether the form JSON is encoded with the `JSON_PRETTY_PRINT` flag. Defaults to `false`
+&nbsp;
+&nbsp;
+`gravityforms_dashboard_cache_duration`
+
+	The number of seconds to cache the Gravity Forms dashboard widget database queries. Defaults to 6 * HOURS_IN_SECONDS

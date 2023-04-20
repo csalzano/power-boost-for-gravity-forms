@@ -61,6 +61,11 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 == Changelog ==
 
+= 3.1.0 =
+* [Added] Adds caching to the Gravity Forms dashboard widget by replacing the widget with our own copy. The 3 database queries are cached for a maximum of 6 hours instead of running every time the dashboard widget loads. Six hours can be changed with the a filter `gravityforms_dashboard_cache_duration`.
+* [Fixed] Bug fix when retrieving a partial entry in the HTML field merge tags feature. Explicitly convert floats to strings so they are not interpreted as integers.
+* [Changed] Changes tested up to version number to 6.2.0.
+
 = 3.0.2 =
 * [Fixed] Adds support for PHP 7.2 by fixing syntax errors around commas after final function parameters.
 * [Fixed] Bug fix when linking users to redirect-type confirmations after using the Replace Forms feature.
@@ -140,6 +145,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 
 == Upgrade Notice ==
+
+= 3.1.0 =
+Adds caching to the Gravity Forms dashboard widget by replacing the widget with our own copy. The 3 database queries are cached for a maximum of 6 hours instead of running every time the dashboard widget loads.
 
 = 3.0.2 =
 Adds support for PHP 7.2 by fixing syntax errors around commas after final function parameters. Thanks be to EffakT on Github for this fix. Bug fix when linking users to redirect-type confirmations after using the Replace Forms feature. No longer writes a form .json file when the plugin is activated if a form's file already exists and does not need updating.
