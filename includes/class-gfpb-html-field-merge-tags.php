@@ -137,7 +137,7 @@ class GFPB_HTML_Field_Merge_Tags {
 			$inputs = $field->get_entry_inputs();
 			if ( is_array( $inputs ) ) {
 				foreach ( $inputs as $input ) {
-					$partial_entry[ $input['id'] ] = rgpost( 'input_' . str_replace( '.', '_', $input['id'] ) );
+					$partial_entry[ strval( $input['id'] ) ] = rgpost( 'input_' . str_replace( '.', '_', strval( $input['id'] ) ) );
 				}
 			} else {
 				$partial_entry[ str_replace( '_', '.', $field->id ) ] = rgpost( 'input_' . $field->id );
