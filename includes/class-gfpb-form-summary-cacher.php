@@ -115,7 +115,7 @@ class GFPB_Form_Summary_Cacher {
 
 			<?php if ( GFCommon::current_user_can_any( 'gravityforms_edit_forms' ) ) : ?>
 				<p class="textright">
-				<a class="gf_dashboard_button button" href="admin.php?page=gf_edit_forms"><?php esc_html_e( 'View All Forms', 'gravityforms' ); ?></a>
+				<i title="<?php esc_attr_e( 'Power Boost for Gravity Forms', 'gravityforms-power-boost' ); ?>"><?php echo esc_html( self::get_cache_note() ); ?></i><a class="gf_dashboard_button button" href="admin.php?page=gf_edit_forms"><?php esc_html_e( 'View All Forms', 'gravityforms' ); ?></a>
 			<?php endif; ?>
 			</p>
 			<?php
@@ -131,6 +131,21 @@ class GFPB_Form_Summary_Cacher {
 			// displaying update message if there is an update and user has permission.
 			GFForms::dashboard_update_message();
 		}
+	}
+
+	/**
+	 * Creates a short sentence telling the user their dashboard widget is
+	 * cached.
+	 *
+	 * @return string
+	 */
+	protected static function get_cache_note() {
+		$expires = (int) get_option( '_transient_timeout_gf_dashboard_unread_results', 0 );
+		if ( empty( $expires ) ) {
+			return 'Cached with no expiration.&nbsp; ';
+		}
+		$time_left = $expires - time();
+		return 'Cached with max age ' . round( $time_left / MINUTE_IN_SECONDS ) . ' minutes.&nbsp; ';
 	}
 
 	/**
