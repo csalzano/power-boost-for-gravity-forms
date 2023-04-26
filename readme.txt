@@ -59,6 +59,7 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 6. Screenshot of the Import/Export page. Shows an additional tab, titled "Replace Forms."
 7. Screenshot of the form editor. Arrows point to field ID numbers near field labels.
 8. Screenshot of the form editor. An arrow points to an HTML field's content containing merge tags of fields from previous pages.
+9. Screenshot of the dashboard. The Gravity Forms widget says, "Cached with max age 360 minutes."
 
 == Changelog ==
 

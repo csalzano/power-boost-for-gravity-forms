@@ -76,6 +76,8 @@ Enables merge tags in HTML fields. The merge tag must be on a page after the fie
 
 Replaces the Gravity Forms dashboard widget with a copy that caches the results of the three database queries. These queries can take a handful of seconds to run on sites with hundreds of forms and tens of thousands of entries.
 
+![screenshot-9](assets/screenshot-9.png)
+
 
 
 ## Filter Hooks
