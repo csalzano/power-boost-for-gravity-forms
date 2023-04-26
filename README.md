@@ -74,7 +74,7 @@ Enables merge tags in HTML fields. The merge tag must be on a page after the fie
 
 ### Caches the Dashboard Widget
 
-Replaces the Gravity Forms dashboard widget with a copy that caches the results of the three database queries for six hours. These queries can take a handful of seconds to run on sites with hundreds of forms and tens of thousands of entries.
+Replaces the Gravity Forms dashboard widget with a copy that caches the results of the three database queries. These queries can take a handful of seconds to run on sites with hundreds of forms and tens of thousands of entries.
 
 
 
@@ -83,18 +83,21 @@ Replaces the Gravity Forms dashboard widget with a copy that caches the results 
 `gravityforms_local_json_save_path`
 
    The absolute file path to a directory where the form export .json files are saved. Defaults to `wp-content/uploads/gf-json`
+
 &nbsp;
-&nbsp;
+
 `gravityforms_local_json_save_form`
 
    Allows a forms array containing a single form to be edited just before it is written to the .json file
+
 &nbsp;
-&nbsp;
+
 `gravityforms_local_json_minimize`
 
    Controls whether the form JSON is encoded with the `JSON_PRETTY_PRINT` flag. Defaults to `false`
+
 &nbsp;
-&nbsp;
+
 `gravityforms_dashboard_cache_duration`
 
-   The number of seconds to cache the Gravity Forms dashboard widget database queries. Defaults to 6 * HOURS_IN_SECONDS
+   The number of seconds to cache the Gravity Forms dashboard widget database queries. Defaults to `6 * HOURS_IN_SECONDS`
