@@ -155,6 +155,10 @@ class GFPB_Local_JSON {
 	 * @return void
 	 */
 	public static function save_form_export_activate() {
+		if ( ! class_exists( 'GFAPI' ) ) {
+			return;
+		}
+
 		// Get all forms.
 		$forms = GFAPI::get_forms( null );
 		if ( empty( $forms ) ) {
