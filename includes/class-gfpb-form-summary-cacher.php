@@ -100,6 +100,7 @@ class GFPB_Form_Summary_Cacher {
 								<a <?php echo $form['unread_count'] > 0 ? "class='form_title_unread' style='font-weight:bold;'" : ''; ?> href="admin.php?page=gf_entries&view=entries&id=<?php echo absint( $form['id'] ); ?>"><?php echo esc_html( $form['title'] ); ?></a>
 							</td>
 							<td class="gf_dashboard_entries_unread column-date" style="padding:8px 18px; text-align:center;">
+								<?php /* translators: 1. A timestamp like August 11, 2023 at 7:40 pm. */ ?>
 								<a <?php echo $form['unread_count'] > 0 ? "class='form_entries_unread' style='font-weight:bold;'" : ''; ?> href="admin.php?page=gf_entries&view=entries&filter=unread&id=<?php echo absint( $form['id'] ); ?>" aria-label="<?php printf( esc_attr__( 'Last Entry: %s', 'gravityforms' ), esc_attr( $date_display ) ); ?>"><?php echo esc_html( absint( $form['unread_count'] ) ); ?></a>
 							</td>
 							<td class="gf_dashboard_entries_total column-date" style="padding:8px 18px; text-align:center;">
@@ -122,7 +123,10 @@ class GFPB_Form_Summary_Cacher {
 		} else {
 			?>
 			<div class="gf_dashboard_noforms_notice">
-				<?php printf( esc_html__( "You don't have any forms. Let's go %screate one %s!", 'gravityforms' ), '<a href="admin.php?page=gf_new_form">', '</a>' ); ?>
+				<?php
+				/* translators: 1. Anchor element opening tag. 2. Anchor element closing tag. */
+				printf( esc_html__( 'You don\'t have any forms. Let\'s go %1$screate one %2$s!', 'gravityforms' ), '<a href="admin.php?page=gf_new_form">', '</a>' );
+				?>
 			</div>
 			<?php
 		}
