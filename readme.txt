@@ -2,9 +2,9 @@
 Contributors: salzano
 Tags: gravityforms, gravity forms
 Requires at least: 4.0
-Tested up to: 6.2.0
+Tested up to: 6.3.1
 Requires PHP: 5.6
-Stable tag: 3.1.1
+Stable tag: 3.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -62,6 +62,10 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 9. Screenshot of the dashboard. The Gravity Forms widget says, "Cached with max age 360 minutes."
 
 == Changelog ==
+
+= 3.1.2 =
+* [Fixed] Fixes an error during activation when Gravity Forms is not active.
+* [Changed] Changes tested up to version number to 6.3.1.
 
 = 3.1.1 =
 * [Added] Adds a short sentence to the dashboard widget telling users that they are looking at cached numbers.
@@ -151,6 +155,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 
 == Upgrade Notice ==
+
+= 3.1.2 =
+Fixes an error during activation when Gravity Forms is not active. Changes tested up to version number to 6.3.1.
 
 = 3.1.1 =
 Adds a screenshot and documentation about the cached dashboard widget added in 3.1.0: "Adds caching to the Gravity Forms dashboard widget by replacing the widget with our own copy. The 3 database queries are cached for a maximum of 6 hours instead of running every time the dashboard widget loads. Six hours can be changed with the a filter `gravityforms_dashboard_cache_duration`."
