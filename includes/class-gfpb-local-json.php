@@ -22,7 +22,7 @@ class GFPB_Local_JSON {
 	 */
 	public function add_hooks() {
 		// Write a .json file when a form is created or updated.
-		add_action( 'gform_after_save_form', array( __CLASS__, 'save_form_export' ), 10, 2 );
+		add_action( 'gform_after_save_form', array( __CLASS__, 'save_form_export' ), 10, 1 );
 
 		// Write a .json file when a form is activated or deactivated.
 		add_action( 'gform_post_form_activated', array( $this, 'save_form_export_after_status_change' ), 10, 1 );
@@ -119,10 +119,9 @@ class GFPB_Local_JSON {
 	 * Saves a .json file that contains a text backup of a form.
 	 *
 	 * @param  array $form Gravity Forms form array.
-	 * @param  bool  $is_new True if this is a new form being created. False if this is an existing form being updated.
 	 * @return void
 	 */
-	public static function save_form_export( $form, $is_new = false ) {
+	public static function save_form_export( $form ) {
 		if ( ! class_exists( 'GFExport' ) ) {
 			return;
 		}

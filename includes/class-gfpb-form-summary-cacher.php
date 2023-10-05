@@ -221,7 +221,7 @@ class GFPB_Form_Summary_Cacher {
 		}
 
 		$count = count( $forms );
-		for ( $i = 0; $i < $count; $i ++ ) {
+		for ( $i = 0; $i < $count; $i++ ) {
 			if ( is_array( $unread_results ) ) {
 				foreach ( $unread_results as $unread_result ) {
 					if ( $unread_result['form_id'] == $forms[ $i ]['id'] ) {

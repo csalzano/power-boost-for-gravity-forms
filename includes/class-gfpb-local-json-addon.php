@@ -129,9 +129,7 @@ class GFPB_Local_JSON_Addon extends GFAddOn {
 	 * @return string
 	 */
 	public function get_menu_icon() {
-
 		return 'gform-icon--circle-arrow-down';
-
 	}
 
 	/**
