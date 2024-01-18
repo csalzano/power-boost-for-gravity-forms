@@ -114,6 +114,9 @@ class GravityForms_Power_Boost {
 	 * @return void
 	 */
 	public function add_hooks() {
+		// Add compatibility with language packs.
+		add_action( 'init', array( $this, 'load_textdomain' ) );
+
 		// Add columns to the table that lists Forms on edit.php.
 		add_filter( 'gform_form_list_columns', array( $this, 'add_columns_to_list_table' ) );
 
@@ -391,12 +394,21 @@ class GravityForms_Power_Boost {
 		);
 	}
 
-		/**
-		 * Populates the "Last Entry" forms list column we added.
-		 *
-		 * @param  stdClass $item A class that resembles a form object.
-		 * @return void
-		 */
+	/**
+	 * Loads translated strings.
+	 *
+	 * @return void
+	 */
+	public function load_textdomain() {
+		load_plugin_textdomain( 'power-boost-for-gravity-forms', false, dirname( GF_POWER_BOOST_PLUGIN_ROOT ) . '/languages' );
+	}
+
+	/**
+	 * Populates the "Last Entry" forms list column we added.
+	 *
+	 * @param  stdClass $item A class that resembles a form object.
+	 * @return void
+	 */
 	public function populate_columns_we_added( $item ) {
 		/*
 		$item is a stdClass object that's almost a Form object
