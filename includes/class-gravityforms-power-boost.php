@@ -22,7 +22,7 @@ class GravityForms_Power_Boost {
 	 * @return array
 	 */
 	public function add_columns_to_list_table( $columns ) {
-		$columns['last_entry'] = esc_html__( 'Last Entry', 'gravityforms-power-boost' );
+		$columns['last_entry'] = esc_html__( 'Last Entry', 'power-boost-for-gravity-forms' );
 		return $columns;
 	}
 
@@ -36,8 +36,8 @@ class GravityForms_Power_Boost {
 	 */
 	public function add_copy_shortcode_row_action( $form_actions, $form_id ) {
 		$form_actions['shortcode'] = array(
-			'label'      => __( 'Copy Shortcode', 'gravityforms-power-boost' ),
-			'aria-label' => __( 'Copy this form\'s shortcode to the clipboard', 'gravityforms-power-boost' ),
+			'label'      => __( 'Copy Shortcode', 'power-boost-for-gravity-forms' ),
+			'aria-label' => __( 'Copy this form\'s shortcode to the clipboard', 'power-boost-for-gravity-forms' ),
 			'url'        => '#',
 			'menu_class' => 'gf_form_toolbar_settings',
 			'link_class' => '',
@@ -184,7 +184,7 @@ class GravityForms_Power_Boost {
 		}
 
 		$meta_boxes['feeds'] = array(
-			'title'    => esc_html__( 'Feeds', 'gravityforms-power-boost' ),
+			'title'    => esc_html__( 'Feeds', 'power-boost-for-gravity-forms' ),
 			'callback' => array( __CLASS__, 'meta_box_feeds' ),
 			'context'  => 'side',
 		);
@@ -233,9 +233,9 @@ class GravityForms_Power_Boost {
 					'gform_is_feed_asynchronous',
 					function ( $is_asynchronous, $feed, $form, $entry ) use ( $cur_feed, $method ) {
 						$log_preamble = $method . ' - ' . current_filter() . ': ';
-						GFCommon::log_debug( $log_preamble . __( 'running', 'gravityforms-power-boost' ) );
+						GFCommon::log_debug( $log_preamble . __( 'running', 'power-boost-for-gravity-forms' ) );
 						if ( $feed['id'] === $cur_feed['id'] ) {
-							GFCommon::log_debug( $log_preamble . __( 'Disabling background processing for feed: ', 'gravityforms-power-boost' ) . $feed['id'] );
+							GFCommon::log_debug( $log_preamble . __( 'Disabling background processing for feed: ', 'power-boost-for-gravity-forms' ) . $feed['id'] );
 							$is_asynchronous = false;
 						}
 						return $is_asynchronous;
@@ -258,7 +258,7 @@ class GravityForms_Power_Boost {
 					'%s/%s %s',
 					$sent_feeds,
 					count( $feed_ids ),
-					__( 'of feeds were sent', 'gravityforms-power-boost' )
+					__( 'of feeds were sent', 'power-boost-for-gravity-forms' )
 				)
 			);
 		}
@@ -287,7 +287,7 @@ class GravityForms_Power_Boost {
 
 			if ( empty( $feeds ) || is_wp_error( $feeds ) ) {
 				?>
-				<p class="description"><?php esc_html_e( 'This form has no active feeds.', 'gravityforms-power-boost' ); ?></p>
+				<p class="description"><?php esc_html_e( 'This form has no active feeds.', 'power-boost-for-gravity-forms' ); ?></p>
 				<?php
 			} else {
 				foreach ( $feeds as $feed ) {
@@ -298,9 +298,9 @@ class GravityForms_Power_Boost {
 						$feed_name = rgars( $feed, 'meta/feedName' );
 					} elseif ( 'gravityformspartialentries' === rgar( $feed, 'addon_slug' ) ) {
 						// Partial Entries add-on does not use feed names.
-						$feed_name = __( 'Partial Entries', 'gravityforms-power-boost' );
+						$feed_name = __( 'Partial Entries', 'power-boost-for-gravity-forms' );
 					} else {
-						$feed_name = __( 'Unnamed: ', 'gravityforms-power-boost' ) . rgar( $feed, 'addon_slug' );
+						$feed_name = __( 'Unnamed: ', 'power-boost-for-gravity-forms' ) . rgar( $feed, 'addon_slug' );
 					}
 					?>
 					<input type="checkbox" class="gform_feeds" value="<?php echo esc_attr( $feed['id'] ); ?>" id="feed_<?php echo esc_attr( $feed['id'] ); ?>" />
@@ -309,9 +309,9 @@ class GravityForms_Power_Boost {
 					<?php
 				}
 				?>
-				<input type="button" name="feeds_resend" value="<?php esc_attr_e( 'Resend Feeds', 'gravityforms-power-boost' ); ?>" class="button" style="" onclick="gfpb_resend_feeds();" />
+				<input type="button" name="feeds_resend" value="<?php esc_attr_e( 'Resend Feeds', 'power-boost-for-gravity-forms' ); ?>" class="button" style="" onclick="gfpb_resend_feeds();" />
 				<span id="please_wait_container_feeds" style="display:none; margin-left: 5px;">
-					<i class='gficon-gravityforms-spinner-icon gficon-spin'></i> <?php esc_html_e( 'Resending...', 'gravityforms-power-boost' ); ?>
+					<i class='gficon-gravityforms-spinner-icon gficon-spin'></i> <?php esc_html_e( 'Resending...', 'power-boost-for-gravity-forms' ); ?>
 				</span>
 				<script type="text/javascript">
 				<!--
@@ -326,7 +326,7 @@ class GravityForms_Power_Boost {
 						});
 
 						if (checked_feeds.length <= 0) {
-							displayMessage(<?php echo wp_json_encode( __( 'You must select at least one feed to resend.', 'gravityforms-power-boost' ) ); ?>, 'error', '#feeds');
+							displayMessage(<?php echo wp_json_encode( __( 'You must select at least one feed to resend.', 'power-boost-for-gravity-forms' ) ); ?>, 'error', '#feeds');
 							return;
 						}
 
@@ -346,7 +346,7 @@ class GravityForms_Power_Boost {
 								}
 								else
 								{
-									displayMessage(<?php echo wp_json_encode( esc_html__( 'Feeds were resent successfully.', 'gravityforms-power-boost' ) ); ?>, "success", "#feeds" );
+									displayMessage(<?php echo wp_json_encode( esc_html__( 'Feeds were resent successfully.', 'power-boost-for-gravity-forms' ) ); ?>, "success", "#feeds" );
 
 									// reset UI
 									jQuery(".gform_feeds").attr( 'checked', false );
@@ -385,7 +385,7 @@ class GravityForms_Power_Boost {
 			array(
 				'id'     => 'gform-forms-view-settings',
 				'parent' => 'gform-forms',
-				'title'  => esc_html__( 'Settings', 'gravityforms-power-boost' ),
+				'title'  => esc_html__( 'Settings', 'power-boost-for-gravity-forms' ),
 				'href'   => admin_url( 'admin.php?page=gf_settings' ),
 			)
 		);

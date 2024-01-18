@@ -2,7 +2,7 @@
 
 ![Power Boost for Gravity Forms](assets/banner-1544x500.jpg)
 
-#  power-boost-for-gravity-forms
+#  Power Boost for Gravity Forms
 
 WordPress plugin. An add-on for Gravity Forms. Enhances Gravity Forms for power users.
 
@@ -103,3 +103,8 @@ Replaces the Gravity Forms dashboard widget with a copy that caches the results 
 `gravityforms_dashboard_cache_duration`
 
    The number of seconds to cache the Gravity Forms dashboard widget database queries. Defaults to `6 * HOURS_IN_SECONDS`
+
+
+## ALSO FROM THE AUTHOR
+
+[Power Boost for ACF](https://github.com/csalzano/power-boost-acf)

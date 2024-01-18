@@ -116,7 +116,7 @@ class GFPB_Form_Summary_Cacher {
 
 			<?php if ( GFCommon::current_user_can_any( 'gravityforms_edit_forms' ) ) : ?>
 				<p class="textright">
-				<i title="<?php esc_attr_e( 'Power Boost for Gravity Forms', 'gravityforms-power-boost' ); ?>"><?php echo esc_html( self::get_cache_note() ); ?></i><a class="gf_dashboard_button button" href="admin.php?page=gf_edit_forms"><?php esc_html_e( 'View All Forms', 'gravityforms' ); ?></a>
+				<i title="<?php esc_attr_e( 'Power Boost for Gravity Forms', 'power-boost-for-gravity-forms' ); ?>"><?php echo esc_html( self::get_cache_note() ); ?></i><a class="gf_dashboard_button button" href="admin.php?page=gf_edit_forms"><?php esc_html_e( 'View All Forms', 'gravityforms' ); ?></a>
 			<?php endif; ?>
 			</p>
 			<?php

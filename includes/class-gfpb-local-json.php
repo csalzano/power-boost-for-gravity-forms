@@ -53,9 +53,9 @@ class GFPB_Local_JSON {
 		}
 
 		$menu_items['localjson'] = array(
-			'label'        => esc_html__( 'Local JSON', 'gravityforms-power-boost' ),
-			'short_label'  => esc_html__( 'Local JSON', 'gravityforms-power-boost' ),
-			'aria-label'   => esc_html__( 'Update this form using the local JSON file.', 'gravityforms-power-boost' ),
+			'label'        => esc_html__( 'Local JSON', 'power-boost-for-gravity-forms' ),
+			'short_label'  => esc_html__( 'Local JSON', 'power-boost-for-gravity-forms' ),
+			'aria-label'   => esc_html__( 'Update this form using the local JSON file.', 'power-boost-for-gravity-forms' ),
 			'icon'         => '<i class="fa fa-pencil-square-o fa-lg"></i>',
 			'url'          => admin_url( 'admin.php?page=gf_edit_forms&view=settings&subview=localjson&id=' . $form_id ),
 			'menu_class'   => 'gf_form_toolbar_localjson',
