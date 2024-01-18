@@ -2,9 +2,9 @@
 Contributors: salzano
 Tags: gravityforms, gravity forms
 Requires at least: 4.0
-Tested up to: 6.3.1
+Tested up to: 6.4.2
 Requires PHP: 5.6
-Stable tag: 3.1.2
+Stable tag: 3.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -62,6 +62,10 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 9. Screenshot of the dashboard. The Gravity Forms widget says, "Cached with max age 360 minutes."
 
 == Changelog ==
+
+= 3.1.3 =
+* [Fixed] Adds compatibility with language packs by using the correct text domain.
+* [Changed] Changes tested up to version number to 6.4.2.
 
 = 3.1.2 =
 * [Fixed] Fixes an error during activation when Gravity Forms is not active.
@@ -155,6 +159,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 
 == Upgrade Notice ==
+
+= 3.1.3 =
+Adds compatibility with language packs by using the correct text domain. Changes tested up to version number to 6.4.2.
 
 = 3.1.2 =
 Fixes an error during activation when Gravity Forms is not active. Changes tested up to version number to 6.3.1.
