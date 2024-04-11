@@ -82,29 +82,57 @@ Replaces the Gravity Forms dashboard widget with a copy that caches the results 
 
 ## Filter Hooks
 
+### Change the Local JSON Path
+
 `gravityforms_local_json_save_path`
 
-   The absolute file path to a directory where the form export .json files are saved. Defaults to `wp-content/uploads/gf-json`
+The absolute file path to a directory where the form export .json files are saved. Defaults to `wp-content/uploads/gf-json`
+
+#### Example
+ 
+Changes the path to save .json files to one level above the directory containing WordPress.
+
+```
+<?php
+add_filter( 'gravityforms_local_json_save_path', 'power_boost_change_json_path' );
+/**
+ * Changes the path to save .json files to one level above the directory containing WordPress.
+ *
+ * @return string
+ */
+function power_boost_change_json_path() {
+	return dirname( ABSPATH );
+}
+
+```
 
 &nbsp;
+
+### Edit Form Before it's Saved as JSON
 
 `gravityforms_local_json_save_form`
 
-   Allows a forms array containing a single form to be edited just before it is written to the .json file
+Allows a forms array containing a single form to be edited just before it is written to the .json file
 
 &nbsp;
+
+### Toggle JSON Pretty Print
 
 `gravityforms_local_json_minimize`
 
-   Controls whether the form JSON is encoded with the `JSON_PRETTY_PRINT` flag. Defaults to `false`
+Controls whether the form JSON is encoded with the `JSON_PRETTY_PRINT` flag. Defaults to `false`
 
 &nbsp;
 
+### Change Dashboard Widget Cache Time
+
 `gravityforms_dashboard_cache_duration`
 
-   The number of seconds to cache the Gravity Forms dashboard widget database queries. Defaults to `6 * HOURS_IN_SECONDS`
+The number of seconds to cache the Gravity Forms dashboard widget database queries. Defaults to `6 * HOURS_IN_SECONDS`
 
+&nbsp;
 
-## ALSO FROM THE AUTHOR
+## MORE PLUGINS
 
 [Power Boost for ACF](https://github.com/csalzano/power-boost-acf)
+[Embed PDF for Gravity Forms](https://wordpress.org/plugins/embed-pdf-gravityforms/)
