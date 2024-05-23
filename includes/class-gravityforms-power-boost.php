@@ -80,10 +80,14 @@ class GravityForms_Power_Boost {
 				continue;
 			}
 
-			if ( ! empty( $field['adminLabel'] ) ) {
+			$prefix = $field['id'] . '. ';
+
+			if ( ! empty( $field['adminLabel'] ) && substr( $field['adminLabel'], 0, strlen( $prefix ) ) !== $prefix ) {
 				$field['adminLabel'] = $field['id'] . '. ' . $field['adminLabel'];
 			}
-			$field['label'] = $field['id'] . '. ' . $field['label'];
+			if ( ! empty( $field['label'] ) && substr( $field['label'], 0, strlen( $prefix ) ) !== $prefix ) {
+				$field['label'] = $field['id'] . '. ' . $field['label'];
+			}
 		}
 		return $form;
 	}
