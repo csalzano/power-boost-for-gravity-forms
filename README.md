@@ -80,7 +80,7 @@ Replaces the Gravity Forms dashboard widget with a copy that caches the results 
 
 
 
-## Filter Hooks
+## FILTER HOOKS
 
 ### Change the Local JSON Path
 
