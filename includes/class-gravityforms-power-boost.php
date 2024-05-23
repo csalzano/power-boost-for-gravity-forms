@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || exit;
  */
 class GravityForms_Power_Boost {
 
-	const VERSION = '3.1.4';
+	const VERSION = '3.1.5';
 
 	/**
 	 * Adds a "last entry" column to the array of columns in the dashboard forms
