@@ -7,6 +7,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
+use Gravity_Forms\Gravity_Forms\Editor_Button\GF_Editor_Service_Provider;
+
 /**
  * GravityForms_Power_Boost
  */
@@ -108,6 +110,13 @@ class GravityForms_Power_Boost {
 		if ( ! GFCommon::is_form_editor() ) {
 			return $content;
 		}
+
+		// Is Compact View enabled?
+		if ( class_exists( 'GF_Editor_Service_Provider' ) && GF_Editor_Service_Provider::is_compact_view_enabled( get_current_user_id(), strval( $field->formId ) ) ) {
+			// Yes. Showing IDs is already a feature provided in Compact View.
+			return $content;
+		}
+
 		$replace = sprintf( '\0 <span class="gw-inline-field-id">ID: %d</span>', $field->id );
 		return preg_replace( '/<\/label>|<\/legend>/', $replace, $content, 1 );
 	}
