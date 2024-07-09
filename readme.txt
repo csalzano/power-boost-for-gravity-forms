@@ -4,7 +4,7 @@ Tags: gravityforms, gravity forms
 Requires at least: 4.0
 Tested up to: 6.5.5
 Requires PHP: 5.6
-Stable tag: 3.1.5
+Stable tag: 3.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -62,6 +62,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 9. Screenshot of the dashboard. The Gravity Forms widget says, "Cached with max age 360 minutes."
 
 == Changelog ==
+
+= 3.1.6 =
+* [Fixed] Fixes a bug where field IDs are shown in the form editor's Compact View. This view already has a switch to show or hide field IDs.
 
 = 3.1.5 =
 * [Fixed] Prevents field ID prefixes from being added near field names more than once while editing entries.
@@ -166,6 +169,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 
 == Upgrade Notice ==
+
+= 3.1.6 =
+Fixes a bug where field IDs are shown in the form editor's Compact View. This view already has a switch to show or hide field IDs.
 
 = 3.1.5 =
 Prevents field ID prefixes from being added near field names more than once while editing entries. Changes tested up to version number to 6.5.3.
