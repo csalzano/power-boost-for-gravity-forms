@@ -256,7 +256,7 @@ class GFPB_Local_JSON_Addon extends GFAddOn {
 		$html = sprintf(
 			'<code>%s</code><p>%s</p>',
 			GFPB_Local_JSON::json_save_path(),
-			__( 'This plugin generates a .json export of each form that is created or modified at the location above. Use the filter hook <i>gravityforms_local_json_save_path</i> to change this folder path.', 'power-boost-for-gravity-forms' )
+			__( 'Power Boost for Gravity Forms generates a .json export of each form that is created or modified at the location above. Use the filter hook <i>gravityforms_local_json_save_path</i> to change this folder path.', 'power-boost-for-gravity-forms' )
 		);
 
 		if ( $echo ) {
