@@ -2,9 +2,9 @@
 Contributors: salzano
 Tags: gravityforms, gravity forms
 Requires at least: 4.0
-Tested up to: 6.6.0
+Tested up to: 6.6.2
 Requires PHP: 5.6
-Stable tag: 3.1.6
+Stable tag: 3.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -62,6 +62,11 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 9. Screenshot of the dashboard. The Gravity Forms widget says, "Cached with max age 360 minutes."
 
 == Changelog ==
+
+= 3.1.7 =
+* [Fixed] Starts writing the .json file when form confirmations and notifications are updated.
+* [Fixed] Stops creating .json exports of inactive forms during plugin activation.
+* [Changed] Changes tested up to version number to 6.6.2.
 
 = 3.1.6 =
 * [Fixed] Fixes a bug where field IDs are shown in the form editor's Compact View. This view already has a switch to show or hide field IDs.
@@ -169,6 +174,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 
 == Upgrade Notice ==
+
+= 3.1.7 =
+Starts writing the .json file when form confirmations and notifications are updated. Stops creating .json exports of inactive forms during plugin activation. Changes tested up to version number to 6.6.2.
 
 = 3.1.6 =
 Fixes a bug where field IDs are shown in the form editor's Compact View. This view already has a switch to show or hide field IDs.
