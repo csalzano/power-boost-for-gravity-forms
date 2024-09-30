@@ -23,6 +23,8 @@ class GFPB_Local_JSON {
 	public function add_hooks() {
 		// Write a .json file when a form is created or updated.
 		add_action( 'gform_after_save_form', array( __CLASS__, 'save_form_export' ), 10, 1 );
+		// Write the same .json file when confirmations or notifications are created or updated.
+		add_action( 'gform_post_update_form_meta', array( __CLASS__, 'save_form_export_meta_saved' ), 10, 2 );
 
 		// Write a .json file when a form is activated or deactivated.
 		add_action( 'gform_post_form_activated', array( $this, 'save_form_export_after_status_change' ), 10, 1 );
@@ -146,6 +148,22 @@ class GFPB_Local_JSON {
 
 		// write the file.
 		file_put_contents( $save_path, $json );
+	}
+
+	/**
+	 * A wrapper method for save_form_export() that is called when a form's meta
+	 * is updated. This triggers a .json file write when confirmations or
+	 * notifications are updated.
+	 *
+	 * @param  string $form_meta The name of the meta updated.
+	 * @param  int    $form_id The ID of the form data was updated.
+	 * @return void
+	 */
+	public static function save_form_export_meta_saved( $form_meta, $form_id ) {
+		if ( ! class_exists( 'GFAPI' ) ) {
+			return;
+		}
+		self::save_form_export( GFAPI::get_form( $form_id ) );
 	}
 
 	/**
