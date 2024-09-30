@@ -184,6 +184,11 @@ class GFPB_Local_JSON {
 		}
 
 		foreach ( $forms as $form ) {
+			// Is this form active?
+			if ( '0' === $form['is_active'] ) {
+				// No. Skip it.
+				continue;
+			}
 			self::save_form_export( $form );
 		}
 	}
