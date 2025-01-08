@@ -2,9 +2,9 @@
 Contributors: salzano
 Tags: gravityforms, gravity forms
 Requires at least: 4.0
-Tested up to: 6.6.2
+Tested up to: 6.7.1
 Requires PHP: 5.6
-Stable tag: 3.1.7
+Stable tag: 3.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -62,6 +62,11 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 9. Screenshot of the dashboard. The Gravity Forms widget says, "Cached with max age 360 minutes."
 
 == Changelog ==
+
+= 3.2.0 =
+* [Added] Adds support for feeds in backups and form replacements. Replace Forms and Local JSON features now work with plugins that allow their feeds to be exported like Gravity Flow.
+* [Added] Adds all current translation files to a folder /languages.
+* [Changed] Changes tested up to version number to 6.7.1.
 
 = 3.1.7 =
 * [Fixed] Starts writing the .json file when form confirmations and notifications are updated.
@@ -174,6 +179,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 
 == Upgrade Notice ==
+
+= 3.2.0 =
+Adds support for feeds in backups and form replacements. Replace Forms and Local JSON features now work with plugins that allow their feeds to be exported like Gravity Flow. Adds all current translation files to a folder /languages. Changes tested up to version number to 6.7.1.
 
 = 3.1.7 =
 Starts writing the .json file when form confirmations and notifications are updated. Stops creating .json exports of inactive forms during plugin activation. Changes tested up to version number to 6.6.2.
