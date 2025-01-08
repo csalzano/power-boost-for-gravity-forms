@@ -1,0 +1,250 @@
+# Translation of Plugins - Power Boost for Gravity Forms - Stable (latest release) in English (UK)
+# This file is distributed under the same license as the Plugins - Power Boost for Gravity Forms - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2024-10-01 14:03:30+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.1\n"
+"Language: en_GB\n"
+"Project-Id-Version: Plugins - Power Boost for Gravity Forms - Stable (latest release)\n"
+
+#: includes/class-gravityforms-power-boost.php:404
+msgid "Settings"
+msgstr "Settings"
+
+#: includes/class-gravityforms-power-boost.php:365
+msgid "Feeds were resent successfully."
+msgstr "Feeds were resent successfully."
+
+#: includes/class-gravityforms-power-boost.php:345
+msgid "You must select at least one feed to resend."
+msgstr "You must select at least one feed to resend."
+
+#: includes/class-gravityforms-power-boost.php:330
+msgid "Resending..."
+msgstr "Resending..."
+
+#: includes/class-gravityforms-power-boost.php:328
+msgid "Resend Feeds"
+msgstr "Resend Feeds"
+
+#: includes/class-gravityforms-power-boost.php:319
+msgid "Unnamed: "
+msgstr "Unnamed:"
+
+#: includes/class-gravityforms-power-boost.php:317
+msgid "Partial Entries"
+msgstr "Partial Entries"
+
+#: includes/class-gravityforms-power-boost.php:306
+msgid "This form has no active feeds."
+msgstr "This form has no active feeds."
+
+#: includes/class-gravityforms-power-boost.php:277
+msgid "of feeds were sent"
+msgstr "of feeds were sent"
+
+#: includes/class-gravityforms-power-boost.php:254
+msgid "Disabling background processing for feed: "
+msgstr "Disabling background processing for feed:"
+
+#: includes/class-gravityforms-power-boost.php:252
+msgid "running"
+msgstr "running"
+
+#: includes/class-gravityforms-power-boost.php:203
+msgid "Feeds"
+msgstr "Feeds"
+
+#: includes/class-gravityforms-power-boost.php:42
+msgid "Copy this form's shortcode to the clipboard"
+msgstr "Copy this form's shortcode to the clipboard"
+
+#: includes/class-gravityforms-power-boost.php:41
+msgid "Copy Shortcode"
+msgstr "Copy Shortcode"
+
+#: includes/class-gravityforms-power-boost.php:27
+msgid "Last Entry"
+msgstr "Last Entry"
+
+#: includes/class-gfpb-local-json.php:60
+msgid "Update this form using the local JSON file."
+msgstr "Update this form using the local JSON file."
+
+#: includes/class-gfpb-local-json.php:58 includes/class-gfpb-local-json.php:59
+msgid "Local JSON"
+msgstr "Local JSON"
+
+#: includes/class-gfpb-local-json-addon.php:259
+msgid "Power Boost for Gravity Forms generates a .json export of each form that is created or modified at the location above. Use the filter hook <i>gravityforms_local_json_save_path</i> to change this folder path."
+msgstr "Power Boost for Gravity Forms generates a .json export of each form that is created or modified at the location above. Use the filter hook <i>gravityforms_local_json_save_path</i> to change this folder path."
+
+#: includes/class-gfpb-local-json-addon.php:169
+msgid "Where does this plugin store the form export .json files?"
+msgstr "Where does this plugin store the form export .json files?"
+
+#: includes/class-gfpb-local-json-addon.php:163
+msgid "File Location"
+msgstr "File Location"
+
+#: includes/class-gfpb-local-json-addon.php:158
+msgid "JSON form export files can be used to update forms during deployments."
+msgstr "JSON form export files can be used to update forms during deployments."
+
+#: includes/class-gfpb-local-json-addon.php:152
+msgid "Load From File"
+msgstr "Load From File"
+
+#: includes/class-gfpb-local-json-addon.php:147
+msgid "Unavailable"
+msgstr "Unavailable"
+
+#: includes/class-gfpb-local-json-addon.php:142
+msgid "Available"
+msgstr "Available"
+
+#. translators: 1. Anchor element opening tag. 2. Anchor element closing tag.
+#: includes/class-gfpb-form-summary-cacher.php:128
+msgid "You don't have any forms. Let's go %1$screate one %2$s!"
+msgstr "You don't have any forms. Let's go %1$screate one %2$s!"
+
+#: includes/class-gfpb-form-summary-cacher.php:119
+msgid "View All Forms"
+msgstr "View All Forms"
+
+#: includes/class-gfpb-form-summary-cacher.php:107
+msgid "View All Entries"
+msgstr "View All Entries"
+
+#. translators: 1. A timestamp like August 11, 2023 at 7:40 pm.
+#: includes/class-gfpb-form-summary-cacher.php:104
+msgid "Last Entry: %s"
+msgstr "Last Entry: %s"
+
+#: includes/class-gfpb-form-summary-cacher.php:83
+msgid "Total"
+msgstr "Total"
+
+#: includes/class-gfpb-form-summary-cacher.php:81
+msgid "Unread"
+msgstr "Unread"
+
+#: includes/class-gfpb-form-summary-cacher.php:79
+msgid "Title"
+msgstr "Title"
+
+#: includes/class-gfpb-form-summary-cacher.php:56
+msgid "Gravity Forms"
+msgstr "Gravity Forms"
+
+#: includes/class-gfpb-form-replacer.php:200
+msgid "Import"
+msgstr "Import"
+
+#: includes/class-gfpb-form-replacer.php:194
+msgid "Select Files"
+msgstr "Select Files"
+
+#: includes/class-gfpb-form-replacer.php:186
+msgid "This feature updates existing forms instead of creating duplicates like the Import Forms tab. Provided by"
+msgstr "This feature updates existing forms instead of creating duplicates like the Import Forms tab. Provided by"
+
+#: includes/class-gfpb-form-replacer.php:179
+msgid "tool. When you click the import button below, Gravity Forms will import the forms."
+msgstr "tool. When you click the import button below, Gravity Forms will import the forms."
+
+#: includes/class-gfpb-form-replacer.php:177
+msgid "Select the Gravity Forms export files you would like to import. Please make sure your files have the .json extension, and that they were generated by the"
+msgstr "Select the Gravity Forms export files you would like to import. Please make sure your files have the .json extension, and that they were generated by the"
+
+#: includes/class-gfpb-form-replacer.php:152
+msgid "successfully"
+msgstr "successfully"
+
+#: includes/class-gfpb-form-replacer.php:149
+msgid "Gravity Forms imported"
+msgstr "Gravity Forms imported"
+
+#: includes/class-gfpb-form-replacer.php:145
+msgid "Edit Form"
+msgstr "Edit Form"
+
+#: includes/class-gfpb-form-replacer.php:144
+msgid "form"
+msgstr "form"
+
+#: includes/class-gfpb-form-replacer.php:144
+msgid "forms"
+msgstr "forms"
+
+#: includes/class-gfpb-form-replacer.php:142
+msgid "Forms could not be imported. Your export file is not compatible with your current version of Gravity Forms."
+msgstr "Forms could not be imported. Your export file is not compatible with your current version of Gravity Forms."
+
+#: includes/class-gfpb-form-replacer.php:138
+msgid "tool."
+msgstr "tool."
+
+#: includes/class-gfpb-form-replacer.php:137
+#: includes/class-gfpb-form-replacer.php:178
+msgid "Gravity Forms Export form"
+msgstr "Gravity Forms Export form"
+
+#: includes/class-gfpb-form-replacer.php:136
+msgid "Forms could not be imported. Please make sure your files have the .json extension, and that they were generated by the"
+msgstr "Forms could not be imported. Please make sure your files have the .json extension, and that they were generated by the"
+
+#: includes/class-gfpb-form-replacer.php:123
+msgid "if this URL needs to be updated"
+msgstr "if this URL needs to be updated"
+
+#: includes/class-gfpb-form-replacer.php:122
+msgid "Click here"
+msgstr "Click here"
+
+#: includes/class-gfpb-form-replacer.php:119
+msgid "is set to redirect users to"
+msgstr "is set to redirect users to"
+
+#: includes/class-gfpb-form-replacer.php:117
+msgid "ID"
+msgstr "ID"
+
+#: includes/class-gfpb-form-replacer.php:115
+msgid "A confirmation in form"
+msgstr "A confirmation in form"
+
+#: includes/class-gfpb-form-replacer.php:48
+#: includes/class-gfpb-form-replacer.php:168
+msgid "Replace Forms"
+msgstr "Replace Forms"
+
+#. Author URI of the plugin
+#: gravityforms-power-boost.php
+msgid "https://breakfastco.xyz"
+msgstr "https://breakfastco.xyz"
+
+#. Author of the plugin
+#: gravityforms-power-boost.php
+msgid "Breakfast"
+msgstr "Breakfast"
+
+#. Description of the plugin
+#: gravityforms-power-boost.php
+msgid "Enhances the dashboard for Gravity Forms power users."
+msgstr "Enhances the dashboard for Gravity Forms power users."
+
+#. Plugin URI of the plugin
+#: gravityforms-power-boost.php
+msgid "https://breakfastco.xyz/power-boost-for-gravity-forms/"
+msgstr "https://breakfastco.xyz/power-boost-for-gravity-forms/"
+
+#. Plugin Name of the plugin
+#: gravityforms-power-boost.php includes/class-gfpb-form-replacer.php:187
+#: includes/class-gfpb-form-summary-cacher.php:119
+msgid "Power Boost for Gravity Forms"
+msgstr "Power Boost for Gravity Forms"
