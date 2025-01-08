@@ -220,12 +220,26 @@ class GFPB_Local_JSON_Addon extends GFAddOn {
 			// no.
 			return;
 		}
-		$forms_array = json_decode( $json, true );
+		$forms_array    = json_decode( $json, true );
+		$imported_forms = array();
 		foreach ( $forms_array as $form ) {
 			if ( empty( $form['id'] ) || $form['id'] !== $form_id ) {
 				continue;
 			}
 			GFAPI::update_form( $form, $form_id );
+			$imported_forms[ $form_id ] = $form;
+		}
+
+		if ( ! empty( $imported_forms ) ) {
+			// Copied this from Gravity Forms so plugins like GravityFlow can manage their feeds.
+			/**
+			 * Fires after forms have been imported.
+			 *
+			 * Used to perform additional actions after import
+			 *
+			 * @param array $forms An array imported form objects.
+			 */
+			do_action( 'gform_forms_post_import', $imported_forms );
 		}
 	}
 

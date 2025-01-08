@@ -15,6 +15,8 @@ class GFPB_Local_JSON {
 	const ACTION = 'local_json_load';
 	const NONCE  = 'local_json_nonce';
 
+	protected $form_ids_with_deleted_feeds = array();
+
 	/**
 	 * Adds hooks that power the local JSON feature.
 	 *
@@ -33,11 +35,46 @@ class GFPB_Local_JSON {
 		// Write .json files for all forms when this plugin is activated.
 		register_activation_hook( GF_POWER_BOOST_PLUGIN_ROOT, array( __CLASS__, 'save_form_export_activate' ) );
 
+		// Write .json files when add-on feeds are saved.
+		add_action( 'gform_post_save_feed_settings', array( $this, 'save_form_export_meta_saved' ), 10, 2 );
+
+		// Write .json files when add-on feeds are deleted.
+		add_action( 'gform_pre_delete_feed', array( $this, 'track_deleted_feed' ), 10, 1 );
+		add_action( 'shutdown', array( $this, 'save_form_export_feeds_deleted' ) );
+
 		// Add a toolbar button to load the .json file.
 		add_filter( 'gform_toolbar_menu', array( $this, 'add_toolbar_button' ), 10, 2 );
 
 		// Register a Gravity Forms add-on.
 		add_action( 'gform_loaded', array( $this, 'register_addon' ) );
+	}
+
+	/**
+	 * Saves the IDs of forms that have had feeds deleted during this request.
+	 *
+	 * @param  int $feed_id The ID of the feed being deleted.
+	 * @return void
+	 */
+	public function track_deleted_feed( $feed_id ) {
+		global $wpdb;
+		$form_id = $wpdb->get_var( $wpdb->prepare( "SELECT form_id FROM {$wpdb->prefix}gf_addon_feed WHERE id = %d", $feed_id ) );
+		if ( ! empty( $form_id ) ) {
+			$this->form_ids_with_deleted_feeds[] = $form_id;
+		}
+	}
+
+	/**
+	 * Runs on shutdown hook to create backups of forms that had feeds deleted.
+	 *
+	 * @return void
+	 */
+	public function save_form_export_feeds_deleted() {
+		if ( empty( $this->form_ids_with_deleted_feeds ) ) {
+			return;
+		}
+		foreach ( $this->form_ids_with_deleted_feeds as $form_id ) {
+			self::save_form_export( GFAPI::get_form( $form_id ) );
+		}
 	}
 
 	/**
@@ -152,14 +189,15 @@ class GFPB_Local_JSON {
 
 	/**
 	 * A wrapper method for save_form_export() that is called when a form's meta
-	 * is updated. This triggers a .json file write when confirmations or
-	 * notifications are updated.
+	 * is updated or a feed is saved. This triggers a .json file write when
+	 * confirmations or notifications are updated. It also handles add-ons that
+	 * add their feed data to form exports, like GravityFlow.
 	 *
-	 * @param  string $form_meta The name of the meta updated.
-	 * @param  int    $form_id The ID of the form data was updated.
+	 * @param  mixed $ignored The name of the form meta updated, or a feed ID.
+	 * @param  int   $form_id The ID of the form data was updated.
 	 * @return void
 	 */
-	public static function save_form_export_meta_saved( $form_meta, $form_id ) {
+	public static function save_form_export_meta_saved( $ignored, $form_id ) {
 		if ( ! class_exists( 'GFAPI' ) ) {
 			return;
 		}

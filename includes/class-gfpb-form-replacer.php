@@ -221,6 +221,7 @@ class GFPB_Form_Replacer {
 
 		// Update the forms.
 		$updated_count = 0;
+		$imported_forms = array();
 		foreach ( $forms_array as $form ) {
 			if ( empty( $form['id'] ) ) {
 				continue;
@@ -241,7 +242,22 @@ class GFPB_Form_Replacer {
 			 * previous status.
 			 */
 			GFFormsModel::update_form_active( $form['id'], $existing['is_active'] );
+
+			$imported_forms[ $form['id'] ] = $form;
 		}
+
+		if ( ! empty( $imported_forms ) ) {
+			// Copied this from Gravity Forms so plugins like GravityFlow can manage their feeds.
+			/**
+			 * Fires after forms have been imported.
+			 *
+			 * Used to perform additional actions after import
+			 *
+			 * @param array $forms An array imported form objects.
+			 */
+			do_action( 'gform_forms_post_import', $imported_forms );
+		}
+
 		return $updated_count;
 	}
 }
