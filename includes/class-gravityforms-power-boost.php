@@ -14,7 +14,7 @@ use Gravity_Forms\Gravity_Forms\Editor_Button\GF_Editor_Service_Provider;
  */
 class GravityForms_Power_Boost {
 
-	const VERSION = '3.2.0';
+	const VERSION = '3.2.1';
 
 	/**
 	 * Adds a "last entry" column to the array of columns in the dashboard forms
