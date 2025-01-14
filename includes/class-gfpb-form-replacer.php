@@ -234,6 +234,16 @@ class GFPB_Form_Replacer {
 				continue;
 			}
 
+			// Delete all GravityFlow feeds or they will be duplicated.
+			$feeds = GFAPI::get_feeds( null, $form['id'] );
+			foreach ( $feeds as $feed ) {
+				// Is this a GravityFlow feed?
+				if ( 'gravityflow' === $feed['addon_slug'] ) {
+					// Yes.
+					$result = GFAPI::delete_feed( $feed['id'] );
+				}
+			}
+
 			GFAPI::update_form( $form, $form['id'] );
 			$updated_count++;
 
