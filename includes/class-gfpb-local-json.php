@@ -15,6 +15,11 @@ class GFPB_Local_JSON {
 	const ACTION = 'local_json_load';
 	const NONCE  = 'local_json_nonce';
 
+	/**
+	 * Keeps track of imported form IDs that have had feeds deleted during this request.
+	 *
+	 * @var array
+	 */
 	protected $form_ids_with_deleted_feeds = array();
 
 	/**
