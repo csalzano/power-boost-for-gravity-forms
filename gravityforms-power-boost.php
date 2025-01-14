@@ -16,6 +16,8 @@ defined( 'ABSPATH' ) || exit;
  * Version: 3.2.0
  * Text Domain: power-boost-for-gravity-forms
  * License: GPLv2 or later
+ * GitHub Plugin URI: csalzano/power-boost-for-gravity-forms
+ * Primary Branch: main
  */
 
 if ( ! defined( 'GF_POWER_BOOST_PLUGIN_ROOT' ) ) {
