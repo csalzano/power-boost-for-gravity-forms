@@ -1,6 +1,6 @@
 === Power Boost for Gravity Forms ===
 Contributors: salzano
-Tags: gravityforms, gravity forms
+Tags: gravityforms, gravity forms, resend, replace
 Requires at least: 4.0
 Tested up to: 6.7.1
 Requires PHP: 5.6
@@ -64,7 +64,7 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 == Changelog ==
 
 = 3.2.0 =
-* [Added] Adds support for feeds in backups and form replacements. Replace Forms and Local JSON features now work with plugins that allow their feeds to be exported like Gravity Flow.
+* [Added] Adds support for GravityFlow feeds in backups and form replacements. Replace Forms and Local JSON features now restore GravityFlow feeds from .json files.
 * [Added] Adds all current translation files to a folder /languages.
 * [Changed] Changes tested up to version number to 6.7.1.
 
@@ -181,7 +181,7 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 == Upgrade Notice ==
 
 = 3.2.0 =
-Adds support for feeds in backups and form replacements. Replace Forms and Local JSON features now work with plugins that allow their feeds to be exported like Gravity Flow. Adds all current translation files to a folder /languages. Changes tested up to version number to 6.7.1.
+Adds support for GravityFlow feeds in backups and form replacements. Replace Forms and Local JSON features now restore GravityFlow feeds from .json files. Adds all current translation files to a folder /languages. Changes tested up to version number to 6.7.1.
 
 = 3.1.7 =
 Starts writing the .json file when form confirmations and notifications are updated. Stops creating .json exports of inactive forms during plugin activation. Changes tested up to version number to 6.6.2.
