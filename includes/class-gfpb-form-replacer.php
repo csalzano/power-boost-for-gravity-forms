@@ -220,7 +220,7 @@ class GFPB_Form_Replacer {
 		}
 
 		// Update the forms.
-		$updated_count = 0;
+		$updated_count  = 0;
 		$imported_forms = array();
 		foreach ( $forms_array as $form ) {
 			if ( empty( $form['id'] ) ) {
@@ -245,7 +245,7 @@ class GFPB_Form_Replacer {
 			}
 
 			GFAPI::update_form( $form, $form['id'] );
-			$updated_count++;
+			++$updated_count;
 
 			/**
 			 * GFAPI::update_form() marks all forms as in active. Restore the

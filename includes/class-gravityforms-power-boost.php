@@ -261,7 +261,7 @@ class GravityForms_Power_Boost {
 				);
 
 				$instance->maybe_process_feed( GFAPI::get_entry( $entry_id ), GFAPI::get_form( $form_id ) );
-				$sent_feeds++;
+				++$sent_feeds;
 				break; // we found it, no need to keep looking at add-on instances.
 			}
 		}
