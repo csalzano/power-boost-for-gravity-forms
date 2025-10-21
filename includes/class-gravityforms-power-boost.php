@@ -306,6 +306,8 @@ class GravityForms_Power_Boost {
 				<p class="description"><?php esc_html_e( 'This form has no active feeds.', 'power-boost-for-gravity-forms' ); ?></p>
 				<?php
 			} else {
+				// We want to look up add-on names, so get all of them.
+				$addons = GFAddOn::get_registered_addons( true, true );
 				foreach ( $feeds as $feed ) {
 					$feed_name = '';
 					if ( ! empty( rgars( $feed, 'meta/feed_name' ) ) ) {
@@ -318,9 +320,12 @@ class GravityForms_Power_Boost {
 					} else {
 						$feed_name = __( 'Unnamed: ', 'power-boost-for-gravity-forms' ) . rgar( $feed, 'addon_slug' );
 					}
+					$addon_title     = $addons[ $feed['addon_slug'] ]->plugin_page_title();
+					$short_title     = $addons[ $feed['addon_slug'] ]->get_short_title();
+					$title_attribute = $addon_title . ', ' . $feed['addon_slug'];
 					?>
-					<input type="checkbox" class="gform_feeds" value="<?php echo esc_attr( $feed['id'] ); ?>" id="feed_<?php echo esc_attr( $feed['id'] ); ?>" />
-					<label for="feed_<?php echo esc_attr( $feed['id'] ); ?>"><?php echo esc_html( $feed_name ); ?></label>
+					<input type="checkbox" class="gform_feeds" value="<?php echo esc_attr( $feed['id'] ); ?>" id="feed_<?php echo esc_attr( $feed['id'] ); ?>" title="<?php echo esc_attr( $title_attribute ); ?>" />
+					<label for="feed_<?php echo esc_attr( $feed['id'] ); ?>" title="<?php echo esc_attr( $title_attribute ); ?>"><?php echo esc_html( $short_title . ': ' . $feed_name ); ?></label>
 					<br /><br />
 					<?php
 				}
