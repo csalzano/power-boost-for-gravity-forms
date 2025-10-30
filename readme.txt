@@ -2,9 +2,9 @@
 Contributors: salzano
 Tags: gravityforms, gravity forms, resend, replace
 Requires at least: 4.0
-Tested up to: 6.7.1
+Tested up to: 6.8.3
 Requires PHP: 5.6
-Stable tag: 3.2.1
+Stable tag: 3.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -62,6 +62,10 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 9. Screenshot of the dashboard. The Gravity Forms widget says, "Cached with max age 360 minutes."
 
 == Changelog ==
+
+= 3.2.2 =
+* [Fixed] Adds the feed add-on name to the Feeds meta box so it's easier to identify the source of feeds that may have unfortunate names when resending feeds for specific entries.
+* [Changed] Changes tested up to version number to 6.8.3.
 
 = 3.2.1 =
 * [Added] Adds support for GravityFlow feeds in backups and form replacements. Replace Forms and Local JSON features now restore GravityFlow feeds from .json files.
@@ -179,6 +183,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 
 == Upgrade Notice ==
+
+= 3.2.2 =
+Adds the feed add-on name to the Feeds meta box so it's easier to identify the source of feeds that may have unfortunate names when resending feeds for specific entries. Changes tested up to version number to 6.8.3.
 
 = 3.2.1 =
 Adds support for GravityFlow feeds in backups and form replacements. Replace Forms and Local JSON features now restore GravityFlow feeds from .json files. Adds all current translation files to a folder /languages. Changes tested up to version number to 6.7.1.
