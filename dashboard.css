@@ -8,5 +8,6 @@
 	margin-bottom: 0.5rem !important;
 	display: inline-block !important;
 	vertical-align: middle !important;
+	align-self: center !important;
 	line-height: 19px !important;
 }
