@@ -238,7 +238,9 @@ class GFPB_Form_Replacer {
 			$feeds = GFAPI::get_feeds( null, $form['id'] );
 			foreach ( $feeds as $feed ) {
 				// Is this a GravityFlow feed?
-				if ( 'gravityflow' === $feed['addon_slug'] ) {
+				// Or an Advanced Post Creation feed?
+				$addons_that_export_feeds = array( 'gravityflow', 'gravityformsadvancedpostcreation' );
+				if ( isset( $feed['addon_slug'] ) && in_array( $feed['addon_slug'], $addons_that_export_feeds, true ) ) {
 					// Yes.
 					$result = GFAPI::delete_feed( $feed['id'] );
 				}
