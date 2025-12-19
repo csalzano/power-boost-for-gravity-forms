@@ -166,6 +166,8 @@ class GravityForms_Power_Boost {
 		 */
 		add_filter( 'gform_entry_detail_meta_boxes', array( $this, 'add_feeds_metabox' ), 10, 1 );
 		add_action( 'wp_ajax_resend_feeds', array( $this, 'ajax_callback_resend_feeds' ) );
+		// Allow any feed to reprocess.
+		add_filter( 'gform_allow_feed_reprocessing', '__return_true' );
 
 		// Load the class file and initialize the Form Replacer.
 		require_once dirname( GF_POWER_BOOST_PLUGIN_ROOT ) . '/includes/class-gfpb-form-replacer.php';
