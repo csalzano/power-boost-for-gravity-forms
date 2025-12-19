@@ -240,6 +240,15 @@ class GFPB_Local_JSON_Addon extends GFAddOn {
 			}
 
 			GFAPI::update_form( $form, $form_id );
+
+			/**
+			 * Fields should not be an array of arrays but an array of GF_Field
+			 * objects. Add-ons that add their own field properties like Gravity
+			 * Perks Populate Anything will crash form imports during the
+			 * gform_forms_post_import hook action below without this.
+			 */
+			$form = GFFormsModel::convert_field_objects( $form );
+
 			$imported_forms[ $form_id ] = $form;
 		}
 
