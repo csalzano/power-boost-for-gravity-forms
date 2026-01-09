@@ -208,6 +208,74 @@ class GFPB_Form_Replacer {
 	}
 
 	/**
+	 * Cleans up empty inputType properties from form fields to prevent them
+	 * from being added to the JSON export. This matches the behavior of
+	 * GFExport::prepare_forms_for_export().
+	 *
+	 * @param  array $form A form array.
+	 * @return array The cleaned form array.
+	 */
+	public static function cleanup_empty_input_type( $form ) {
+		if ( ! isset( $form['fields'] ) || ! is_array( $form['fields'] ) ) {
+			return $form;
+		}
+
+		foreach ( $form['fields'] as &$field ) {
+			// Handle both array and object field formats.
+			$field_type       = is_array( $field ) ? ( isset( $field['type'] ) ? $field['type'] : '' ) : ( isset( $field->type ) ? $field->type : '' );
+			$field_input_type = is_array( $field ) ? ( isset( $field['inputType'] ) ? $field['inputType'] : '' ) : ( isset( $field->inputType ) ? $field->inputType : '' ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName.NotSnakeCase
+
+			// Remove inputType if it's empty or equals the field type.
+			if ( empty( $field_input_type ) || $field_type === $field_input_type ) {
+				if ( is_array( $field ) ) {
+					unset( $field['inputType'] ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName.NotSnakeCase
+				} else {
+					unset( $field->inputType ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+				}
+			}
+
+			// Recursively handle nested fields.
+			if ( is_array( $field ) && isset( $field['fields'] ) && is_array( $field['fields'] ) ) {
+				$field['fields'] = self::cleanup_fields_input_type( $field['fields'] );
+			} elseif ( is_object( $field ) && isset( $field->fields ) && is_array( $field->fields ) ) {
+				$field->fields = self::cleanup_fields_input_type( $field->fields );
+			}
+		}
+
+		return $form;
+	}
+
+	/**
+	 * Recursively cleans up empty inputType properties from an array of fields.
+	 *
+	 * @param  array $fields An array of field arrays or objects.
+	 * @return array The cleaned fields array.
+	 */
+	private static function cleanup_fields_input_type( $fields ) {
+		foreach ( $fields as &$field ) {
+			$field_type       = is_array( $field ) ? ( isset( $field['type'] ) ? $field['type'] : '' ) : ( isset( $field->type ) ? $field->type : '' );
+			$field_input_type = is_array( $field ) ? ( isset( $field['inputType'] ) ? $field['inputType'] : '' ) : ( isset( $field->inputType ) ? $field->inputType : '' ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName.NotSnakeCase
+
+			if ( empty( $field_input_type ) || $field_type === $field_input_type ) {
+				if ( is_array( $field ) ) {
+					unset( $field['inputType'] ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName.NotSnakeCase
+				} else {
+					unset( $field->inputType ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+				}
+			}
+
+			// Recursively handle nested fields.
+			if ( is_array( $field ) && isset( $field['fields'] ) && is_array( $field['fields'] ) ) {
+				$field['fields'] = self::cleanup_fields_input_type( $field['fields'] );
+			} elseif ( is_object( $field ) && isset( $field->fields ) && is_array( $field->fields ) ) {
+				$field->fields = self::cleanup_fields_input_type( $field->fields );
+			}
+		}
+
+		return $fields;
+	}
+
+	/**
 	 * Overwrites existing forms when they are found to save the same ID as
 	 * forms in the $forms_array parameter.
 	 *
@@ -245,6 +313,10 @@ class GFPB_Form_Replacer {
 					$result = GFAPI::delete_feed( $feed['id'] );
 				}
 			}
+
+			// Clean up empty inputType properties before updating to prevent them
+			// from being added to the JSON export.
+			$form = self::cleanup_empty_input_type( $form );
 
 			GFAPI::update_form( $form, $form['id'] );
 			++$updated_count;

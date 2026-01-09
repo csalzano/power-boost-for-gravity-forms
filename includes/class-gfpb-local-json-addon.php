@@ -239,6 +239,10 @@ class GFPB_Local_JSON_Addon extends GFAddOn {
 				}
 			}
 
+			// Clean up empty inputType properties before updating to prevent them
+			// from being added to the JSON export.
+			$form = GFPB_Form_Replacer::cleanup_empty_input_type( $form );
+
 			GFAPI::update_form( $form, $form_id );
 
 			/**
