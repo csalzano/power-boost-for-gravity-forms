@@ -24,7 +24,7 @@ class GFPB_Local_JSON_Addon extends GFAddOn {
 	 *
 	 * @var string
 	 */
-	protected $_version = '1.0.0';
+	protected $_version = '3.2.4';
 
 	/**
 	 * Minimum Gravity Forms version number required to run this add-on.
