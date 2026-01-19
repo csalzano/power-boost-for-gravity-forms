@@ -110,5 +110,5 @@ The number of seconds to cache the Gravity Forms dashboard widget database queri
 
 ## MORE PLUGINS
 
-[Power Boost for ACF](https://github.com/csalzano/power-boost-acf)
-[Embed PDF for Gravity Forms](https://wordpress.org/plugins/embed-pdf-gravityforms/)
+ - [Coral Bridge](https://breakfastco.xyz/coralbridge) connects Gravity Forms and HubSpot CRM
+ - [Embed PDF for Gravity Forms](https://wordpress.org/plugins/embed-pdf-gravityforms/)
