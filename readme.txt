@@ -4,7 +4,7 @@ Tags: gravityforms, gravity forms, resend, replace
 Requires at least: 4.0
 Tested up to: 6.9
 Requires PHP: 5.6
-Stable tag: 3.2.4
+Stable tag: 3.2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -62,6 +62,11 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 9. Screenshot of the dashboard. The Gravity Forms widget says, "Cached with max age 360 minutes."
 
 == Changelog ==
+
+= 3.2.5 =
+* [Fixed] Fixes incorrect translation slugs.
+* [Fixed] Adds caching to more database queries.
+* [Fixed] Stops using transients to cache the dashboard widget query results. Starts using wp_cache_get() instead.
 
 = 3.2.4 =
 * [Fixed] Prevents empty inputType attributes from populating in form json files when forms are imported using the form replacer class.
@@ -193,6 +198,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 
 == Upgrade Notice ==
+
+= 3.2.5 =
+Fixes incorrect translation slugs. Adds caching to more database queries. Stops using transients to cache the dashboard widget query results. Starts using wp_cache_get() instead.
 
 = 3.2.4 =
 Prevents empty inputType attributes from populating in form json files when forms are imported using the form replacer class.
