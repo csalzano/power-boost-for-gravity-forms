@@ -53,7 +53,7 @@ class GFPB_Form_Summary_Cacher {
 		 *
 		 * @param string $dashboard_title The dashboard widget title.
 		 */
-		$dashboard_title = apply_filters( 'gform_dashboard_title', __( 'Gravity Forms', 'gravityforms' ) );
+		$dashboard_title = apply_filters( 'gform_dashboard_title', __( 'Gravity Forms', 'power-boost-for-gravity-forms' ) );
 		wp_add_dashboard_widget( 'rg_forms_dashboard', $dashboard_title, array( __CLASS__, 'dashboard' ) );
 	}
 
@@ -76,11 +76,11 @@ class GFPB_Form_Summary_Cacher {
 				<thead>
 				<tr>
 					<td class="gf_dashboard_form_title_header" style="text-align:left; padding:8px 18px!important; font-weight:bold;">
-						<i><?php esc_html_e( 'Title', 'gravityforms' ); ?></i></td>
+						<i><?php esc_html_e( 'Title', 'power-boost-for-gravity-forms' ); ?></i></td>
 					<td class="gf_dashboard_entries_unread_header" style="text-align:center; padding:8px 18px!important; font-weight:bold;">
-						<i><?php esc_html_e( 'Unread', 'gravityforms' ); ?></i></td>
+						<i><?php esc_html_e( 'Unread', 'power-boost-for-gravity-forms' ); ?></i></td>
 					<td class="gf_dashboard_entries_total_header" style="text-align:center; padding:8px 18px!important; font-weight:bold;">
-						<i><?php esc_html_e( 'Total', 'gravityforms' ); ?></i></td>
+						<i><?php esc_html_e( 'Total', 'power-boost-for-gravity-forms' ); ?></i></td>
 				</tr>
 				</thead>
 
@@ -101,10 +101,10 @@ class GFPB_Form_Summary_Cacher {
 							</td>
 							<td class="gf_dashboard_entries_unread column-date" style="padding:8px 18px; text-align:center;">
 								<?php /* translators: 1. A timestamp like August 11, 2023 at 7:40 pm. */ ?>
-								<a <?php echo $form['unread_count'] > 0 ? "class='form_entries_unread' style='font-weight:bold;'" : ''; ?> href="admin.php?page=gf_entries&view=entries&filter=unread&id=<?php echo absint( $form['id'] ); ?>" aria-label="<?php printf( esc_attr__( 'Last Entry: %s', 'gravityforms' ), esc_attr( $date_display ) ); ?>"><?php echo esc_html( absint( $form['unread_count'] ) ); ?></a>
+								<a <?php echo $form['unread_count'] > 0 ? "class='form_entries_unread' style='font-weight:bold;'" : ''; ?> href="admin.php?page=gf_entries&view=entries&filter=unread&id=<?php echo absint( $form['id'] ); ?>" aria-label="<?php printf( esc_attr__( 'Last Entry: %s', 'power-boost-for-gravity-forms' ), esc_attr( $date_display ) ); ?>"><?php echo esc_html( absint( $form['unread_count'] ) ); ?></a>
 							</td>
 							<td class="gf_dashboard_entries_total column-date" style="padding:8px 18px; text-align:center;">
-								<a href="admin.php?page=gf_entries&view=entries&id=<?php echo absint( $form['id'] ); ?>" aria-label="<?php esc_attr_e( 'View All Entries', 'gravityforms' ); ?>"><?php echo absint( $form['total_entries'] ); ?></a>
+								<a href="admin.php?page=gf_entries&view=entries&id=<?php echo absint( $form['id'] ); ?>" aria-label="<?php esc_attr_e( 'View All Entries', 'power-boost-for-gravity-forms' ); ?>"><?php echo absint( $form['total_entries'] ); ?></a>
 							</td>
 						</tr>
 						<?php
@@ -116,7 +116,7 @@ class GFPB_Form_Summary_Cacher {
 
 			<?php if ( GFCommon::current_user_can_any( 'gravityforms_edit_forms' ) ) : ?>
 				<p class="textright">
-				<i title="<?php esc_attr_e( 'Power Boost for Gravity Forms', 'power-boost-for-gravity-forms' ); ?>"><?php echo esc_html( self::get_cache_note() ); ?></i><a class="gf_dashboard_button button" href="admin.php?page=gf_edit_forms"><?php esc_html_e( 'View All Forms', 'gravityforms' ); ?></a>
+				<i title="<?php esc_attr_e( 'Power Boost for Gravity Forms', 'power-boost-for-gravity-forms' ); ?>"><?php echo esc_html( self::get_cache_note() ); ?></i><a class="gf_dashboard_button button" href="admin.php?page=gf_edit_forms"><?php esc_html_e( 'View All Forms', 'power-boost-for-gravity-forms' ); ?></a>
 			<?php endif; ?>
 			</p>
 			<?php
@@ -125,7 +125,7 @@ class GFPB_Form_Summary_Cacher {
 			<div class="gf_dashboard_noforms_notice">
 				<?php
 				/* translators: 1. Anchor element opening tag. 2. Anchor element closing tag. */
-				printf( esc_html__( 'You don\'t have any forms. Let\'s go %1$screate one %2$s!', 'gravityforms' ), '<a href="admin.php?page=gf_new_form">', '</a>' );
+				printf( esc_html__( 'You don\'t have any forms. Let\'s go %1$screate one %2$s!', 'power-boost-for-gravity-forms' ), '<a href="admin.php?page=gf_new_form">', '</a>' );
 				?>
 			</div>
 			<?php
