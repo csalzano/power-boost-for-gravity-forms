@@ -143,7 +143,7 @@ class GFPB_Local_JSON {
 		$upload_dir = wp_get_upload_dir();
 		$dir        = $upload_dir['basedir'] . DIRECTORY_SEPARATOR . 'gf-json';
 		if ( ! is_dir( $dir ) ) {
-			mkdir( $dir );
+			wp_mkdir_p( $dir );
 		}
 		return apply_filters( 'gravityforms_local_json_save_path', $dir );
 	}
