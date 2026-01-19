@@ -198,7 +198,7 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 Prevents empty inputType attributes from populating in form json files when forms are imported using the form replacer class.
 
 = 3.2.3 =
-Allows any feed to be reprocessed regardless of the add-on's $_supports_feed_reprocessing value. Adds Advanced Post Creation feeds to the same conditions as GravityFlow to prevent duplication when updating existing forms Prevents add-ons that add data to form objects like Populate Anything from crashing form imports when loading .json files. Ensures our field ID pills are styled despite Gravity Forms attempt to block all CSS. Changes tested up to version number to 6.9.0.
+Allows any feed to be re-sent. Prevents duplication in Advanced Post Creation feeds when updating existing forms from JSON. Prevents add-ons that add data to form objects like Populate Anything from crashing form imports when loading .json files.
 
 = 3.2.2 =
 Adds the feed add-on name to the Feeds meta box so it's easier to identify the source of feeds that may have unfortunate names when resending feeds for specific entries. Changes tested up to version number to 6.8.3.
@@ -225,13 +225,13 @@ Adds compatibility with language packs by using the correct text domain. Changes
 Fixes an error during activation when Gravity Forms is not active. Changes tested up to version number to 6.3.1.
 
 = 3.1.1 =
-Adds a screenshot and documentation about the cached dashboard widget added in 3.1.0: "Adds caching to the Gravity Forms dashboard widget by replacing the widget with our own copy. The 3 database queries are cached for a maximum of 6 hours instead of running every time the dashboard widget loads. Six hours can be changed with the a filter `gravityforms_dashboard_cache_duration`."
+Adds a screenshot and documentation about the cached dashboard widget added in 3.1.0. The dashboard widget caches database queries for up to 6 hours instead of running them every time the widget loads.
 
 = 3.1.0 =
 Adds caching to the Gravity Forms dashboard widget by replacing the widget with our own copy. The 3 database queries are cached for a maximum of 6 hours instead of running every time the dashboard widget loads.
 
 = 3.0.2 =
-Adds support for PHP 7.2 by fixing syntax errors around commas after final function parameters. Thanks be to EffakT on Github for this fix. Bug fix when linking users to redirect-type confirmations after using the Replace Forms feature. No longer writes a form .json file when the plugin is activated if a form's file already exists and does not need updating.
+Adds support for PHP 7.2.. Bug fix when linking users to redirect-type confirmations after using the Replace Forms feature. No longer writes a form .json file when the plugin is activated if a form's file already exists and does not need updating.
 
 = 3.0.1 =
 Fixes a bug when loading a form JSON file on the Local JSON tab. Now explicity casts a form ID as an integer. Tested up to version 6.1.1.
@@ -246,10 +246,10 @@ Bug fixes in the newest feature that enables merge tags in HTML fields. Now play
 Enables merge tags in HTML fields
 
 = 2.3.2 = 
-Resend Feeds now handles feeds that store feed names in a feedName property rather than feed_name or provide no feed name at all. Also, a nice name is provided for the Partial Entries add-on which does not use feed names. Resend Feeds now disables asynchronous feed processing so feeds are resent immediately after pressing the Resend button. Fixes a green checkmark not showing near "Feeds were resent successfully."
+Resend Feeds now handles feeds that store feed names in a feedName property rather than feed_name or provide no feed name at all. Resend Feeds now disables asynchronous feed processing so feeds are resent immediately. Fixes a green checkmark not showing near "Feeds were resent successfully."
 
 = 2.3.0 =
-Now creates .json file exports of each form during plugin activation. Form replacer now detects redirect-type confirmations and reminds users that these URLs might need to be updated after replacing forms. Fixes a bug in the Form replacer when providing an Edit Form link to users who just imported a single form. Bumps tested up to version to 5.9.3.
+Now creates .json file exports of each form during plugin activation. Form replacer now detects redirect-type confirmations and reminds users that these URLs might need to be updated. Fixes a bug in the Form replacer when providing an Edit Form link to users who just imported a single form.
 
 = 2.2.0 =
 Adds a "Copy Shortcode" row action link to the forms list that copies a form's [gravityform] shortcode to the clipboard. Removes CSS that helps show long form names in the form switcher dropdown. Core Gravity Forms has caught up and fixed this bug.
