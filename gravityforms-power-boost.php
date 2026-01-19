@@ -25,5 +25,5 @@ if ( ! defined( 'GF_POWER_BOOST_PLUGIN_ROOT' ) ) {
 }
 
 require_once 'includes/class-gravityforms-power-boost.php';
-$power_boost_9000 = new GravityForms_Power_Boost();
-$power_boost_9000->add_hooks();
+$gfpb_power_boost = new GravityForms_Power_Boost();
+$gfpb_power_boost->add_hooks();
