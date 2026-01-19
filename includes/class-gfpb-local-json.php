@@ -62,7 +62,12 @@ class GFPB_Local_JSON {
 	 */
 	public function track_deleted_feed( $feed_id ) {
 		global $wpdb;
-		$form_id = $wpdb->get_var( $wpdb->prepare( "SELECT form_id FROM {$wpdb->prefix}gf_addon_feed WHERE id = %d", $feed_id ) );
+		$cache_key = 'gfpb_feed_form_id_' . $feed_id;
+		$form_id   = wp_cache_get( $cache_key );
+		if ( false === $form_id ) {
+			$form_id = $wpdb->get_var( $wpdb->prepare( "SELECT form_id FROM {$wpdb->prefix}gf_addon_feed WHERE id = %d", $feed_id ) );
+			wp_cache_set( $cache_key, $form_id, '', 24 * HOUR_IN_SECONDS );
+		}
 		if ( ! empty( $form_id ) ) {
 			$this->form_ids_with_deleted_feeds[] = $form_id;
 		}
