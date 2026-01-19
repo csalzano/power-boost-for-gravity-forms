@@ -2,7 +2,7 @@
 Contributors: salzano
 Tags: gravityforms, gravity forms, resend, replace
 Requires at least: 4.0
-Tested up to: 6.9.0
+Tested up to: 6.9
 Requires PHP: 5.6
 Stable tag: 3.2.4
 License: GPLv2 or later
