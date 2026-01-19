@@ -139,34 +139,34 @@ class GFPB_Local_JSON_Addon extends GFAddOn {
 	 * @return array
 	 */
 	public function form_settings_fields( $form ) {
-		$field_title = esc_html__( 'Available', 'gravityforms-local-json' );
+		$field_title = esc_html__( 'Available', 'power-boost-for-gravity-forms' );
 
 		// Do we have a .json file for this form?
 		$form_id = rgget( 'id' );
 		if ( ! GFPB_Local_JSON::have_json( $form_id ) ) {
-			$field_title = esc_html__( 'Unavailable', 'gravityforms-local-json' );
+			$field_title = esc_html__( 'Unavailable', 'power-boost-for-gravity-forms' );
 		}
 
 		return array(
 			array(
-				'title'  => esc_html__( 'Load From File', 'gravityforms-local-json' ),
+				'title'  => esc_html__( 'Load From File', 'power-boost-for-gravity-forms' ),
 				'fields' => array(
 					array(
 						'label'   => $field_title,
 						'type'    => 'availability',
 						'name'    => 'enabled',
-						'tooltip' => esc_html__( 'JSON form export files can be used to update forms during deployments.', 'gravityforms-local-json' ),
+						'tooltip' => esc_html__( 'JSON form export files can be used to update forms during deployments.', 'power-boost-for-gravity-forms' ),
 					),
 				),
 			),
 			array(
-				'title'  => esc_html__( 'File Location', 'gravityforms-local-json' ),
+				'title'  => esc_html__( 'File Location', 'power-boost-for-gravity-forms' ),
 				'fields' => array(
 					array(
 						'label'   => 'JSON Form Exports Path',
 						'type'    => 'files_location',
 						'name'    => 'enabled',
-						'tooltip' => esc_html__( 'Where does this plugin store the form export .json files?', 'gravityforms-local-json' ),
+						'tooltip' => esc_html__( 'Where does this plugin store the form export .json files?', 'power-boost-for-gravity-forms' ),
 					),
 				),
 			),
