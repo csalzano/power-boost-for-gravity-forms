@@ -144,12 +144,12 @@ class GFPB_Form_Summary_Cacher {
 	 * @return string
 	 */
 	protected static function get_cache_note() {
-		$expires = (int) get_option( '_transient_timeout_gf_dashboard_unread_results', 0 );
-		if ( empty( $expires ) ) {
+		$cache_duration = apply_filters( 'gravityforms_dashboard_cache_duration', 6 * HOUR_IN_SECONDS );
+		if ( empty( $cache_duration ) ) {
 			return 'Cached with no expiration.&nbsp; ';
 		}
-		$time_left = $expires - time();
-		return 'Cached with max age ' . round( $time_left / MINUTE_IN_SECONDS ) . ' minutes.&nbsp; ';
+		$minutes = round( $cache_duration / MINUTE_IN_SECONDS );
+		return 'Cached with max age ' . $minutes . ' minutes.&nbsp; ';
 	}
 
 	/**
@@ -171,8 +171,9 @@ class GFPB_Form_Summary_Cacher {
 
 		// Getting number of unread and total leads for all forms.
 		$key            = 'gf_dashboard_unread_results';
-		$unread_results = get_transient( $key );
-		if ( empty( $unread_results ) ) {
+		$unread_results = wp_cache_get( $key );
+		if ( false === $unread_results ) {
+			// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 			$unread_results = $wpdb->get_results(
 				$wpdb->prepare(
 					"SELECT l.form_id, count(l.id) as unread_count
@@ -184,12 +185,14 @@ class GFPB_Form_Summary_Cacher {
 				),
 				ARRAY_A
 			);
-			set_transient( $key, $unread_results, $cache_duration );
+			// phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			wp_cache_set( $key, $unread_results, '', $cache_duration );
 		}
 
 		$key               = 'gf_dashboard_lead_date_results';
-		$lead_date_results = get_transient( $key );
-		if ( empty( $lead_date_results ) ) {
+		$lead_date_results = wp_cache_get( $key );
+		if ( false === $lead_date_results ) {
+			// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 			$lead_date_results = $wpdb->get_results(
 				$wpdb->prepare(
 					"SELECT l.form_id, max(l.date_created) as last_entry_date, count(l.id) as total_entries
@@ -200,14 +203,16 @@ class GFPB_Form_Summary_Cacher {
 				),
 				ARRAY_A
 			);
-			set_transient( $key, $lead_date_results, $cache_duration );
+			// phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			wp_cache_set( $key, $lead_date_results, '', $cache_duration );
 		}
 
 		$key   = 'gf_dashboard_forms';
-		$forms = get_transient( $key );
-		if ( empty( $forms ) ) {
+		$forms = wp_cache_get( $key );
+		if ( false === $forms ) {
 			$form_table_name = esc_sql( GFFormsModel::get_form_table_name() );
-			$forms           = $wpdb->get_results(
+			// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			$forms = $wpdb->get_results(
 				$wpdb->prepare(
 					"SELECT id, title, is_trash, '' as last_entry_date, 0 as unread_count
 						FROM $form_table_name
@@ -217,7 +222,8 @@ class GFPB_Form_Summary_Cacher {
 				),
 				ARRAY_A
 			);
-			set_transient( $key, $forms, $cache_duration );
+			// phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			wp_cache_set( $key, $forms, '', $cache_duration );
 		}
 
 		$count = count( $forms );
