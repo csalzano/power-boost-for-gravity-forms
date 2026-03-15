@@ -319,7 +319,7 @@ class GFPB_Form_Replacer {
 				}
 				
 				// Allow theme or plugins to prevent deletion of the feed
-				$should_delete = apply_filters( 'gfpb_local_json_should_delete_feed', $should_delete, $feed );
+				$should_delete = apply_filters( 'gfpb_local_json_should_delete_feed', $should_delete, $feed, $form );
 				if ( $should_delete ) {
 					$result = GFAPI::delete_feed( $feed['id'] );
 				}
