@@ -316,6 +316,7 @@ class GravityForms_Power_Boost {
 					if ( ! isset( $addons[ $addon_slug ] ) ) {
 						$addons[ $addon_slug ] = GFAddOn::get_addon_by_slug( $addon_slug );
 					}
+					if (empty($addons[ $addon_slug ])) continue;
 
 					$feed_name = '';
 					if ( ! empty( rgars( $feed, 'meta/feed_name' ) ) ) {
