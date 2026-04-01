@@ -290,6 +290,13 @@ class GFPB_Form_Replacer {
 		// Update the forms.
 		$updated_count  = 0;
 		$imported_forms = array();
+
+		// These addons, we know handle feeds themselves
+		$addons_that_export_feeds = array( 'gravityflow', 'gravityformsadvancedpostcreation' );
+
+		// Allow theme or plugins to manipulate this array
+		$addons_that_export_feeds = apply_filters('gfpb_local_json_addons_that_export_feeds', $addons_that_export_feeds);
+
 		foreach ( $forms_array as $form ) {
 			if ( empty( $form['id'] ) ) {
 				continue;
@@ -307,13 +314,7 @@ class GFPB_Form_Replacer {
 			foreach ( $feeds as $feed ) {
 				$should_delete = false;
 
-				// Is this a GravityFlow feed?
-				// Or an Advanced Post Creation feed?
-				$addons_that_export_feeds = array( 'gravityflow', 'gravityformsadvancedpostcreation' );
-
-				// Allow theme or plugins to manipulate this array
-				$addons_that_export_feeds = apply_filters('gfpb_local_json_addons_that_export_feeds', $addons_that_export_feeds);
-
+				// Is this feed already handled by another addon?
 				if ( isset( $feed['addon_slug'] ) && in_array( $feed['addon_slug'], $addons_that_export_feeds, true ) ) {
 					$should_delete = true;
 				}
