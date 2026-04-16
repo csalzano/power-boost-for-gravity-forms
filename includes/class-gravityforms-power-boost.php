@@ -329,8 +329,8 @@ class GravityForms_Power_Boost {
 					} else {
 						$feed_name = __( 'Unnamed: ', 'power-boost-for-gravity-forms' ) . rgar( $feed, 'addon_slug' );
 					}
-					$addon_title     = isset( $addons[ $addon_slug ] ) ? $addons[ $addon_slug ]->plugin_page_title() : $addon_slug;
-					$short_title     = isset( $addons[ $addon_slug ] ) ? $addons[ $addon_slug ]->get_short_title() : $addon_slug;
+				$addon_title     = ( isset( $addons[ $addon_slug ] ) && is_object( $addons[ $addon_slug ] ) ) ? $addons[ $addon_slug ]->plugin_page_title() : $addon_slug;
+				$short_title     = ( isset( $addons[ $addon_slug ] ) && is_object( $addons[ $addon_slug ] ) ) ? $addons[ $addon_slug ]->get_short_title() : $addon_slug;
 					$title_attribute = $addon_title . ', ' . $addon_slug;
 					?>
 					<input type="checkbox" class="gform_feeds" value="<?php echo esc_attr( $feed['id'] ); ?>" id="feed_<?php echo esc_attr( $feed['id'] ); ?>" title="<?php echo esc_attr( $title_attribute ); ?>" />
