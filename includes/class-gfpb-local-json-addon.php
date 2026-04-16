@@ -222,19 +222,31 @@ class GFPB_Local_JSON_Addon extends GFAddOn {
 		}
 		$forms_array    = json_decode( $json, true );
 		$imported_forms = array();
+
+		// These addons, we know handle feeds themselves
+		$addons_that_export_feeds = array( 'gravityflow', 'gravityformsadvancedpostcreation' );
+
+		// Allow theme or plugins to manipulate this array
+		$addons_that_export_feeds = apply_filters('gfpb_local_json_addons_that_export_feeds', $addons_that_export_feeds);
+
 		foreach ( $forms_array as $form ) {
 			if ( empty( $form['id'] ) || $form['id'] !== $form_id ) {
 				continue;
 			}
 
-			// Delete all GravityFlow feeds or they will be duplicated.
+			// Delete specific feeds or they will be duplicated.
 			$feeds = GFAPI::get_feeds( null, $form['id'] );
 			foreach ( $feeds as $feed ) {
-				// Is this a GravityFlow feed?
-				// Or an Advanced Post Creation feed?
-				$addons_that_export_feeds = array( 'gravityflow', 'gravityformsadvancedpostcreation' );
+				$should_delete = false;
+				
+				// Is this feed already handled by another addon?
 				if ( isset( $feed['addon_slug'] ) && in_array( $feed['addon_slug'], $addons_that_export_feeds, true ) ) {
-					// Yes.
+					$should_delete = true;
+				}
+				
+				// Allow theme or plugins to prevent deletion of the feed
+				$should_delete = apply_filters( 'gfpb_local_json_should_delete_feed', $should_delete, $feed, $form );
+				if ( $should_delete ) {
 					$result = GFAPI::delete_feed( $feed['id'] );
 				}
 			}
