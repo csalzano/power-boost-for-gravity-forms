@@ -104,7 +104,76 @@ Controls whether the form JSON is encoded with the `JSON_PRETTY_PRINT` flag. Def
 
 `gravityforms_dashboard_cache_duration`
 
-The number of seconds to cache the Gravity Forms dashboard widget database queries. Defaults to `6 * HOURS_IN_SECONDS`
+The number of seconds to cache the Gravity Forms dashboard widget database queries. Defaults to `6 * HOUR_IN_SECONDS`
+
+&nbsp;
+
+### Control Which Add-ons Export Feeds
+
+`gfpb_local_json_addons_that_export_feeds`
+
+An array of add-on slugs whose feeds are included in form JSON exports and should therefore be deleted before a form is re-imported to prevent duplication. Used by both the Local JSON and Replace Forms features. Defaults to `['gravityflow', 'gravityformsadvancedpostcreation']`.
+
+#### Example
+
+Removes GravityFlow from the list so its feeds are left in place and never deleted during imports.
+
+```php
+<?php
+add_filter( 'gfpb_local_json_addons_that_export_feeds', 'my_gfpb_addons_that_export_feeds' );
+/**
+ * Removes GravityFlow from the list of add-ons whose feeds are deleted
+ * before a form is updated from a JSON file.
+ *
+ * @param  array $slugs Add-on slugs.
+ * @return array
+ */
+function my_gfpb_addons_that_export_feeds( $slugs ) {
+	return array_diff( $slugs, array( 'gravityflow' ) );
+}
+```
+
+&nbsp;
+
+### Control Whether a Feed is Deleted During Import
+
+`gfpb_local_json_should_delete_feed`
+
+Controls whether an individual feed is deleted before its form is updated from a JSON file. Return `true` to delete the feed (so the version from the JSON file is used), or `false` to keep it. Used by both the Local JSON and Replace Forms features.
+
+| Parameter | Type | Description |
+|---|---|---|
+| `$should_delete` | `bool` | Whether the feed will be deleted. |
+| `$feed` | `array` | The feed data. |
+| `$form` | `array` | The form being updated. |
+
+#### Example
+
+Prevents GravityFlow feeds from being deleted for one specific form, leaving that form's GravityFlow configuration untouched during imports.
+
+```php
+<?php
+add_filter( 'gfpb_local_json_should_delete_feed', 'my_gfpb_should_delete_feed', 10, 3 );
+/**
+ * Prevents GravityFlow feeds from being deleted when a specific form is
+ * updated from a JSON file.
+ *
+ * @param  bool  $should_delete Whether the feed will be deleted.
+ * @param  array $feed          Feed data.
+ * @param  array $form          Form data.
+ * @return bool
+ */
+function my_gfpb_should_delete_feed( $should_delete, $feed, $form ) {
+	$protected_form_id = 5;
+	if ( isset( $form['id'], $feed['addon_slug'] )
+		&& $protected_form_id === (int) $form['id']
+		&& 'gravityflow' === $feed['addon_slug']
+	) {
+		return false;
+	}
+	return $should_delete;
+}
+```
 
 &nbsp;
 
