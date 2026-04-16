@@ -311,6 +311,9 @@ class GFPB_Form_Replacer {
 
 			// Delete specific feeds or they will be duplicated.
 			$feeds = GFAPI::get_feeds( null, $form['id'] );
+			if ( is_wp_error( $feeds ) ) {
+				$feeds = array();
+			}
 			foreach ( $feeds as $feed ) {
 				$should_delete = false;
 

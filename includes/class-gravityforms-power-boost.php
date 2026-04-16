@@ -233,6 +233,9 @@ class GravityForms_Power_Boost {
 		$sent_feeds = 0;
 
 		$feeds = GFAPI::get_feeds( null, $form_id, null ); // defaults to active feeds only.
+		if ( is_wp_error( $feeds ) ) {
+			$feeds = array();
+		}
 		foreach ( $feeds as $feed ) {
 			if ( ! in_array( $feed['id'], $feed_ids, true ) ) {
 				continue;
