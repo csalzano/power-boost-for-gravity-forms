@@ -83,7 +83,11 @@ class GFPB_Local_JSON {
 			return;
 		}
 		foreach ( $this->form_ids_with_deleted_feeds as $form_id ) {
-			self::save_form_export( GFAPI::get_form( $form_id ) );
+			$form = GFAPI::get_form( $form_id );
+			if ( false === $form ) {
+				continue;
+			}
+			self::save_form_export( $form );
 		}
 	}
 
@@ -211,7 +215,11 @@ class GFPB_Local_JSON {
 		if ( ! class_exists( 'GFAPI' ) ) {
 			return;
 		}
-		self::save_form_export( GFAPI::get_form( $form_id ) );
+		$form = GFAPI::get_form( $form_id );
+		if ( false === $form ) {
+			return;
+		}
+		self::save_form_export( $form );
 	}
 
 	/**
@@ -252,6 +260,10 @@ class GFPB_Local_JSON {
 		if ( ! class_exists( 'GFAPI' ) ) {
 			return;
 		}
-		self::save_form_export( GFAPI::get_form( $form_id ) );
+		$form = GFAPI::get_form( $form_id );
+		if ( false === $form ) {
+			return;
+		}
+		self::save_form_export( $form );
 	}
 }
