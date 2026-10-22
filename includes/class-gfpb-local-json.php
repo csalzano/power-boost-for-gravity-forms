@@ -186,13 +186,21 @@ class GFPB_Local_JSON {
 		// touch the forms before they're saved with this filter.
 		$forms = apply_filters( 'gravityforms_local_json_save_form', $forms );
 
+		/*
+		 * A missing inputType and a null inputType are the same value.
+		 * GF_Field::__get() and offsetGet() store "" the first time something
+		 * reads the property. Form saves run this export twice, so a read
+		 * between the two hooks used to rewrite the file.
+		 */
+		$forms = self::strip_empty_input_types( $forms );
+
 		// get path where we are saving .json files, {form_id}.json.
 		$save_path = self::json_file_path( $form['id'] );
 
 		$json = apply_filters( 'gravityforms_local_json_minimize', false ) ? wp_json_encode( $forms ) : wp_json_encode( $forms, JSON_PRETTY_PRINT );
 
 		// Would the file be different?
-		if ( file_exists( $save_path ) && file_get_contents( $save_path ) === $json ) {
+		if ( file_exists( $save_path ) && self::export_json_is_unchanged( file_get_contents( $save_path ), $json ) ) {
 			// No. Do not update it, preserve the file date.
 			return;
 		}
@@ -265,5 +273,129 @@ class GFPB_Local_JSON {
 			return;
 		}
 		self::save_form_export( $form );
+	}
+
+	/**
+	 * Whether two export JSON strings describe the same form.
+	 *
+	 * Empty inputType values are ignored. null, "", and an omitted property
+	 * all mean "use the field type", and Gravity Forms rewrites between those
+	 * spellings in a single request.
+	 *
+	 * @param string $existing JSON already stored in the export file.
+	 * @param string $json     JSON this request would write.
+	 * @return bool
+	 */
+	protected static function export_json_is_unchanged( $existing, $json ) {
+		if ( $existing === $json ) {
+			return true;
+		}
+
+		$existing_data = json_decode( $existing, true );
+		$new_data      = json_decode( $json, true );
+		if ( ! is_array( $existing_data ) || ! is_array( $new_data ) ) {
+			return false;
+		}
+
+		$existing_data = self::strip_empty_input_types( $existing_data );
+		$new_data      = self::strip_empty_input_types( $new_data );
+
+		return wp_json_encode( $existing_data ) === wp_json_encode( $new_data );
+	}
+
+	/**
+	 * Removes inputType values that do not change the field.
+	 *
+	 * Walks each form in the export payload from GFExport::prepare_forms_for_export(),
+	 * including nested repeater fields. Field objects
+	 * are the same instances Gravity Forms keeps in its form cache, so this
+	 * also clears an empty inputType that a property read just materialized.
+	 *
+	 * @param array $forms Export payload, or a list of fields.
+	 * @return array
+	 */
+	protected static function strip_empty_input_types( $forms ) {
+		if ( ! is_array( $forms ) ) {
+			return $forms;
+		}
+
+		foreach ( $forms as $key => $export_form ) {
+			if ( ! is_array( $export_form ) ) {
+				continue;
+			}
+
+			if ( isset( $export_form['fields'] ) && is_array( $export_form['fields'] ) ) {
+				$forms[ $key ]['fields'] = self::strip_empty_input_types_from_fields( $export_form['fields'] );
+				continue;
+			}
+
+			$forms[ $key ] = self::strip_empty_input_type_from_field( $export_form );
+		}
+
+		return $forms;
+	}
+
+	/**
+	 * Removes empty inputType values from each field in a list.
+	 *
+	 * @param array $fields Field arrays or GF_Field objects.
+	 * @return array
+	 */
+	protected static function strip_empty_input_types_from_fields( $fields ) {
+		foreach ( $fields as $index => $field ) {
+			$fields[ $index ] = self::strip_empty_input_type_from_field( $field );
+		}
+
+		return $fields;
+	}
+
+	/**
+	 * Removes an empty inputType from one field and from fields nested in it.
+	 *
+	 * Reading a missing inputType on a GF_Field stores "". property_exists()
+	 * is used so a field that never had the property is left untouched.
+	 *
+	 * @param mixed $field A field array or object.
+	 * @return mixed
+	 */
+	protected static function strip_empty_input_type_from_field( $field ) {
+		if ( is_array( $field ) ) {
+			$type = isset( $field['type'] ) ? $field['type'] : null;
+			if ( array_key_exists( 'inputType', $field ) && self::input_type_is_empty( $field['inputType'], $type ) ) {
+				unset( $field['inputType'] );
+			}
+			if ( isset( $field['fields'] ) && is_array( $field['fields'] ) ) {
+				$field['fields'] = self::strip_empty_input_types_from_fields( $field['fields'] );
+			}
+			return $field;
+		}
+
+		if ( ! is_object( $field ) ) {
+			return $field;
+		}
+
+		if ( property_exists( $field, 'inputType' ) ) {
+			$type = property_exists( $field, 'type' ) ? $field->type : null;
+			if ( self::input_type_is_empty( $field->inputType, $type ) ) {
+				unset( $field->inputType );
+			}
+		}
+
+		if ( isset( $field->fields ) && is_array( $field->fields ) ) {
+			$field->fields = self::strip_empty_input_types_from_fields( $field->fields );
+		}
+
+		return $field;
+	}
+
+	/**
+	 * Whether an inputType value adds nothing beyond the field type.
+	 *
+	 * @param mixed $input_type Stored input type.
+	 * @param mixed $type       Field type.
+	 * @return bool
+	 */
+	protected static function input_type_is_empty( $input_type, $type ) {
+		return null === $input_type || '' === $input_type || ( null !== $type && '' !== $type && $input_type === $type );
 	}
 }
