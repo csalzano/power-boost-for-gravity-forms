@@ -1,0 +1,21 @@
+# Normalize line endings to LF for text files.
+* text=auto
+
+# Explicit text types.
+*.css text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.php text eol=lf
+*.po text eol=lf
+*.pot text eol=lf
+*.svg text eol=lf
+*.txt text eol=lf
+
+# Binary assets.
+*.gif binary
+*.ico binary
+*.jpeg binary
+*.jpg binary
+*.png binary
+*.webp binary
