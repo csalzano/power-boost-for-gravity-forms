@@ -2,9 +2,9 @@
 Contributors: salzano
 Tags: gravityforms, gravity forms, resend, replace
 Requires at least: 4.0
-Tested up to: 6.9
+Tested up to: 7.1.3
 Requires PHP: 5.6
-Stable tag: 3.2.6
+Stable tag: 3.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -62,6 +62,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 9. Screenshot of the dashboard. The Gravity Forms widget says, "Cached with max age 360 minutes."
 
 == Changelog ==
+
+= 3.2.7 =
+* [Fixed] Stops a form save from rewriting its Local JSON file when empty inputType values are the only change.
 
 = 3.2.6 =
 * [Fixed] Bug fixes. Guards against Gravity Forms API calls returning errors or unexpected values when fetching feeds and forms.
@@ -202,6 +205,9 @@ Have an idea for a new feature? Please visit the web page, and leave a comment.
 
 
 == Upgrade Notice ==
+
+= 3.2.7 =
+Bug fix. Stops a form save from rewriting its Local JSON file when empty inputType values are the only change.
 
 = 3.2.6 =
 Fixes fatal errors in the Feeds meta box and when processing feeds or form data. Adds a filter to control which feeds are deleted during form replacements and JSON imports.
