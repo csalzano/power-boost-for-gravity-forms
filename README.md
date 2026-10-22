@@ -84,6 +84,38 @@ function power_boost_change_json_path() {
 
 &nbsp;
 
+### Change the Local JSON Filename
+
+`gravityforms_local_json_file_name`
+
+The filename of a form's export .json file. Defaults to `{form_id}.json`, inside the directory from `gravityforms_local_json_save_path`. Return a single filename that ends in lowercase `.json` and contains only letters, numbers, dots, underscores, and hyphens. A path, another extension, or any other unusable value is ignored and the default name is kept. Changing the name does not delete a file written under the previous name.
+
+#### Example
+
+Names the file after the form title, so form 2 titled "Contact" is saved as `contact.json` instead of `2.json`.
+
+```
+<?php
+add_filter( 'gravityforms_local_json_file_name', 'power_boost_change_json_file_name', 10, 2 );
+/**
+ * Saves form 2 as contact.json instead of 2.json.
+ *
+ * @param string $filename Default filename, `{form_id}.json`.
+ * @param int    $form_id  Form ID.
+ * @return string
+ */
+function power_boost_change_json_file_name( $filename, $form_id ) {
+	if ( 2 === (int) $form_id ) {
+		return 'contact.json';
+	}
+
+	return $filename;
+}
+
+```
+
+&nbsp;
+
 ### Edit Form Before it's Saved as JSON
 
 `gravityforms_local_json_save_form`
